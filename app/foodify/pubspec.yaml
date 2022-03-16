@@ -33,7 +33,11 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   google_fonts: ^2.3.1
-  snaplist: ^0.1.8
+  carousel_slider: ^4.0.0
+  snaplist:
+    git:
+      url: https://github.com/imsudip/flutter_snaplist-1
+      ref: master
   firebase_core: ^1.13.1
   cloud_firestore: ^3.1.10
   hive_flutter: ^1.1.0

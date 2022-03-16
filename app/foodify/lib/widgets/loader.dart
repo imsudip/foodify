@@ -12,7 +12,7 @@ class LoadingWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       height: height ?? 50,
-      child: Lottie.asset('assets/loaders/${r.nextInt(6) + 1}.json'),
+      child: Lottie.asset('images/loaders/${r.nextInt(6) + 1}.json'),
     );
   }
 }

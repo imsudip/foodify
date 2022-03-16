@@ -1,9 +1,17 @@
+import 'dart:ui';
+
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:foodify/colors.dart';
+import 'package:foodify/services/firebase.dart';
+import 'package:foodify/services/popular_food_model.dart';
 import 'package:foodify/widgets/button.dart';
 import 'package:foodify/widgets/card.dart';
+import 'package:foodify/widgets/loader.dart';
+import 'package:foodify/widgets/popular_food_card.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:snaplist/snaplist.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -13,12 +21,23 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  List<PopularFoodModel> _popularfoods = [];
+  @override
+  void initState() {
+    super.initState();
+    DatabaseService().getPopularFoods().then((value) {
+      setState(() {
+        _popularfoods = value;
+      });
+    });
+  }
+
+  final Size cardSize = Size(230.0, 330.0);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
+        child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
@@ -26,10 +45,10 @@ class _HomeScreenState extends State<HomeScreen> {
                 alignment: Alignment.center,
                 child: Image.asset(
                   'images/Foodify.png',
-                  height: 120,
+                  height: 100,
                 ),
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: 16),
               CustomCard(
                   height: 220,
                   padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
@@ -72,7 +91,40 @@ class _HomeScreenState extends State<HomeScreen> {
                         onPressed: () {},
                       ),
                     ],
-                  ))
+                  )),
+              const SizedBox(height: 20),
+              const Align(
+                alignment: Alignment.centerLeft,
+                child: Padding(
+                  padding: EdgeInsets.only(left: 16),
+                  child: Text(
+                    'Popular Recipes',
+                    style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 0),
+              _popularfoods.isNotEmpty
+                  ? SizedBox(
+                      height: 420,
+                      child: CarouselSlider.builder(
+                        itemCount: _popularfoods.length,
+                        itemBuilder:
+                            (BuildContext context, int itemIndex, int pageViewIndex) =>
+                                PopularFoodCard(
+                          popularFood: _popularfoods[itemIndex],
+                        ),
+                        options: CarouselOptions(
+                          height: 400,
+                          aspectRatio: 0.95,
+                          viewportFraction: 0.68,
+                          initialPage: 0,
+                          enableInfiniteScroll: false,
+                          enlargeCenterPage: true,
+                        ),
+                      ))
+                  : LoadingWidget(),
+              const SizedBox(height: 20),
             ],
           ),
         ),
