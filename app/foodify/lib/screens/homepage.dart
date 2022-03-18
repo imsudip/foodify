@@ -4,6 +4,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:foodify/colors.dart';
+import 'package:foodify/screens/filters/course_filter.dart';
 import 'package:foodify/services/firebase.dart';
 import 'package:foodify/services/popular_food_model.dart';
 import 'package:foodify/widgets/button.dart';
@@ -22,17 +23,21 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   List<PopularFoodModel> _popularfoods = [];
+  bool timeUp = false;
+
   @override
   void initState() {
     super.initState();
-    DatabaseService().getPopularFoods().then((value) {
+    Future.delayed(const Duration(seconds: 3), () {
       setState(() {
-        _popularfoods = value;
+        timeUp = true;
       });
+    });
+    DatabaseService().getPopularFoods().then((value) {
+      _popularfoods = value;
     });
   }
 
-  final Size cardSize = Size(230.0, 330.0);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -63,6 +68,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       SizedBox(
                         height: 52,
                         child: CupertinoTextField(
+                          readOnly: true,
                           placeholder: 'Search for recipes',
                           style: GoogleFonts.poppins(fontSize: 14),
                           suffix: Container(
@@ -88,7 +94,11 @@ class _HomeScreenState extends State<HomeScreen> {
                       Button(
                         height: 52,
                         text: 'Customize your meal',
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => const CourseFilterScreen(),
+                          ));
+                        },
                       ),
                     ],
                   )),
@@ -123,7 +133,9 @@ class _HomeScreenState extends State<HomeScreen> {
                           enlargeCenterPage: true,
                         ),
                       ))
-                  : LoadingWidget(),
+                  : LoadingWidget(
+                      height: 250,
+                    ),
               const SizedBox(height: 20),
             ],
           ),

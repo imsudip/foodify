@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.red,
         textTheme: GoogleFonts.poppinsTextTheme(),
       ),
-      home: RecipeDetailScreen(),
+      home: const HomeScreen(),
     );
   }
 }

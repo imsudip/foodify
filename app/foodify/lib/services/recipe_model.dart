@@ -44,7 +44,8 @@ class RecipeModel {
         cuisine: json["cuisine"],
         ingredients: json["ingredients"],
         name: json["name"],
-        totalTime: json["total_time"],
+        totalTime: int.tryParse(json["total_time"].toString()) ??
+            double.parse(json["total_time"].toString()).toInt(),
         serving: json["serving"],
         diet: json["Diet"],
         recipeId: json["recipe_id"],
@@ -52,7 +53,8 @@ class RecipeModel {
         image: json["image"],
         postUrl: json["post_url"],
         rawIngredients: json["raw_ingredients"],
-        ingredientsCount: json["ingredients_count"],
+        ingredientsCount: int.tryParse(json["ingredients_count"].toString()) ??
+            double.parse(json["ingredients_count"].toString()).toInt(),
       );
 
   Map<String, dynamic> toMap() => {

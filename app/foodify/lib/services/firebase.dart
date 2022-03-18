@@ -20,9 +20,11 @@ class DatabaseService {
   // popularFoods Collection
   Future<List<PopularFoodModel>> getPopularFoods() async {
     QuerySnapshot querySnapshot = await popularFoodsCollectionRef.get();
-    return querySnapshot.docs
+    var l = querySnapshot.docs
         .map((doc) => PopularFoodModel.fromMap(doc.data() as Map<String, dynamic>))
         .toList();
+    l.shuffle();
+    return l;
   }
 
   // recipe Collection
