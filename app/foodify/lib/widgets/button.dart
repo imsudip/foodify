@@ -40,7 +40,9 @@ class Button extends StatelessWidget {
           child: Text(
             text ?? '',
             style: TextStyle(
-              color: (color?.computeLuminance() ?? 1) > 0.9 ? kwhiteColor : kblackColor,
+              color: (color?.computeLuminance() ?? 1) > 0.9
+                  ? kwhiteColor
+                  : kblackColor,
               fontSize: fontSize ?? 14,
               fontWeight: FontWeight.w600,
             ),

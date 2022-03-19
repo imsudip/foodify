@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:foodify/screens/filters/cuisine_filter.dart';
 import 'package:foodify/screens/details.dart';
 import 'package:foodify/screens/homepage.dart';
 import 'package:google_fonts/google_fonts.dart';

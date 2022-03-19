@@ -26,7 +26,8 @@ class _DietFilterScreenState extends State<DietFilterScreen> {
               const SizedBox(height: 32),
               Expanded(
                 child: CustomCard(
-                  padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 18),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 14, vertical: 18),
                   child: Column(
                     children: [
                       const Text(
@@ -44,7 +45,8 @@ class _DietFilterScreenState extends State<DietFilterScreen> {
                       const SizedBox(height: 16),
                       Expanded(
                         child: GridView(
-                            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                            gridDelegate:
+                                const SliverGridDelegateWithFixedCrossAxisCount(
                               crossAxisCount: 2,
                               childAspectRatio: 0.98,
                               crossAxisSpacing: 10,
@@ -65,7 +67,7 @@ class _DietFilterScreenState extends State<DietFilterScreen> {
                                       }
                                     });
                                   },
-                                )
+                                ),
                             ]),
                       ),
                     ],
