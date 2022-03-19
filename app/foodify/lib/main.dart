@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:foodify/screens/filters/cuisine_filter.dart';
 import 'package:foodify/screens/details.dart';
 import 'package:foodify/screens/homepage.dart';
+import 'package:foodify/services/apps_data.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
@@ -13,6 +14,8 @@ void main() async {
   await Hive.openBox('filters');
   // Initialize Firebase
   await Firebase.initializeApp();
+  // Get the constants from the db
+  await AppsData.instance.init();
   // Initialize the app
   runApp(const MyApp());
 }
@@ -22,7 +25,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Foodify',
       theme: ThemeData(
         primarySwatch: Colors.red,
         textTheme: GoogleFonts.poppinsTextTheme(),

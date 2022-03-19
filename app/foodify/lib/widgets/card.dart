@@ -13,7 +13,7 @@ class CustomCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: height ?? MediaQuery.of(context).size.height * 0.1,
+      height: height,
       width: width ?? MediaQuery.of(context).size.width * 0.9,
       padding: padding ?? const EdgeInsets.all(0),
       margin: margin ?? const EdgeInsets.all(0),

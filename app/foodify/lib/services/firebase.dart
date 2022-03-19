@@ -1,4 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/src/widgets/framework.dart';
+import 'package:foodify/services/apps_data.dart';
 import 'package:foodify/services/recipe_model.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'popular_food_model.dart';
@@ -60,5 +62,51 @@ class DatabaseService {
           .map((doc) => RecipeModel.fromMap(doc.data() as Map<String, dynamic>))
           .toList();
     });
+  }
+
+  List<String> getSuggestions(String pattern, {bool limit = true}) {
+    List<String> suggestions = [];
+    List<String> recipes = AppsData.instance.recipes;
+    for (var recipe in recipes) {
+      if (recipe.toLowerCase().contains(pattern.toLowerCase())) {
+        suggestions.add(recipe);
+      }
+      if (suggestions.length == 15 && limit) {
+        break;
+      }
+    }
+    return suggestions;
+  }
+
+  Future<List<RecipeModel>> getRecipesByNameList(String search) async {
+    List<String> recipeNames = getSuggestions(search, limit: false);
+    List<String> ids = [];
+    for (var recipeName in recipeNames) {
+      var id = AppsData.instance.getIdFromName(recipeName);
+      ids.add(id);
+    }
+    // seperate the ids into batches of 10 to avoid firebase limit
+    List<List<String>> batches = [];
+    for (var i = 0; i < ids.length; i += 10) {
+      if (i + 10 > ids.length) {
+        batches.add(ids.sublist(i));
+      } else {
+        batches.add(ids.sublist(i, i + 10));
+      }
+    }
+    // max of 5 batches
+    if (batches.length > 5) {
+      batches = batches.sublist(0, 5);
+    }
+    // get the recipes
+    List<RecipeModel> recipes = [];
+    for (var batch in batches) {
+      Query query = recipeCollectionRef.where('recipe_id', whereIn: batch);
+      var batchRecipes = await query.get();
+      recipes.addAll(batchRecipes.docs
+          .map((doc) => RecipeModel.fromMap(doc.data() as Map<String, dynamic>))
+          .toList());
+    }
+    return recipes;
   }
 }

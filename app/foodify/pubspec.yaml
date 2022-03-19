@@ -34,14 +34,12 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   google_fonts: ^2.3.1
   carousel_slider: ^4.0.0
-  snaplist:
-    git:
-      url: https://github.com/imsudip/flutter_snaplist-1
-      ref: master
   firebase_core: ^1.13.1
   cloud_firestore: ^3.1.10
   hive_flutter: ^1.1.0
   lottie: ^1.2.2
+  flutter_typeahead: ^3.2.4
+  http: ^0.13.4
 
 dev_dependencies:
   flutter_test:
