@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:foodify/colors.dart';
 import 'package:foodify/maps.dart';
+import 'package:foodify/screens/filters/cuisine_filter.dart';
 import 'package:foodify/widgets/button.dart';
 import 'package:foodify/widgets/card.dart';
 import 'package:foodify/widgets/image_card.dart';
@@ -95,7 +96,9 @@ class _DietFilterScreenState extends State<DietFilterScreen> {
                       height: 52,
                       fontSize: 18,
                       onPressed: () {
-                        Navigator.of(context).pop();
+                        Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => const CuisineFilterScreen(),
+                        ));
                       },
                     ),
                   ),

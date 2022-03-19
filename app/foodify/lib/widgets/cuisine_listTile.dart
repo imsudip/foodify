@@ -17,34 +17,30 @@ class CuisineListTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 17),
-      child: GestureDetector(
-        child: Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(9),
-            border: Border.all(
-                color: isSelected
-                    ? kredColor
-                    : kgreyColor //Color.fromARGB(255, 189, 186, 186),
-                ),
-          ),
-          child: ListTile(
-            title: Padding(
-              padding: const EdgeInsets.only(),
-              child: Text(
-                cuisineName,
-                style: TextStyle(
-                  fontSize: 20,
-                  color: Color(0xff0A0909),
-                ),
-              ),
+    return Container(
+      height: 54,
+      margin: EdgeInsets.symmetric(vertical: 7, horizontal: 16),
+      decoration: BoxDecoration(
+        color: isSelected ? kredColor.withOpacity(0.05) : kwhiteColor,
+        borderRadius: BorderRadius.circular(9),
+        border: Border.all(
+            color: isSelected
+                ? kredColor
+                : kgreyColor //Color.fromARGB(255, 189, 186, 186),
             ),
-            leading: Icon(
-              Icons.check,
-              color: isSelected ? kredColor : kwhiteColor,
-            ),
+      ),
+      child: ListTile(
+        title: Text(
+          cuisineName,
+          style: TextStyle(
+            fontSize: 16,
+            color: Color(0xff0A0909),
           ),
+        ),
+        onTap: () => onTap(),
+        trailing: Icon(
+          Icons.check,
+          color: isSelected ? kredColor : kwhiteColor,
         ),
       ),
     );
