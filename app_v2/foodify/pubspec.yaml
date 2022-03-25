@@ -44,6 +44,7 @@ dependencies:
   http: ^0.13.4
   firebase_auth: ^3.3.11
   google_sign_in: ^5.2.4
+  eva_icons_flutter: ^3.1.0
 
 dev_dependencies:
   flutter_test:

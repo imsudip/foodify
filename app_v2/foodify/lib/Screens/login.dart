@@ -1,4 +1,8 @@
+import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
+import 'package:foodify/Widgets/button.dart';
+import 'package:foodify/Widgets/text_box.dart';
+import 'package:foodify/ui/app_colors.dart';
 import 'package:get/get.dart';
 import '../Controllers/auth_controller.dart';
 
@@ -9,58 +13,74 @@ class Login extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        backgroundColor: AppColors.backgroundColor,
+        elevation: 0,
+        leading: IconButton(
+          icon: Icon(EvaIcons.arrowBack),
+          color: AppColors.textPrimaryColor,
+          onPressed: () {
+            Get.back();
+          },
+        ),
+      ),
+      backgroundColor: AppColors.backgroundColor,
       body: Center(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 12.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                "Welcome",
-                style: Get.textTheme.headline3,
-              ),
-              TextField(
-                controller: emailController,
-              ),
-              TextField(
-                obscureText: true,
-                controller: passwordController,
-              ),
-              const SizedBox(
-                height: 30,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  ElevatedButton(
-                    onPressed: () {
-                      // this is for the register function in auth controller
-                      AuthController.authInstance.register(emailController.text.trim(),
-                          passwordController.text.trim(), "qwerty");
-                    },
-                    child: const Text("Sign Up"),
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: FocusScope(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 8.0),
+                  child: Text(
+                    "Hello Again!",
+                    style: Get.textTheme.headline1,
                   ),
-                  ElevatedButton(
-                    onPressed: () {
-                      // this is for the login function in auth controller
+                ),
+                SizedBox(height: 20),
+                CustomTextField(
+                  controller: emailController,
+                  hintText: "Email",
+                  obscureText: false,
+                  icon: EvaIcons.emailOutline,
+                ),
+                CustomTextField(
+                  controller: passwordController,
+                  hintText: "Password",
+                  obscureText: true,
+                  icon: EvaIcons.lockOutline,
+                ),
+                const SizedBox(
+                  height: 30,
+                ),
+                Button(
+                  height: 52,
+                  color: AppColors.primaryColor,
+                  text: 'Login',
+                  onPressed: () {
+                    if (emailController.text.isNotEmpty &&
+                        passwordController.text.isNotEmpty) {
                       AuthController.authInstance.login(
                         emailController.text.trim(),
                         passwordController.text.trim(),
                       );
-                    },
-                    child: const Text("Login"),
-                  ),
-                ],
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  // this is for the register function in auth controller
-                  AuthController.authInstance.googleSignIn();
-                },
-                child: const Text("Google"),
-              ),
-            ],
+                    } else {
+                      Get.snackbar(
+                        'Error',
+                        'Please fill all the fields',
+                        snackPosition: SnackPosition.BOTTOM,
+                        backgroundColor: AppColors.accentColor,
+                        borderRadius: 10,
+                        margin: EdgeInsets.all(16),
+                      );
+                    }
+                  },
+                ),
+              ],
+            ),
           ),
         ),
       ),

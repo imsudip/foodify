@@ -17,7 +17,7 @@ class MyTheme {
         selectedItemColor: AppColors.lightScheme.primary,
       ),
       inputDecorationTheme: InputDecorationTheme(
-        border: const OutlineInputBorder(),
+        border: OutlineInputBorder(borderRadius: BorderRadius.circular(16)),
         fillColor: Colors.grey.shade300,
       ),
     );

@@ -1,5 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
+import 'package:foodify/Screens/Onboarding.dart';
+import 'package:foodify/Widgets/card.dart';
+import 'package:foodify/Widgets/loader.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
@@ -31,7 +35,7 @@ class AuthController extends GetxController {
       Get.offAll(() => const Home());
     } else {
       // user is null as in user is not available or not logged in
-      Get.offAll(() => Login());
+      Get.offAll(() => const OnboardingScreen());
     }
   }
 
@@ -44,8 +48,10 @@ class AuthController extends GetxController {
 
   void register(String email, String password, String name) async {
     try {
-      await auth.createUserWithEmailAndPassword(email: email, password: password);
-      if (auth.currentUser?.displayName == null || auth.currentUser?.displayName == '') {
+      await auth.createUserWithEmailAndPassword(
+          email: email, password: password);
+      if (auth.currentUser?.displayName == null ||
+          auth.currentUser?.displayName == '') {
         print('adding display name');
         await auth.currentUser?.updateDisplayName(name);
       }
@@ -85,9 +91,11 @@ class AuthController extends GetxController {
 
   void googleSignIn() async {
     try {
+      Get.dialog(const PopupLoader());
       final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
       // Obtain the auth details from the request
-      final GoogleSignInAuthentication? googleAuth = await googleUser?.authentication;
+      final GoogleSignInAuthentication? googleAuth =
+          await googleUser?.authentication;
       // Create a new credential
       final credential = GoogleAuthProvider.credential(
         accessToken: googleAuth?.accessToken,
@@ -102,6 +110,7 @@ class AuthController extends GetxController {
     } catch (e) {
       print(e.toString());
     }
+    Get.back();
   }
 
   void signOut() {

@@ -1,28 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:foodify/ui/app_colors.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AppTextStyle {
-  static String? get fontFamily => GoogleFonts.openSans().fontFamily;
+  static String? get fontFamily => GoogleFonts.poppins().fontFamily;
   //static String? get fontFamily => GoogleFonts.yanoneKaffeesatz().fontFamily;
 
   // Google font
-  static TextStyle get defaultFontStyle => GoogleFonts.openSans();
+  static TextStyle get defaultFontStyle => GoogleFonts.poppins();
 
   // if we need to change a style
 
   // Headline 1
-  static TextStyle get headline1 => GoogleFonts.openSans(
+  static TextStyle get headline1 => GoogleFonts.poppins(
         fontSize: 28.0,
         fontWeight: FontWeight.w700,
-        color: Colors.lightBlueAccent,
+        color: AppColors.primaryColor,
       );
   // Headline 2
-  static TextStyle get headline2 => GoogleFonts.openSans(
+  static TextStyle get headline2 => GoogleFonts.poppins(
         fontSize: 16.0,
         fontWeight: FontWeight.w600,
       );
   // Headline 3
-  static TextStyle get headline3 => GoogleFonts.openSans(
+  static TextStyle get headline3 => GoogleFonts.poppins(
         fontSize: 14.0,
         fontWeight: FontWeight.w700,
       );
@@ -32,11 +33,18 @@ class AppTextStyle {
         color: Colors.black,
       );
   // Caption
-  static TextStyle get caption => GoogleFonts.openSans(
+  static TextStyle get caption => GoogleFonts.poppins(
         fontSize: 16.0,
         fontWeight: FontWeight.w600,
       );
-
+  static TextStyle get regular16 => GoogleFonts.poppins(
+        fontSize: 16.0,
+        fontWeight: FontWeight.w600,
+      );
+  static TextStyle get button => GoogleFonts.poppins(
+        fontSize: 14.0,
+        fontWeight: FontWeight.w600,
+      );
   static TextTheme get textTheme => TextTheme(
         headline1: headline1,
         headline2: headline2,
