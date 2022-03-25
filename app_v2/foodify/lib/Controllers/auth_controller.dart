@@ -45,7 +45,10 @@ class AuthController extends GetxController {
   void register(String email, String password, String name) async {
     try {
       await auth.createUserWithEmailAndPassword(email: email, password: password);
-      await auth.currentUser?.updateDisplayName(name);
+      if (auth.currentUser?.displayName == null || auth.currentUser?.displayName == '') {
+        print('adding display name');
+        await auth.currentUser?.updateDisplayName(name);
+      }
     } on FirebaseAuthException catch (e) {
       // this is solely for the Firebase Auth Exception
       // for example : password did not match
