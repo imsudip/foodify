@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:foodify/Screens/Onboarding.dart';
+import 'package:foodify/Screens/diet_filter.dart';
 import 'package:foodify/Widgets/card.dart';
 import 'package:foodify/Widgets/loader.dart';
 import 'package:get/get.dart';
@@ -32,7 +33,7 @@ class AuthController extends GetxController {
     if (user != null) {
       // await createUserDocument(user);
       // user is logged in
-      Get.offAll(() => const Home());
+      Get.offAll(() => const DietFilterScreen());
     } else {
       // user is null as in user is not available or not logged in
       Get.offAll(() => const OnboardingScreen());

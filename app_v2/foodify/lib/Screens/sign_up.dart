@@ -2,6 +2,7 @@
 
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
+import 'package:foodify/Screens/diet_filter.dart';
 import 'package:foodify/Screens/login.dart';
 import 'package:foodify/Widgets/button.dart';
 import 'package:foodify/Widgets/text_box.dart';
@@ -121,12 +122,14 @@ class SignUp extends StatelessWidget {
                         );
                       }
 
-                      if (passwordController.text == confirmPasswordController.text) {
+                      if (passwordController.text ==
+                          confirmPasswordController.text) {
                         AuthController.authInstance.register(
                           emailController.text.trim(),
                           passwordController.text.trim(),
                           nameController.text.trim(),
                         );
+                        Get.to(() => DietFilterScreen());
                       } else {
                         Get.snackbar('Error', 'Passwords do not match',
                             backgroundColor: AppColors.accentColor,
@@ -138,7 +141,8 @@ class SignUp extends StatelessWidget {
                     },
                   ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 20, vertical: 10),
                     child: Center(
                       child: Image(
                         image: AssetImage('images/divider.png'),
