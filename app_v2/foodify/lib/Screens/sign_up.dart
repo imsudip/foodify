@@ -2,6 +2,7 @@
 
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
+import 'package:foodify/Screens/login.dart';
 import 'package:foodify/Widgets/button.dart';
 import 'package:foodify/Widgets/text_box.dart';
 import 'package:foodify/ui/app_colors.dart';
@@ -17,36 +18,63 @@ class SignUp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: AppColors.backgroundColor,
-          elevation: 0,
-          leading: IconButton(
-            icon: Icon(EvaIcons.arrowBack),
-            color: AppColors.textPrimaryColor,
-            onPressed: () {
-              Get.back();
-            },
-          ),
-        ),
-        backgroundColor: AppColors.backgroundColor,
-        body: Center(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20.0),
-            child: FocusScope(
+    return Scaffold(
+      // appBar: AppBar(
+      //   backgroundColor: AppColors.backgroundColor,
+      //   elevation: 0,
+      //   leading: IconButton(
+      //     icon: Icon(EvaIcons.arrowBack),
+      //     color: AppColors.textPrimaryColor,
+      //     onPressed: () {
+      //       Get.back();
+      //     },
+      //   ),
+      // ),
+      backgroundColor: AppColors.backgroundColor,
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20.0),
+          child: FocusScope(
+            child: SingleChildScrollView(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 8.0),
-                    child: Text(
-                      "Welcome",
-                      style: AppTextStyle.headline1,
-                      textAlign: TextAlign.left,
+                  AspectRatio(
+                    aspectRatio: 1.5,
+                    child: Stack(
+                      children: [
+                        Center(
+                          child: Image.asset(
+                            'images/illustration3.png',
+                          ),
+                        ),
+                        Positioned(
+                          top: 2,
+                          left: -16,
+                          child: IconButton(
+                            icon: Icon(EvaIcons.arrowBack),
+                            color: AppColors.textPrimaryColor,
+                            onPressed: () {
+                              Get.back();
+                            },
+                          ),
+                        )
+                      ],
                     ),
                   ),
+                  Text(
+                    "Let's get started!",
+                    style: AppTextStyle.headline1,
+                    textAlign: TextAlign.left,
+                  ),
+                  Text(
+                    "Enter your details to create an account.",
+                    style: AppTextStyle.bodytext2
+                        .copyWith(color: AppColors.textSecondaryColor),
+                    textAlign: TextAlign.left,
+                  ),
+                  SizedBox(height: 12),
                   CustomTextField(
                     controller: nameController,
                     hintText: "Name",
@@ -72,7 +100,7 @@ class SignUp extends StatelessWidget {
                     icon: EvaIcons.lockOutline,
                   ),
                   const SizedBox(
-                    height: 30,
+                    height: 12,
                   ),
                   Button(
                     height: 52,
@@ -93,8 +121,7 @@ class SignUp extends StatelessWidget {
                         );
                       }
 
-                      if (passwordController.text ==
-                          confirmPasswordController.text) {
+                      if (passwordController.text == confirmPasswordController.text) {
                         AuthController.authInstance.register(
                           emailController.text.trim(),
                           passwordController.text.trim(),
@@ -110,32 +137,60 @@ class SignUp extends StatelessWidget {
                       }
                     },
                   ),
-
-                  // Row(
-                  //   mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  //   children: [
-                  //     ElevatedButton(
-                  //       onPressed: () {
-                  //         // this is for the register function in auth controller
-                  //         AuthController.authInstance.register(
-                  //             emailController.text.trim(),
-                  //             passwordController.text.trim(),
-                  //             "qwerty");
-                  //       },
-                  //       child: const Text("Sign Up"),
-                  //     ),
-                  //     ElevatedButton(
-                  //       onPressed: () {
-                  //         // this is for the login function in auth controller
-                  //         AuthController.authInstance.login(
-                  //           emailController.text.trim(),
-                  //           passwordController.text.trim(),
-                  //         );
-                  //       },
-                  //       child: const Text("Login"),
-                  //     ),
-                  //   ],
-                  // ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                    child: Center(
+                      child: Image(
+                        image: AssetImage('images/divider.png'),
+                        height: 16,
+                      ),
+                    ),
+                  ),
+                  Button(
+                    height: 54,
+                    color: AppColors.primaryWhiteColor,
+                    border: Border.all(color: AppColors.accentColor),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Image.asset(
+                          'images/google_icon.png',
+                          height: 24,
+                        ),
+                        SizedBox(width: 8),
+                        Text(
+                          "Sign up with Google",
+                          style: AppTextStyle.button,
+                        ),
+                      ],
+                    ),
+                    onPressed: () {
+                      AuthController.authInstance.googleSignIn();
+                    },
+                  ),
+                  const SizedBox(height: 12),
+                  Center(
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text(
+                          "Already have an account?",
+                          style: AppTextStyle.bodytext2
+                              .copyWith(color: AppColors.textSecondaryColor),
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            Get.off(() => Login());
+                          },
+                          child: Text(
+                            " Sign in",
+                            style: AppTextStyle.bodytext2
+                                .copyWith(color: AppColors.primaryColor),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                 ],
               ),
             ),

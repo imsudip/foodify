@@ -14,36 +14,59 @@ class OnboardingScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: AppColors.primaryWhiteColor,
-        body: Column(children: [
-          Image.asset(
-            'images/Foodify.png',
-            height: 200,
+    return Scaffold(
+      backgroundColor: AppColors.primaryWhiteColor,
+      body: SafeArea(
+        child: Column(children: [
+          AspectRatio(
+            aspectRatio: 1.0,
+            child: Stack(
+              children: [
+                Image.asset(
+                  'images/Cooking-pana.png',
+                ),
+                Positioned(
+                  top: -3,
+                  left: 6,
+                  child: Image.asset(
+                    'images/Foodify.png',
+                    height: 75,
+                  ),
+                )
+              ],
+            ),
           ),
           SizedBox(
-            height: 30,
+            height: 12,
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
+            padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Column(
               children: [
                 Text(
                   "Welcome to Foodify",
-                  style: Get.textTheme.headline2,
+                  style: Get.textTheme.headline1,
                 ),
                 SizedBox(
                   height: 10,
                 ),
                 Text(
                   "Foodify is a food recipe app that helps you find the best recipes for your diet.",
-                  style: Get.textTheme.bodyText1,
+                  style: AppTextStyle.bodytext2,
+                  textAlign: TextAlign.center,
                 ),
               ],
             ),
           ),
           Spacer(),
+          Text(
+            "Let's get started",
+            style: AppTextStyle.bodytext2.copyWith(color: AppColors.textSecondaryColor),
+            textAlign: TextAlign.center,
+          ),
+          const SizedBox(
+            height: 12,
+          ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
             child: Row(
@@ -55,7 +78,7 @@ class OnboardingScreen extends StatelessWidget {
                     color: AppColors.primaryColor,
                     text: 'Sign Up',
                     onPressed: () {
-                      Get.to(SignUp());
+                      Get.to(() => SignUp());
                     },
                   ),
                 ),
@@ -69,7 +92,7 @@ class OnboardingScreen extends StatelessWidget {
                     textColor: AppColors.textPrimaryColor,
                     text: 'Sign In',
                     onPressed: () {
-                      Get.to(Login());
+                      Get.to(() => Login());
                     },
                   ),
                 )

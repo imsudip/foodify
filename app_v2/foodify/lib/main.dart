@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:foodify/Screens/splash_screen.dart';
 import 'package:foodify/ui/my_theme.dart';
 
 import 'package:get/get.dart';
@@ -25,9 +26,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: MyTheme.ligthTheme,
-      home: const Center(
-        child: CircularProgressIndicator(),
-      ),
+      home: const SplashScreen(),
     );
   }
 }

@@ -19,7 +19,7 @@ class AppTextStyle {
       );
   // Headline 2
   static TextStyle get headline2 => GoogleFonts.poppins(
-        fontSize: 16.0,
+        fontSize: 22.0,
         fontWeight: FontWeight.w600,
       );
   // Headline 3
@@ -28,8 +28,13 @@ class AppTextStyle {
         fontWeight: FontWeight.w700,
       );
   // Bodytext 1
-  static TextStyle get bodytext1 => GoogleFonts.roboto(
+  static TextStyle get bodytext1 => GoogleFonts.poppins(
         fontSize: 16.0,
+        color: Colors.black,
+      );
+  // Bodytext 2
+  static TextStyle get bodytext2 => GoogleFonts.poppins(
+        fontSize: 14.0,
         color: Colors.black,
       );
   // Caption
