@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:foodify/Controllers/auth_controller.dart';
+import 'package:foodify/Screens/onboarding/calorie_page.dart';
 import 'package:foodify/ui/app_colors.dart';
 import 'package:foodify/ui/text_styles.dart';
 
 import 'package:foodify/widgets/button.dart';
 import 'package:foodify/widgets/card.dart';
 import 'package:foodify/widgets/image_card.dart';
+import 'package:get/get.dart';
 
 class DietFilterScreen extends StatefulWidget {
   const DietFilterScreen({Key? key}) : super(key: key);
@@ -17,6 +20,12 @@ class _DietFilterScreenState extends State<DietFilterScreen> {
   String selectedDiet = '';
   String veg = "Vegeterian";
   String nonVeg = "Non Vegeterian";
+  @override
+  void initState() {
+    var user = AuthController.authInstance.userData.value;
+    selectedDiet = user['diet'] ?? '';
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -52,8 +61,7 @@ class _DietFilterScreenState extends State<DietFilterScreen> {
                     const SizedBox(height: 16),
                     Expanded(
                       child: GridView(
-                        gridDelegate:
-                            const SliverGridDelegateWithFixedCrossAxisCount(
+                        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: 2,
                           childAspectRatio: 1.2,
                           crossAxisSpacing: 10,
@@ -95,25 +103,13 @@ class _DietFilterScreenState extends State<DietFilterScreen> {
                 children: [
                   Expanded(
                     child: Button(
-                      text: 'Back',
-                      height: 52,
-                      color: AppColors.accentColor,
-                      fontSize: 18,
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                      },
-                    ),
-                  ),
-                  const SizedBox(width: 10),
-                  Expanded(
-                    child: Button(
                       text: 'Next',
                       height: 52,
                       fontSize: 18,
-                      onPressed: () {
-                        // Navigator.of(context).push(MaterialPageRoute(
-                        //   builder: (context) => const CuisineFilterScreen(),
-                        // ));
+                      onPressed: () async {
+                        await AuthController.authInstance
+                            .updateUserDocument({'diet': selectedDiet});
+                        Get.to(() => const CaloriePage());
                       },
                     ),
                   ),

@@ -36,7 +36,7 @@ class Button extends StatelessWidget {
       },
       child: Container(
         height: height ?? MediaQuery.of(context).size.height * 0.1,
-        width: width ?? MediaQuery.of(context).size.width * 0.9,
+        width: width ?? MediaQuery.of(context).size.width * 1.0,
         padding: padding ?? const EdgeInsets.all(0),
         margin: margin ?? const EdgeInsets.all(0),
         decoration: BoxDecoration(

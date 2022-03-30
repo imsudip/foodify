@@ -2,8 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:foodify/Controllers/auth_controller.dart';
-import 'package:foodify/Screens/login.dart';
-import 'package:foodify/Screens/sign_up.dart';
+import 'package:foodify/Screens/onboarding/login.dart';
+import 'package:foodify/Screens/onboarding/sign_up.dart';
 import 'package:foodify/Widgets/button.dart';
 import 'package:foodify/ui/app_colors.dart';
 import 'package:foodify/ui/text_styles.dart';

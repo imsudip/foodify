@@ -24,8 +24,12 @@ class AppTextStyle {
       );
   // Headline 3
   static TextStyle get headline3 => GoogleFonts.poppins(
-        fontSize: 14.0,
-        fontWeight: FontWeight.w700,
+        fontSize: 18.0,
+        fontWeight: FontWeight.w600,
+      );
+  static TextStyle get subHeading => GoogleFonts.poppins(
+        fontSize: 16,
+        fontWeight: FontWeight.w600,
       );
   // Bodytext 1
   static TextStyle get bodytext1 => GoogleFonts.poppins(
@@ -39,9 +43,7 @@ class AppTextStyle {
       );
   // Caption
   static TextStyle get caption => GoogleFonts.poppins(
-        fontSize: 16.0,
-        fontWeight: FontWeight.w600,
-      );
+      fontSize: 12.0, fontWeight: FontWeight.w400, color: AppColors.textSecondaryColor);
   static TextStyle get regular16 => GoogleFonts.poppins(
         fontSize: 16.0,
         fontWeight: FontWeight.w600,

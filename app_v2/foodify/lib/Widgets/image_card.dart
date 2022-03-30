@@ -27,14 +27,10 @@ class ImageCard extends StatelessWidget {
               child: AnimatedContainer(
             duration: const Duration(milliseconds: 200),
             decoration: BoxDecoration(
-              color: isSelected
-                  ? AppColors.primaryColor
-                  : AppColors.primaryWhiteColor,
+              color: isSelected ? AppColors.primaryColor : AppColors.primaryWhiteColor,
               borderRadius: BorderRadius.circular(16),
               border: Border.all(
-                color: isSelected
-                    ? AppColors.primaryWhiteColor
-                    : AppColors.accentColor,
+                color: isSelected ? AppColors.primaryWhiteColor : AppColors.accentColor,
                 width: 1,
               ),
               // boxShadow: [
@@ -49,7 +45,7 @@ class ImageCard extends StatelessWidget {
           Positioned(
               left: 0,
               right: 0,
-              top: 8,
+              top: 14,
               child: SizedBox(
                 height: 85,
                 child: AspectRatio(
@@ -69,9 +65,8 @@ class ImageCard extends StatelessWidget {
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w600,
-                color: isSelected
-                    ? AppColors.primaryWhiteColor
-                    : AppColors.textPrimaryColor,
+                color:
+                    isSelected ? AppColors.primaryWhiteColor : AppColors.textPrimaryColor,
               ),
             ),
           ),

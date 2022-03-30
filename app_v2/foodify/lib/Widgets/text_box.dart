@@ -7,13 +7,13 @@ class CustomTextField extends StatefulWidget {
   final TextEditingController controller;
   final String hintText;
   final bool obscureText;
-  final IconData icon;
+  final IconData? icon;
   const CustomTextField(
       {Key? key,
       required this.controller,
       required this.hintText,
       required this.obscureText,
-      required this.icon})
+      this.icon})
       : super(key: key);
 
   @override
@@ -39,12 +39,13 @@ class _CustomTextFieldState extends State<CustomTextField> {
           placeholder: widget.hintText,
           padding: EdgeInsets.symmetric(horizontal: 10),
           style: AppTextStyle.defaultFontStyle,
-          prefix: Padding(
-            padding: const EdgeInsets.only(left: 10),
-            child: Icon(widget.icon,
-                color:
-                    isfocused ? AppColors.primaryColor : AppColors.accentColor),
-          ),
+          prefix: widget.icon != null
+              ? Padding(
+                  padding: const EdgeInsets.only(left: 10),
+                  child: Icon(widget.icon,
+                      color: isfocused ? AppColors.primaryColor : AppColors.accentColor),
+                )
+              : null,
           decoration: BoxDecoration(
             color: AppColors.primaryWhiteColor,
             border: Border.all(

@@ -45,6 +45,14 @@ dependencies:
   firebase_auth: ^3.3.11
   google_sign_in: ^5.2.4
   eva_icons_flutter: ^3.1.0
+  bottom_bar_page_transition: ^2.0.0
+  dot_navigation_bar: ^1.0.1+4
+  iconsax: ^0.0.8
+  octo_image: ^1.0.1
+  readmore: ^2.1.0
+  loadmore: ^2.0.1
+  meilisearch: ^0.5.2
+  like_button: ^2.0.4
 
 dev_dependencies:
   flutter_test:

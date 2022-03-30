@@ -7,19 +7,14 @@ class CustomCard extends StatelessWidget {
   final double? width;
   final EdgeInsetsGeometry? padding, margin;
   const CustomCard(
-      {Key? key,
-      required this.child,
-      this.height,
-      this.width,
-      this.padding,
-      this.margin})
+      {Key? key, required this.child, this.height, this.width, this.padding, this.margin})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       height: height,
-      width: width ?? MediaQuery.of(context).size.width * 0.9,
+      width: width ?? MediaQuery.of(context).size.width * 1.0,
       padding: padding ?? const EdgeInsets.all(0),
       margin: margin ?? const EdgeInsets.all(0),
       decoration: BoxDecoration(

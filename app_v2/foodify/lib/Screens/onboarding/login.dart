@@ -1,21 +1,16 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
-import 'package:foodify/Screens/diet_filter.dart';
-import 'package:foodify/Screens/login.dart';
+import 'package:foodify/Controllers/auth_controller.dart';
+import 'package:foodify/Screens/onboarding/sign_up.dart';
 import 'package:foodify/Widgets/button.dart';
 import 'package:foodify/Widgets/text_box.dart';
 import 'package:foodify/ui/app_colors.dart';
 import 'package:foodify/ui/text_styles.dart';
 import 'package:get/get.dart';
-import '../Controllers/auth_controller.dart';
 
-class SignUp extends StatelessWidget {
-  final nameController = TextEditingController();
+class Login extends StatelessWidget {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
-  final confirmPasswordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -23,18 +18,12 @@ class SignUp extends StatelessWidget {
       // appBar: AppBar(
       //   backgroundColor: AppColors.backgroundColor,
       //   elevation: 0,
-      //   leading: IconButton(
-      //     icon: Icon(EvaIcons.arrowBack),
-      //     color: AppColors.textPrimaryColor,
-      //     onPressed: () {
-      //       Get.back();
-      //     },
-      //   ),
+
       // ),
       backgroundColor: AppColors.backgroundColor,
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20.0),
+          padding: const EdgeInsets.symmetric(horizontal: 20),
           child: FocusScope(
             child: SingleChildScrollView(
               child: Column(
@@ -42,13 +31,11 @@ class SignUp extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   AspectRatio(
-                    aspectRatio: 1.5,
+                    aspectRatio: 1.0,
                     child: Stack(
                       children: [
-                        Center(
-                          child: Image.asset(
-                            'images/illustration3.png',
-                          ),
+                        Image.asset(
+                          'images/illustration2.png',
                         ),
                         Positioned(
                           top: 2,
@@ -65,23 +52,16 @@ class SignUp extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    "Let's get started!",
-                    style: AppTextStyle.headline1,
-                    textAlign: TextAlign.left,
+                    "Hello Again!",
+                    style: Get.textTheme.headline1,
                   ),
                   Text(
-                    "Enter your details to create an account.",
+                    "Welcome back! You have been missed.",
                     style: AppTextStyle.bodytext2
                         .copyWith(color: AppColors.textSecondaryColor),
                     textAlign: TextAlign.left,
                   ),
-                  SizedBox(height: 12),
-                  CustomTextField(
-                    controller: nameController,
-                    hintText: "Name",
-                    obscureText: false,
-                    icon: EvaIcons.personOutline,
-                  ),
+                  const SizedBox(height: 12),
                   CustomTextField(
                     controller: emailController,
                     hintText: "Email",
@@ -94,55 +74,34 @@ class SignUp extends StatelessWidget {
                     obscureText: true,
                     icon: EvaIcons.lockOutline,
                   ),
-                  CustomTextField(
-                    controller: confirmPasswordController,
-                    hintText: "Confirm Password",
-                    obscureText: true,
-                    icon: EvaIcons.lockOutline,
-                  ),
                   const SizedBox(
                     height: 12,
                   ),
                   Button(
                     height: 52,
                     color: AppColors.primaryColor,
-                    text: 'Sign Up',
+                    text: 'Login',
                     onPressed: () {
-                      if (nameController.text.isEmpty ||
-                          emailController.text.isEmpty ||
-                          passwordController.text.isEmpty ||
-                          confirmPasswordController.text.isEmpty) {
-                        return Get.snackbar(
+                      if (emailController.text.isNotEmpty &&
+                          passwordController.text.isNotEmpty) {
+                        AuthController.authInstance.login(
+                          emailController.text.trim(),
+                          passwordController.text.trim(),
+                        );
+                      } else {
+                        Get.snackbar(
                           'Error',
                           'Please fill all the fields',
-                          backgroundColor: AppColors.accentColor,
                           snackPosition: SnackPosition.BOTTOM,
+                          backgroundColor: AppColors.accentColor,
                           borderRadius: 10,
                           margin: EdgeInsets.all(16),
                         );
                       }
-
-                      if (passwordController.text ==
-                          confirmPasswordController.text) {
-                        AuthController.authInstance.register(
-                          emailController.text.trim(),
-                          passwordController.text.trim(),
-                          nameController.text.trim(),
-                        );
-                        Get.to(() => DietFilterScreen());
-                      } else {
-                        Get.snackbar('Error', 'Passwords do not match',
-                            backgroundColor: AppColors.accentColor,
-                            snackPosition: SnackPosition.BOTTOM,
-                            borderRadius: 10,
-                            margin: EdgeInsets.all(16),
-                            icon: Icon(Icons.error));
-                      }
                     },
                   ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 20, vertical: 10),
+                  const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                     child: Center(
                       child: Image(
                         image: AssetImage('images/divider.png'),
@@ -163,7 +122,7 @@ class SignUp extends StatelessWidget {
                         ),
                         SizedBox(width: 8),
                         Text(
-                          "Sign up with Google",
+                          "Sign in with Google",
                           style: AppTextStyle.button,
                         ),
                       ],
@@ -178,16 +137,16 @@ class SignUp extends StatelessWidget {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Text(
-                          "Already have an account?",
+                          "Don't have an account?",
                           style: AppTextStyle.bodytext2
                               .copyWith(color: AppColors.textSecondaryColor),
                         ),
                         GestureDetector(
                           onTap: () {
-                            Get.off(() => Login());
+                            Get.off(() => SignUp());
                           },
                           child: Text(
-                            " Sign in",
+                            " Sign up",
                             style: AppTextStyle.bodytext2
                                 .copyWith(color: AppColors.primaryColor),
                           ),

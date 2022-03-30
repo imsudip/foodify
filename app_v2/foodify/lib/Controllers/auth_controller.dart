@@ -1,16 +1,15 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
-import 'package:foodify/Screens/Onboarding.dart';
-import 'package:foodify/Screens/diet_filter.dart';
-import 'package:foodify/Widgets/card.dart';
+import 'package:foodify/Constants/app_constant.dart';
+import 'package:foodify/Screens/onboarding/calorie_page.dart';
+import 'package:foodify/Screens/onboarding/diet_filter.dart';
 import 'package:foodify/Widgets/loader.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 import '../Constants/firebase_constants.dart';
 import '../Screens/home.dart';
-import '../Screens/login.dart';
+import '../Screens/onboarding/landing.dart';
 
 class AuthController extends GetxController {
   static AuthController authInstance = Get.find();
@@ -24,37 +23,38 @@ class AuthController extends GetxController {
     super.onReady();
     firebaseUser = Rx<User?>(auth.currentUser);
     firebaseUser.bindStream(auth.authStateChanges());
-    firebaseUser.bindStream(auth.userChanges());
     ever(firebaseUser, _setInitialScreen);
-    ever(firebaseUser, _setUserData);
+    ever(userData, _setUserData);
   }
 
   _setInitialScreen(User? user) async {
     if (user != null) {
-      // await createUserDocument(user);
       // user is logged in
-      Get.offAll(() => const DietFilterScreen());
+      await getUserDocument();
+      controlNavigation(userData.value);
     } else {
       // user is null as in user is not available or not logged in
       Get.offAll(() => const OnboardingScreen());
     }
   }
 
-  _setUserData(User? user) async {
+  _setUserData(Map<String, dynamic>? user) async {
+    // compare the user data with the current user data
     print('user is being updated');
-    if (user != null) {
-      await createUserDocument(user);
-    }
+    // print(user);
+    // if (user != null && user != userData.value) {
+    //   // update the user data
+    //   userData.value = user;
+    // }
   }
 
   void register(String email, String password, String name) async {
     try {
-      await auth.createUserWithEmailAndPassword(
-          email: email, password: password);
-      if (auth.currentUser?.displayName == null ||
-          auth.currentUser?.displayName == '') {
+      await auth.createUserWithEmailAndPassword(email: email, password: password);
+      await createUserDocument(auth.currentUser);
+      if (auth.currentUser?.displayName == null || auth.currentUser?.displayName == '') {
         print('adding display name');
-        await auth.currentUser?.updateDisplayName(name);
+        await updateUserDocument({'userName': name});
       }
     } on FirebaseAuthException catch (e) {
       // this is solely for the Firebase Auth Exception
@@ -95,8 +95,7 @@ class AuthController extends GetxController {
       Get.dialog(const PopupLoader());
       final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
       // Obtain the auth details from the request
-      final GoogleSignInAuthentication? googleAuth =
-          await googleUser?.authentication;
+      final GoogleSignInAuthentication? googleAuth = await googleUser?.authentication;
       // Create a new credential
       final credential = GoogleAuthProvider.credential(
         accessToken: googleAuth?.accessToken,
@@ -116,6 +115,7 @@ class AuthController extends GetxController {
 
   void signOut() {
     try {
+      userData.value = {};
       auth.signOut();
     } catch (e) {
       print(e.toString());
@@ -144,5 +144,59 @@ class AuthController extends GetxController {
     } catch (e) {
       print(e.toString());
     }
+  }
+
+  Future<void> getUserDocument() async {
+    try {
+      DocumentSnapshot? userDoc =
+          await _firestore.collection(usersCollection).doc(auth.currentUser?.uid).get();
+      if (userDoc.exists) {
+        userData.value = userDoc.data() as Map<String, dynamic>;
+        // print(userData.value);
+        refresh();
+      } else {
+        print('user does not exist');
+        print('creating user');
+        await createUserDocument(auth.currentUser);
+      }
+    } catch (e) {
+      print(e.toString());
+    }
+  }
+
+  Future<void> updateUserDocument(Map<String, dynamic> data) async {
+    try {
+      await _firestore
+          .collection(usersCollection)
+          .doc(firebaseUser.value?.uid)
+          .set(data, SetOptions(merge: true));
+      // add the data to the userData
+      userData.value = {...userData.value, ...data};
+    } catch (e) {
+      print(e.toString());
+    }
+  }
+
+  static void controlNavigation(Map<String, dynamic> data) {
+    if (data['diet'] == null) {
+      Get.offAll(() => const DietFilterScreen());
+    } else if (data['calorie'] == null) {
+      Get.offAll(() => const CaloriePage());
+    } else {
+      Get.offAll(() => Home());
+    }
+  }
+
+  List<String> get savedRecipes =>
+      AppConstant.stringListAdapter(userData.value['savedRecipes']);
+  Future<bool> saveRecipe(String id) async {
+    List<String> existing = savedRecipes;
+    if (existing.contains(id)) {
+      existing.remove(id);
+    } else {
+      existing.insert(0, id);
+    }
+    await updateUserDocument({'savedRecipes': existing});
+    return savedRecipes.contains(id);
   }
 }

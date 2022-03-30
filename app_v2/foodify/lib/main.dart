@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:foodify/Constants/app_constant.dart';
+import 'package:foodify/Controllers/database_service.dart';
 import 'package:foodify/Screens/splash_screen.dart';
 import 'package:foodify/ui/my_theme.dart';
 
@@ -12,6 +14,8 @@ void main() async {
 
   firebaseInitialization.then((value) {
     // we are going to inject the auth controller over here!
+    AppConstant.instance.init();
+    DatabaseService.instance.init();
     Get.put(AuthController());
   });
 
