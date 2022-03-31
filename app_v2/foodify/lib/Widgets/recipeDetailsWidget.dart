@@ -90,8 +90,7 @@ class RecipeDetails extends StatelessWidget {
 
 void launchUrl(videoId) async {
   {
-    if (!await launch(
-        "https://www.youtube.com/watch?v=$videoId&t=5s&ab_channel=MyFoodStory"))
+    if (!await launch("https://www.youtube.com/watch?v=$videoId"))
       throw 'Could not launch ';
   }
 }
