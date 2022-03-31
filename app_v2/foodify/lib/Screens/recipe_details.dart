@@ -146,7 +146,7 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen>
                               ),
                               Tab(
                                 child: TabTitle(
-                                    image: "nutrition", text: "nutrition"),
+                                    image: "nutrition", text: "Nutrition"),
                               ),
                             ],
                           ),
