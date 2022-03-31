@@ -50,9 +50,11 @@ class AuthController extends GetxController {
 
   void register(String email, String password, String name) async {
     try {
-      await auth.createUserWithEmailAndPassword(email: email, password: password);
+      await auth.createUserWithEmailAndPassword(
+          email: email, password: password);
       await createUserDocument(auth.currentUser);
-      if (auth.currentUser?.displayName == null || auth.currentUser?.displayName == '') {
+      if (auth.currentUser?.displayName == null ||
+          auth.currentUser?.displayName == '') {
         print('adding display name');
         await updateUserDocument({'userName': name});
       }
@@ -95,7 +97,8 @@ class AuthController extends GetxController {
       Get.dialog(const PopupLoader());
       final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
       // Obtain the auth details from the request
-      final GoogleSignInAuthentication? googleAuth = await googleUser?.authentication;
+      final GoogleSignInAuthentication? googleAuth =
+          await googleUser?.authentication;
       // Create a new credential
       final credential = GoogleAuthProvider.credential(
         accessToken: googleAuth?.accessToken,
@@ -148,8 +151,10 @@ class AuthController extends GetxController {
 
   Future<void> getUserDocument() async {
     try {
-      DocumentSnapshot? userDoc =
-          await _firestore.collection(usersCollection).doc(auth.currentUser?.uid).get();
+      DocumentSnapshot? userDoc = await _firestore
+          .collection(usersCollection)
+          .doc(auth.currentUser?.uid)
+          .get();
       if (userDoc.exists) {
         userData.value = userDoc.data() as Map<String, dynamic>;
         // print(userData.value);
@@ -188,7 +193,7 @@ class AuthController extends GetxController {
   }
 
   List<String> get savedRecipes =>
-      AppConstant.stringListAdapter(userData.value['savedRecipes']);
+      AppConstant.stringListAdapter(userData.value['savedRecipes'] ?? []);
   Future<bool> saveRecipe(String id) async {
     List<String> existing = savedRecipes;
     if (existing.contains(id)) {

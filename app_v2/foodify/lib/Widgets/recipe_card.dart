@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:foodify/Controllers/auth_controller.dart';
+import 'package:foodify/Screens/recipe_details.dart';
 import 'package:foodify/models/recipe_model.dart';
 import 'package:foodify/ui/app_colors.dart';
 import 'package:foodify/ui/text_styles.dart';
@@ -22,14 +23,14 @@ class RecipeCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        //   Navigator.push(
-        //   context,
-        //   MaterialPageRoute(
-        //     builder: (context) => RecipeDetailScreen(
-        //       recipe: recipe,
-        //     ),
-        //   ),
-        // );
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => RecipeDetailScreen(
+              recipe: recipe,
+            ),
+          ),
+        );
       },
       child: CustomCard(
         padding: const EdgeInsets.all(12),
@@ -120,7 +121,8 @@ class RecipeCard extends StatelessWidget {
               trimExpandedText: 'Show less',
               delimiter: '..  ',
               style: AppTextStyle.caption,
-              moreStyle: AppTextStyle.caption.copyWith(color: AppColors.primaryColor),
+              moreStyle:
+                  AppTextStyle.caption.copyWith(color: AppColors.primaryColor),
             ),
             const SizedBox(height: 8),
             Container(
@@ -133,14 +135,20 @@ class RecipeCard extends StatelessWidget {
                   Tag(
                       text: recipe.calories.toString() + ' cal',
                       assetIcon: 'tags/calorie'),
-                  Tag(text: recipe.servings.toString(), assetIcon: 'tags/Serving'),
+                  Tag(
+                      text: recipe.servings.toString(),
+                      assetIcon: 'tags/Serving'),
                   Tag(text: recipe.time.toString(), assetIcon: 'tags/time'),
                   if (recipe.diet.first != '')
                     Tag(text: recipe.diet.join(' , '), assetIcon: 'tags/diet'),
                   if (recipe.course.first != '')
-                    Tag(text: recipe.course.join(' , '), assetIcon: 'tags/course'),
+                    Tag(
+                        text: recipe.course.join(' , '),
+                        assetIcon: 'tags/course'),
                   if (recipe.cuisine.first != '')
-                    Tag(text: recipe.cuisine.join(' , '), assetIcon: 'tags/cuisine'),
+                    Tag(
+                        text: recipe.cuisine.join(' , '),
+                        assetIcon: 'tags/cuisine'),
                 ],
               ),
             ),

@@ -53,6 +53,8 @@ dependencies:
   loadmore: ^2.0.1
   meilisearch: ^0.5.2
   like_button: ^2.0.4
+  fraction: ^4.0.1
+  url_launcher: ^6.0.20
 
 dev_dependencies:
   flutter_test:
