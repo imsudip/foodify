@@ -47,17 +47,6 @@ class IngredientsDetails extends StatelessWidget {
                   var itemArray = item.split(',');
 
                   if (itemArray[0].contains("-")) {
-                    var itemSubArray = itemArray[0].split("-");
-                    for (int i = 0; i < itemSubArray.length; i++) {
-                      if (itemSubArray[i].contains(".")) {
-                        var itemQ = itemSubArray[i];
-                        var x = double.parse(itemQ).toStringAsPrecision(2);
-
-                        itemSubArray[i] =
-                            double.parse(x).toFraction().reduce().toString();
-                      }
-                    }
-                    itemArray[0] = itemSubArray.join("-");
                   } else {
                     var itemQ = itemArray[0];
                     var i = double.parse(itemQ).toStringAsPrecision(1);
