@@ -54,7 +54,7 @@ class RecipeCard extends StatelessWidget {
                       placeholderBuilder: OctoPlaceholder.blurHash(
                         recipe.blurhash,
                       ),
-                      errorBuilder: OctoError.icon(color: Colors.red),
+                      errorBuilder: OctoError.icon(color: AppColors.primaryColor),
                       fit: BoxFit.cover,
                     ),
                     Positioned(
@@ -121,8 +121,7 @@ class RecipeCard extends StatelessWidget {
               trimExpandedText: 'Show less',
               delimiter: '..  ',
               style: AppTextStyle.caption,
-              moreStyle:
-                  AppTextStyle.caption.copyWith(color: AppColors.primaryColor),
+              moreStyle: AppTextStyle.caption.copyWith(color: AppColors.primaryColor),
             ),
             const SizedBox(height: 8),
             Container(
@@ -135,20 +134,14 @@ class RecipeCard extends StatelessWidget {
                   Tag(
                       text: recipe.calories.toString() + ' cal',
                       assetIcon: 'tags/calorie'),
-                  Tag(
-                      text: recipe.servings.toString(),
-                      assetIcon: 'tags/Serving'),
+                  Tag(text: recipe.servings.toString(), assetIcon: 'tags/Serving'),
                   Tag(text: recipe.time.toString(), assetIcon: 'tags/time'),
                   if (recipe.diet.first != '')
                     Tag(text: recipe.diet.join(' , '), assetIcon: 'tags/diet'),
                   if (recipe.course.first != '')
-                    Tag(
-                        text: recipe.course.join(' , '),
-                        assetIcon: 'tags/course'),
+                    Tag(text: recipe.course.join(' , '), assetIcon: 'tags/course'),
                   if (recipe.cuisine.first != '')
-                    Tag(
-                        text: recipe.cuisine.join(' , '),
-                        assetIcon: 'tags/cuisine'),
+                    Tag(text: recipe.cuisine.join(' , '), assetIcon: 'tags/cuisine'),
                 ],
               ),
             ),

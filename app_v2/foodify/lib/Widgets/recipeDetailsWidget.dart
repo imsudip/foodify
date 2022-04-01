@@ -6,8 +6,8 @@ import 'package:foodify/ui/text_styles.dart';
 import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class RecipeDetails extends StatelessWidget {
-  const RecipeDetails({
+class RecipeInstructionWidget extends StatelessWidget {
+  const RecipeInstructionWidget({
     Key? key,
     required this.recipe,
   }) : super(key: key);

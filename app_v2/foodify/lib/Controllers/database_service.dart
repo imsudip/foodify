@@ -43,11 +43,11 @@ class DatabaseService {
   //   return l;
   // }
 
-  // // recipe Collection
-  // Future<RecipeModel> getRecipe(String recipeId) async {
-  //   DocumentSnapshot documentSnapshot = await recipeCollectionRef.doc(recipeId).get();
-  //   return RecipeModel.fromMap(documentSnapshot.data() as Map<String, dynamic>);
-  // }
+  // recipe Collection
+  Future<RecipeModel> getRecipe(String recipeId) async {
+    DocumentSnapshot documentSnapshot = await recipeCollectionRef.doc(recipeId).get();
+    return RecipeModel.fromMap(documentSnapshot.data() as Map<String, dynamic>);
+  }
 
   // Future<List<RecipeModel>> getRecipes({int? page}) {
   //   List<String> diets, courses, cuisines;

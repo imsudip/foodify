@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:foodify/Controllers/auth_controller.dart';
 import 'package:foodify/Widgets/button.dart';
 import 'package:foodify/Widgets/ingredientDetails.dart';
+import 'package:foodify/Widgets/nutrition_details.dart';
 import 'package:foodify/Widgets/recipeDetailsWidget.dart';
 import 'package:foodify/Widgets/tab_title.dart';
 import 'package:foodify/ui/app_colors.dart';
@@ -14,6 +15,7 @@ import 'package:foodify/widgets/tags.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:like_button/like_button.dart';
+import 'package:octo_image/octo_image.dart';
 
 class RecipeDetailScreen extends StatefulWidget {
   final RecipeModel recipe;
@@ -58,12 +60,9 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen>
                           child: Container(
                             height: 359,
                             decoration: BoxDecoration(
-                              image: DecorationImage(
-                                image: NetworkImage(recipe.image),
-                                fit: BoxFit.cover,
-                              ),
+                              color: AppColors.primaryWhiteColor,
                               borderRadius: const BorderRadius.only(
-                                bottomRight: Radius.circular(140),
+                                bottomRight: Radius.circular(110),
                               ),
                               boxShadow: [
                                 BoxShadow(
@@ -72,6 +71,24 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen>
                                   offset: const Offset(0, 8),
                                 ),
                               ],
+                            ),
+                            child: ClipRRect(
+                              borderRadius: const BorderRadius.only(
+                                bottomRight: Radius.circular(110),
+                              ),
+                              child: OctoImage(
+                                height: 359,
+                                width: double.maxFinite,
+                                image: NetworkImage(
+                                  recipe.image,
+                                ),
+                                placeholderBuilder: OctoPlaceholder.blurHash(
+                                  recipe.blurhash,
+                                ),
+                                errorBuilder:
+                                    OctoError.icon(color: AppColors.primaryColor),
+                                fit: BoxFit.cover,
+                              ),
                             ),
                           ),
                         ),
@@ -95,15 +112,15 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen>
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 20, vertical: 10),
+                          padding:
+                              const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               Align(
                                   alignment: Alignment.centerLeft,
-                                  child: Text(recipe.title,
-                                      style: AppTextStyle.headline2)),
+                                  child:
+                                      Text(recipe.title, style: AppTextStyle.headline2)),
                               const SizedBox(height: 8),
                               Wrap(
                                 spacing: 8,
@@ -141,8 +158,7 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen>
                                 style: TextStyle(
                                     fontSize: 14,
                                     fontWeight: FontWeight.normal,
-                                    color: const Color(0xff373737)
-                                        .withOpacity(0.6)),
+                                    color: const Color(0xff373737).withOpacity(0.6)),
                               ),
                               const SizedBox(height: 12),
                               recipe.videoId != ""
@@ -166,10 +182,8 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen>
                                       width: double.maxFinite,
                                       color: AppColors.primaryWhiteColor,
                                       border: Border.all(
-                                          color: AppColors.accentColor,
-                                          width: 1),
-                                      onPressed: () =>
-                                          launchUrl(recipe.videoId),
+                                          color: AppColors.accentColor, width: 1),
+                                      onPressed: () => launchUrl(recipe.videoId),
                                     )
                                   : Container(),
                             ],
@@ -187,8 +201,7 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen>
                       bottom: CustomTabBar(
                         child: TabBar(
                           labelColor: AppColors.primaryColor,
-                          unselectedLabelColor:
-                              AppColors.primaryColor.withOpacity(0.5),
+                          unselectedLabelColor: AppColors.primaryColor.withOpacity(0.5),
                           indicatorWeight: 0,
                           // isScrollable: true,
                           indicatorColor: Colors.transparent,
@@ -201,8 +214,7 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen>
                           tabs: const [
                             Tab(
                               height: 58,
-                              child: TabTitle(
-                                  image: "Ingredients", text: "Ingredients"),
+                              child: TabTitle(image: "Ingredients", text: "Ingredients"),
                             ),
                             Tab(
                               height: 58,
@@ -210,8 +222,7 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen>
                             ),
                             Tab(
                               height: 58,
-                              child: TabTitle(
-                                  image: "nutrition", text: "Nutrition"),
+                              child: TabTitle(image: "nutrition", text: "Nutrition"),
                             ),
                           ],
                         ),
@@ -223,10 +234,9 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen>
                 child: TabBarView(children: [
                   // Icon(Icons.local_dining),
                   // Icon(Icons.local_dining),
-                  SingleChildScrollView(
-                      child: IngredientsDetails(recipe: recipe)),
-                  SingleChildScrollView(child: RecipeDetails(recipe: recipe)),
-                  Icon(Icons.local_dining),
+                  SingleChildScrollView(child: IngredientsDetails(recipe: recipe)),
+                  SingleChildScrollView(child: RecipeInstructionWidget(recipe: recipe)),
+                  SingleChildScrollView(child: NutritionDetails(recipe: recipe)),
                 ]),
               ),
             ),

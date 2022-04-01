@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:foodify/Controllers/database_service.dart';
 import 'package:foodify/Screens/category_screen.dart';
+import 'package:foodify/Screens/recipe_details.dart';
+import 'package:foodify/Screens/search_result_screen.dart';
 import 'package:foodify/Widgets/card.dart';
 import 'package:foodify/Widgets/image_card.dart';
 import 'package:foodify/Widgets/loader.dart';
@@ -44,8 +46,7 @@ class _HomePageState extends State<HomePage> {
               const SizedBox(height: 16),
               CustomCard(
                   height: 220,
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
                   margin: const EdgeInsets.symmetric(horizontal: 16),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -62,29 +63,20 @@ class _HomePageState extends State<HomePage> {
                           suggestionsBoxController: _suggestionsBoxController,
                           minCharsForSuggestions: 2,
                           hideOnEmpty: true,
-                          textFieldConfiguration:
-                              CupertinoTextFieldConfiguration(
+                          textFieldConfiguration: CupertinoTextFieldConfiguration(
                             controller: _typeAheadController,
                             placeholder: 'Search for recipes',
                             style: GoogleFonts.poppins(fontSize: 14),
                             textInputAction: TextInputAction.search,
                             onSubmitted: (val) {
-                              print(val);
+                              log(_typeAheadController.text);
+
+                              _search();
                             },
                             suffix: GestureDetector(
                               onTap: () {
                                 log(_typeAheadController.text);
-                                // Navigator.push(
-                                //   context,
-                                //   MaterialPageRoute(builder: (context) {
-                                //     return SearchResultScreen(
-                                //       searchText: _typeAheadController.text,
-                                //       haveResult: DatabaseService()
-                                //           .getSuggestions(_typeAheadController.text)
-                                //           .isNotEmpty,
-                                //     );
-                                //   }),
-                                // );
+                                _search();
                               },
                               child: Container(
                                 padding: const EdgeInsets.only(right: 10),
@@ -103,54 +95,55 @@ class _HomePageState extends State<HomePage> {
                                 color: AppColors.accentColor),
                           ),
                           suggestionsCallback: (pattern) {
-                            return DatabaseService.instance
-                                .getSuggestions(pattern);
+                            return DatabaseService.instance.getSuggestions(pattern);
                           },
-                          itemBuilder:
-                              (context, Map<String, dynamic> suggestion) {
+                          itemBuilder: (context, Map<String, dynamic> suggestion) {
                             return Material(
                               color: Colors.transparent,
                               child: Padding(
-                                padding: const EdgeInsets.all(4.0),
-                                child: Text(
-                                  suggestion['title'],
+                                padding: const EdgeInsets.symmetric(horizontal: 10),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      suggestion['title'],
+                                    ),
+                                    Divider(
+                                      color: AppColors.accentColor,
+                                    ),
+                                  ],
                                 ),
                               ),
                             );
                           },
-                          onSuggestionSelected:
-                              (Map<String, dynamic> suggestion) {
+                          suggestionsBoxDecoration: CupertinoSuggestionsBoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: AppColors.primaryWhiteColor,
+                            border: Border.all(
+                              color: AppColors.accentColor,
+                              width: 1,
+                            ),
+                          ),
+                          onSuggestionSelected: (Map<String, dynamic> suggestion) {
                             _typeAheadController.text = '';
-                            // create a loading dialog
                             showDialog(
                                 context: context,
                                 builder: (context) {
-                                  return CupertinoAlertDialog(
-                                    title: Text('Loading . . .',
-                                        style: GoogleFonts.poppins()),
-                                    content: SizedBox(
-                                      height: 100,
-                                      child: Center(
-                                        child: LoadingWidget(
-                                          height: 120,
-                                        ),
-                                      ),
-                                    ),
-                                  );
+                                  return const PopupLoader();
                                 });
                             // search for the recipe
-                            // DatabaseService()
-                            //     .getRecipe(AppsData.instance.getIdFromName(suggestion))
-                            //     .then((value) {
-                            //   Navigator.pop(context);
-                            //   Navigator.of(context).push(CupertinoPageRoute(
-                            //       builder: (context) => RecipeDetailScreen(
-                            //             recipe: value,
-                            //           )));
-                            // });
-                          },
-                          onSaved: (value) {
-                            log(value!);
+                            DatabaseService.instance
+                                .getRecipe(suggestion['recipe_id'])
+                                .then((recipe) {
+                              // close the loading dialog
+                              Navigator.pop(context);
+                              // navigate to the recipe screen
+                              Get.to(
+                                () => RecipeDetailScreen(
+                                  recipe: recipe,
+                                ),
+                              );
+                            });
                           },
                         ),
                       ),
@@ -199,8 +192,7 @@ class _HomePageState extends State<HomePage> {
                       isSelected: false,
                       onTap: () {
                         Get.to(() => const CategoryPage(
-                            category: 'indian',
-                            categoryText: 'Indian recipes'));
+                            category: 'indian', categoryText: 'Indian recipes'));
                       },
                     ),
                     ImageCard(
@@ -218,8 +210,7 @@ class _HomePageState extends State<HomePage> {
                       isSelected: false,
                       onTap: () {
                         Get.to(() => const CategoryPage(
-                            category: 'dinner',
-                            categoryText: 'Dinner Recipes'));
+                            category: 'dinner', categoryText: 'Dinner Recipes'));
                       },
                     ),
                     ImageCard(
@@ -228,8 +219,7 @@ class _HomePageState extends State<HomePage> {
                       isSelected: false,
                       onTap: () {
                         Get.to(() => const CategoryPage(
-                            category: 'dessert',
-                            categoryText: 'Dessert Recipes'));
+                            category: 'dessert', categoryText: 'Dessert Recipes'));
                       },
                     ),
                     ImageCard(
@@ -238,8 +228,7 @@ class _HomePageState extends State<HomePage> {
                       isSelected: false,
                       onTap: () {
                         Get.to(() => const CategoryPage(
-                            category: 'appetizers',
-                            categoryText: 'Appetizers Recipes'));
+                            category: 'appetizers', categoryText: 'Appetizers Recipes'));
                       },
                     ),
                     ImageCard(
@@ -248,8 +237,7 @@ class _HomePageState extends State<HomePage> {
                       isSelected: false,
                       onTap: () {
                         Get.to(() => const CategoryPage(
-                            category: 'chicken',
-                            categoryText: 'Chicken Recipes'));
+                            category: 'chicken', categoryText: 'Chicken Recipes'));
                       },
                     ),
                     ImageCard(
@@ -258,8 +246,7 @@ class _HomePageState extends State<HomePage> {
                       isSelected: false,
                       onTap: () {
                         Get.to(() => const CategoryPage(
-                            category: 'eggless',
-                            categoryText: 'Eggless Recipes'));
+                            category: 'eggless', categoryText: 'Eggless Recipes'));
                       },
                     ),
                     ImageCard(
@@ -268,8 +255,7 @@ class _HomePageState extends State<HomePage> {
                       isSelected: false,
                       onTap: () {
                         Get.to(() => const CategoryPage(
-                            category: 'healthy',
-                            categoryText: 'Healthy Recipes'));
+                            category: 'healthy', categoryText: 'Healthy Recipes'));
                       },
                     ),
                     ImageCard(
@@ -278,8 +264,7 @@ class _HomePageState extends State<HomePage> {
                       isSelected: false,
                       onTap: () {
                         Get.to(() => const CategoryPage(
-                            category: 'indian_chinese',
-                            categoryText: 'Chinese Recipes'));
+                            category: 'indian_chinese', categoryText: 'Chinese Recipes'));
                       },
                     ),
                     ImageCard(
@@ -288,8 +273,7 @@ class _HomePageState extends State<HomePage> {
                       isSelected: false,
                       onTap: () {
                         Get.to(() => const CategoryPage(
-                            category: 'paneer',
-                            categoryText: 'Paneer Recipes'));
+                            category: 'paneer', categoryText: 'Paneer Recipes'));
                       },
                     ),
                     ImageCard(
@@ -308,8 +292,7 @@ class _HomePageState extends State<HomePage> {
                       isSelected: false,
                       onTap: () {
                         Get.to(() => const CategoryPage(
-                            category: 'seafood',
-                            categoryText: 'Seafood Recipes'));
+                            category: 'seafood', categoryText: 'Seafood Recipes'));
                       },
                     ),
                     ImageCard(
@@ -318,8 +301,7 @@ class _HomePageState extends State<HomePage> {
                       isSelected: false,
                       onTap: () {
                         Get.to(() => const CategoryPage(
-                            category: 'side_dishes',
-                            categoryText: 'Side Dish Recipes'));
+                            category: 'side_dishes', categoryText: 'Side Dish Recipes'));
                       },
                     ),
                     ImageCard(
@@ -339,5 +321,17 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
     );
+  }
+
+  _search() async {
+    bool haveResult = await DatabaseService.instance
+        .getSuggestions(_typeAheadController.text)
+        .then((value) => value.isNotEmpty);
+
+    Get.to(() => SearchResultScreen(
+          searchText: _typeAheadController.text,
+          haveResult: haveResult,
+        ));
+    // _typeAheadController.text = '';
   }
 }
