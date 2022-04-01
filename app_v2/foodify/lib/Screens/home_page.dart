@@ -318,7 +318,7 @@ class _HomePageState extends State<HomePage> {
                       isSelected: false,
                       onTap: () {
                         Get.to(() => const CategoryPage(
-                            category: 'side_dish',
+                            category: 'side_dishes',
                             categoryText: 'Side Dish Recipes'));
                       },
                     ),

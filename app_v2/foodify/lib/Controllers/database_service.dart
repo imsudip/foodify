@@ -188,12 +188,12 @@ class DatabaseService {
       'chicken': AppConstant.instance.chicken,
       'eggless': AppConstant.instance.eggless,
       'healthy': AppConstant.instance.healthy,
-      'chinese': AppConstant.instance.chinese,
+      'indian_chinese': AppConstant.instance.chinese,
       'paneer': AppConstant.instance.paneer,
-      'pastaNoodles': AppConstant.instance.pastaNoodles,
+      'pasta_noodles': AppConstant.instance.pastaNoodles,
       'seafood': AppConstant.instance.seafood,
-      'sideDish': AppConstant.instance.sideDish,
-      'soup': AppConstant.instance.soup
+      'side_dishes': AppConstant.instance.sideDish,
+      'soups': AppConstant.instance.soup
     };
 
     var categoryList = map[category] ?? [];

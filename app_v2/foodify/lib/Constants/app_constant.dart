@@ -58,12 +58,13 @@ class AppConstant {
     _chicken = m['chicken'].map<String>((e) => e.toString()).toList();
     _eggless = m['eggless'].map<String>((e) => e.toString()).toList();
     _healthy = m['healthy'].map<String>((e) => e.toString()).toList();
-    _chinese = m['chinese'].map<String>((e) => e.toString()).toList();
+    _chinese = m['indian_chinese'].map<String>((e) => e.toString()).toList();
     _paneer = m['paneer'].map<String>((e) => e.toString()).toList();
-    _pastaNoodles = m['pastaNoodles'].map<String>((e) => e.toString()).toList();
+    _pastaNoodles =
+        m['pasta_noodles'].map<String>((e) => e.toString()).toList();
     _seafood = m['seafood'].map<String>((e) => e.toString()).toList();
-    _sideDish = m['sideDish'].map<String>((e) => e.toString()).toList();
-    _soup = m['soup'].map<String>((e) => e.toString()).toList();
+    _sideDish = m['side_dishes'].map<String>((e) => e.toString()).toList();
+    _soup = m['soups'].map<String>((e) => e.toString()).toList();
     log("Getting ingredients Data completed", name: "AppConstant");
     _ingredientsWithImages = (m1 as List<dynamic>)
         .map<Map<String, dynamic>>((e) => e as Map<String, dynamic>)
