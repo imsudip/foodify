@@ -70,7 +70,7 @@ class _SavedPageState extends State<SavedPage> {
               size: 28,
             ),
             Text(
-              ' Account Details',
+              ' Saved Recipes',
               style: AppTextStyle.headline2.copyWith(color: AppColors.primaryColor),
             ),
           ],
@@ -110,7 +110,7 @@ class _SavedPageState extends State<SavedPage> {
                     const Text('Loading. . . '),
                   ],
                 ))
-              : GetBuilder<AuthController>(
+              : GetX<AuthController>(
                   // init: ,
                   builder: (_) {
                   List<String> favList = _.savedRecipes;

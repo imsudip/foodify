@@ -78,10 +78,11 @@ class DatabaseService {
   //   });
   // }
 
-  Future<List<Map<String, dynamic>>> getSuggestions(String pattern) async {
+  Future<List<Map<String, dynamic>>> getSuggestions(String pattern,
+      {bool limited = true}) async {
     List<Map<String, dynamic>> suggestions = [];
     if (pattern.isNotEmpty) {
-      await recipeIndex.search(pattern, limit: 10).then((value) {
+      await recipeIndex.search(pattern, limit: limited ? 10 : 500).then((value) {
         suggestions = value.hits?.toList() ?? [];
       });
     }
@@ -144,6 +145,33 @@ class DatabaseService {
     } else {
       return [];
     }
+  }
+
+  Future<List<RecipeModel>> getAllRecipes(List<String> idList) async {
+    List<RecipeModel> recipes = [];
+    // seperate the ids into batches of 10 to avoid firebase limit
+    List<List<String>> batches = [];
+    for (var i = 0; i < idList.length; i += 10) {
+      if (i + 10 > idList.length) {
+        batches.add(idList.sublist(i));
+      } else {
+        batches.add(idList.sublist(i, i + 10));
+      }
+    }
+    // max of 5 batches
+    if (batches.length > 5) {
+      batches = batches.sublist(0, 5);
+    }
+    // get the recipes
+    for (var batch in batches) {
+      Query query = recipeCollectionRef.where('recipe_id', whereIn: batch);
+      var batchRecipes = await query.get();
+      recipes.addAll(batchRecipes.docs
+          .map((doc) => RecipeModel.fromMap(doc.data() as Map<String, dynamic>))
+          .toList());
+    }
+
+    return recipes;
   }
 
   Future<List<RecipeModel>> getRecipesByCategory(String category,

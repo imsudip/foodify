@@ -65,9 +65,10 @@ class _CategoryPageState extends State<CategoryPage> {
                   const Text('Loading. . . '),
                 ],
               ))
-            : GetBuilder<AuthController>(
+            : GetX<AuthController>(
                 builder: (_) {
                   List<String> favList = _.savedRecipes;
+                  var a = _.firebaseUser;
                   return LoadMore(
                     isFinish: isCompleted,
                     onLoadMore: () async {

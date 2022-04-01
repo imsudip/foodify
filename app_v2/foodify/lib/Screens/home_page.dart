@@ -65,6 +65,10 @@ class _HomePageState extends State<HomePage> {
                             controller: _typeAheadController,
                             placeholder: 'Search for recipes',
                             style: GoogleFonts.poppins(fontSize: 14),
+                            textInputAction: TextInputAction.search,
+                            onSubmitted: (val) {
+                              print(val);
+                            },
                             suffix: GestureDetector(
                               onTap: () {
                                 log(_typeAheadController.text);

@@ -11,18 +11,16 @@ class TabTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(children: [
+    return Column(mainAxisSize: MainAxisSize.min, children: [
       Image(
         image: AssetImage("images/$image.png"),
-        height: 10,
-        width: 10,
+        height: 20,
+        width: 20,
       ),
-      SizedBox(
-        width: 3,
-      ),
+      const SizedBox(height: 4),
       Text(
         text!,
-        style: AppTextStyle.caption,
+        style: AppTextStyle.bodytext2.copyWith(fontWeight: FontWeight.w500),
       )
     ]);
   }
