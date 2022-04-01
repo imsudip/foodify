@@ -82,7 +82,9 @@ class DatabaseService {
       {bool limited = true}) async {
     List<Map<String, dynamic>> suggestions = [];
     if (pattern.isNotEmpty) {
-      await recipeIndex.search(pattern, limit: limited ? 10 : 500).then((value) {
+      await recipeIndex
+          .search(pattern, limit: limited ? 10 : 500)
+          .then((value) {
         suggestions = value.hits?.toList() ?? [];
       });
     }
@@ -120,7 +122,8 @@ class DatabaseService {
   //   }
   //   return recipes;
   // }
-  Future<List<RecipeModel>> paginateRecipes(List<String> idList, int lastIndex) async {
+  Future<List<RecipeModel>> paginateRecipes(
+      List<String> idList, int lastIndex) async {
     int limit = lastIndex + pageSize;
     if (limit > idList.length) {
       limit = idList.length;
@@ -181,6 +184,16 @@ class DatabaseService {
       'veg': AppConstant.instance.veg,
       'dinner': AppConstant.instance.dinner,
       'dessert': AppConstant.instance.dessert,
+      'appetizers': AppConstant.instance.appetizers,
+      'chicken': AppConstant.instance.chicken,
+      'eggless': AppConstant.instance.eggless,
+      'healthy': AppConstant.instance.healthy,
+      'chinese': AppConstant.instance.chinese,
+      'paneer': AppConstant.instance.paneer,
+      'pastaNoodles': AppConstant.instance.pastaNoodles,
+      'seafood': AppConstant.instance.seafood,
+      'sideDish': AppConstant.instance.sideDish,
+      'soup': AppConstant.instance.soup
     };
 
     var categoryList = map[category] ?? [];

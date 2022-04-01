@@ -44,7 +44,8 @@ class _HomePageState extends State<HomePage> {
               const SizedBox(height: 16),
               CustomCard(
                   height: 220,
-                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
                   margin: const EdgeInsets.symmetric(horizontal: 16),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -61,7 +62,8 @@ class _HomePageState extends State<HomePage> {
                           suggestionsBoxController: _suggestionsBoxController,
                           minCharsForSuggestions: 2,
                           hideOnEmpty: true,
-                          textFieldConfiguration: CupertinoTextFieldConfiguration(
+                          textFieldConfiguration:
+                              CupertinoTextFieldConfiguration(
                             controller: _typeAheadController,
                             placeholder: 'Search for recipes',
                             style: GoogleFonts.poppins(fontSize: 14),
@@ -101,9 +103,11 @@ class _HomePageState extends State<HomePage> {
                                 color: AppColors.accentColor),
                           ),
                           suggestionsCallback: (pattern) {
-                            return DatabaseService.instance.getSuggestions(pattern);
+                            return DatabaseService.instance
+                                .getSuggestions(pattern);
                           },
-                          itemBuilder: (context, Map<String, dynamic> suggestion) {
+                          itemBuilder:
+                              (context, Map<String, dynamic> suggestion) {
                             return Material(
                               color: Colors.transparent,
                               child: Padding(
@@ -114,7 +118,8 @@ class _HomePageState extends State<HomePage> {
                               ),
                             );
                           },
-                          onSuggestionSelected: (Map<String, dynamic> suggestion) {
+                          onSuggestionSelected:
+                              (Map<String, dynamic> suggestion) {
                             _typeAheadController.text = '';
                             // create a loading dialog
                             showDialog(
@@ -194,7 +199,8 @@ class _HomePageState extends State<HomePage> {
                       isSelected: false,
                       onTap: () {
                         Get.to(() => const CategoryPage(
-                            category: 'indian', categoryText: 'Indian recipes'));
+                            category: 'indian',
+                            categoryText: 'Indian recipes'));
                       },
                     ),
                     ImageCard(
@@ -212,7 +218,8 @@ class _HomePageState extends State<HomePage> {
                       isSelected: false,
                       onTap: () {
                         Get.to(() => const CategoryPage(
-                            category: 'dinner', categoryText: 'Dinner Recipes'));
+                            category: 'dinner',
+                            categoryText: 'Dinner Recipes'));
                       },
                     ),
                     ImageCard(
@@ -221,7 +228,107 @@ class _HomePageState extends State<HomePage> {
                       isSelected: false,
                       onTap: () {
                         Get.to(() => const CategoryPage(
-                            category: 'dessert', categoryText: 'Dessert Recipes'));
+                            category: 'dessert',
+                            categoryText: 'Dessert Recipes'));
+                      },
+                    ),
+                    ImageCard(
+                      imagePath: 'courses/appetizers',
+                      text: "Appetizers",
+                      isSelected: false,
+                      onTap: () {
+                        Get.to(() => const CategoryPage(
+                            category: 'appetizers',
+                            categoryText: 'Appetizers Recipes'));
+                      },
+                    ),
+                    ImageCard(
+                      imagePath: 'courses/lunch',
+                      text: "Chicken",
+                      isSelected: false,
+                      onTap: () {
+                        Get.to(() => const CategoryPage(
+                            category: 'chicken',
+                            categoryText: 'Chicken Recipes'));
+                      },
+                    ),
+                    ImageCard(
+                      imagePath: 'courses/eggless',
+                      text: "Eggless",
+                      isSelected: false,
+                      onTap: () {
+                        Get.to(() => const CategoryPage(
+                            category: 'eggless',
+                            categoryText: 'Eggless Recipes'));
+                      },
+                    ),
+                    ImageCard(
+                      imagePath: 'courses/healthy',
+                      text: "Healthy",
+                      isSelected: false,
+                      onTap: () {
+                        Get.to(() => const CategoryPage(
+                            category: 'healthy',
+                            categoryText: 'Healthy Recipes'));
+                      },
+                    ),
+                    ImageCard(
+                      imagePath: 'courses/chinese',
+                      text: "Chinese",
+                      isSelected: false,
+                      onTap: () {
+                        Get.to(() => const CategoryPage(
+                            category: 'Indian_chinese',
+                            categoryText: 'Chinese Recipes'));
+                      },
+                    ),
+                    ImageCard(
+                      imagePath: 'courses/paneer',
+                      text: "Paneer",
+                      isSelected: false,
+                      onTap: () {
+                        Get.to(() => const CategoryPage(
+                            category: 'paneer',
+                            categoryText: 'Paneer Recipes'));
+                      },
+                    ),
+                    ImageCard(
+                      imagePath: 'courses/pasta',
+                      text: "Pasta & Noodles",
+                      isSelected: false,
+                      onTap: () {
+                        Get.to(() => const CategoryPage(
+                            category: 'pasta_noodles',
+                            categoryText: 'Pasta & Noodles Recipes'));
+                      },
+                    ),
+                    ImageCard(
+                      imagePath: 'courses/seafood',
+                      text: "Seafood",
+                      isSelected: false,
+                      onTap: () {
+                        Get.to(() => const CategoryPage(
+                            category: 'seafood',
+                            categoryText: 'Seafood Recipes'));
+                      },
+                    ),
+                    ImageCard(
+                      imagePath: 'courses/side dish',
+                      text: "Side Dish",
+                      isSelected: false,
+                      onTap: () {
+                        Get.to(() => const CategoryPage(
+                            category: 'side_dish',
+                            categoryText: 'Side Dish Recipes'));
+                      },
+                    ),
+                    ImageCard(
+                      imagePath: 'courses/soup',
+                      text: "Soup",
+                      isSelected: false,
+                      onTap: () {
+                        Get.to(() => const CategoryPage(
+                            category: 'soups', categoryText: 'Soup Recipes'));
                       },
                     ),
                   ],
