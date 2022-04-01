@@ -97,9 +97,7 @@ class _HomeState extends State<Home> {
 
         /// Search
         DotNavigationBarItem(
-            icon: const Icon(
-              EvaIcons.search,
-            ),
+            icon: const Icon(Icons.restaurant_rounded),
             selectedColor: AppColors.primaryColor,
             unselectedColor: AppColors.accentColor),
 

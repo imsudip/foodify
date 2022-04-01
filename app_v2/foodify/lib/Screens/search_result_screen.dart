@@ -1,10 +1,15 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:foodify/Controllers/auth_controller.dart';
 import 'package:foodify/Controllers/database_service.dart';
+import 'package:foodify/Widgets/load_more_delegate.dart';
 import 'package:foodify/Widgets/recipe_card.dart';
 import 'package:foodify/models/recipe_model.dart';
 import 'package:foodify/ui/app_colors.dart';
+import 'package:foodify/ui/text_styles.dart';
 import 'package:get/get.dart';
+import 'package:loadmore/loadmore.dart';
 import 'package:lottie/lottie.dart';
 
 import '../Widgets/loader.dart';
@@ -27,16 +32,18 @@ class _SearchResultScreenState extends State<SearchResultScreen> {
     _getRecipes();
   }
 
+  List<String> recipeIds = [];
   void _getRecipes() async {
-    List<String> recipeIds = [];
     await DatabaseService.instance
         .getSuggestions(widget.searchText, limited: false)
         .then((value) {
       recipeIds = value.map<String>((e) => e['recipe_id']).toList();
     });
+    log('results found : ${recipeIds.length}');
     if (recipeIds.isNotEmpty) {
-      recipes = await DatabaseService.instance.getAllRecipes(recipeIds);
+      recipes = await DatabaseService.instance.paginateRecipes(recipeIds, 0);
     }
+    setState(() {});
   }
 
   @override
@@ -44,11 +51,24 @@ class _SearchResultScreenState extends State<SearchResultScreen> {
     return Scaffold(
         backgroundColor: AppColors.backgroundColor,
         appBar: AppBar(
+          toolbarHeight: 62,
           backgroundColor: AppColors.backgroundColor,
           elevation: 0,
-          title: Text(
-            'Results for "${widget.searchText}"',
-            style: const TextStyle(color: AppColors.textPrimaryColor),
+          title: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Text(
+                'Results for "${widget.searchText}"',
+                style: AppTextStyle.headline3
+                    .copyWith(color: AppColors.textPrimaryColor, height: 1),
+              ),
+              if (widget.haveResult)
+                Text(
+                  '${recipeIds.length} results found',
+                  style: AppTextStyle.caption,
+                ),
+            ],
           ),
           automaticallyImplyLeading: true,
           leading: IconButton(
@@ -85,14 +105,26 @@ class _SearchResultScreenState extends State<SearchResultScreen> {
                   ))
                 : GetX<AuthController>(builder: (_) {
                     List<String> favList = _.savedRecipes;
-                    return ListView.builder(
-                      itemCount: recipes.length,
-                      itemBuilder: (context, index) {
-                        return RecipeCard(
-                          recipe: recipes[index],
-                          isFavorite: favList.contains(recipes[index].recipeId),
-                        );
+                    return LoadMore(
+                      isFinish: recipeIds.length == recipes.length,
+                      onLoadMore: () async {
+                        var nList = await DatabaseService.instance
+                            .paginateRecipes(recipeIds, recipes.length);
+                        setState(() {
+                          recipes.addAll(nList);
+                        });
+                        return Future.value(true);
                       },
+                      delegate: ListLoading(),
+                      child: ListView.builder(
+                        itemCount: recipes.length,
+                        itemBuilder: (context, index) {
+                          return RecipeCard(
+                            recipe: recipes[index],
+                            isFavorite: favList.contains(recipes[index].recipeId),
+                          );
+                        },
+                      ),
                     );
                   }));
   }

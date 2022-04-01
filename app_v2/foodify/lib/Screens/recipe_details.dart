@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:foodify/Controllers/auth_controller.dart';
 import 'package:foodify/Widgets/button.dart';
 import 'package:foodify/Widgets/ingredientDetails.dart';
+import 'package:foodify/Widgets/nutrition_details.dart';
 import 'package:foodify/Widgets/recipeDetailsWidget.dart';
 import 'package:foodify/Widgets/tab_title.dart';
 import 'package:foodify/ui/app_colors.dart';
@@ -14,6 +15,7 @@ import 'package:foodify/widgets/tags.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:like_button/like_button.dart';
+import 'package:octo_image/octo_image.dart';
 
 class RecipeDetailScreen extends StatefulWidget {
   final RecipeModel recipe;
@@ -58,12 +60,9 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen>
                           child: Container(
                             height: 359,
                             decoration: BoxDecoration(
-                              image: DecorationImage(
-                                image: NetworkImage(recipe.image),
-                                fit: BoxFit.cover,
-                              ),
+                              color: AppColors.primaryWhiteColor,
                               borderRadius: const BorderRadius.only(
-                                bottomRight: Radius.circular(140),
+                                bottomRight: Radius.circular(110),
                               ),
                               boxShadow: [
                                 BoxShadow(
@@ -72,6 +71,24 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen>
                                   offset: const Offset(0, 8),
                                 ),
                               ],
+                            ),
+                            child: ClipRRect(
+                              borderRadius: const BorderRadius.only(
+                                bottomRight: Radius.circular(110),
+                              ),
+                              child: OctoImage(
+                                height: 359,
+                                width: double.maxFinite,
+                                image: NetworkImage(
+                                  recipe.image,
+                                ),
+                                placeholderBuilder: OctoPlaceholder.blurHash(
+                                  recipe.blurhash,
+                                ),
+                                errorBuilder:
+                                    OctoError.icon(color: AppColors.primaryColor),
+                                fit: BoxFit.cover,
+                              ),
                             ),
                           ),
                         ),
@@ -218,8 +235,8 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen>
                   // Icon(Icons.local_dining),
                   // Icon(Icons.local_dining),
                   SingleChildScrollView(child: IngredientsDetails(recipe: recipe)),
-                  SingleChildScrollView(child: RecipeDetails(recipe: recipe)),
-                  Icon(Icons.local_dining),
+                  SingleChildScrollView(child: RecipeInstructionWidget(recipe: recipe)),
+                  SingleChildScrollView(child: NutritionDetails(recipe: recipe)),
                 ]),
               ),
             ),
