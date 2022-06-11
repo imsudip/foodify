@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors
+//
 
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
@@ -7,6 +7,7 @@ import 'package:foodify/Widgets/text_box.dart';
 import 'package:foodify/ui/app_colors.dart';
 import 'package:foodify/ui/text_styles.dart';
 import 'package:get/get.dart';
+
 import '../../Controllers/auth_controller.dart';
 import 'diet_filter.dart';
 import 'login.dart';
@@ -16,6 +17,8 @@ class SignUp extends StatelessWidget {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   final confirmPasswordController = TextEditingController();
+
+  SignUp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +57,7 @@ class SignUp extends StatelessWidget {
                           top: 2,
                           left: -16,
                           child: IconButton(
-                            icon: Icon(EvaIcons.arrowBack),
+                            icon: const Icon(EvaIcons.arrowBack),
                             color: AppColors.textPrimaryColor,
                             onPressed: () {
                               Get.back();
@@ -71,11 +74,10 @@ class SignUp extends StatelessWidget {
                   ),
                   Text(
                     "Enter your details to create an account.",
-                    style: AppTextStyle.bodytext2
-                        .copyWith(color: AppColors.textSecondaryColor),
+                    style: AppTextStyle.bodytext2.copyWith(color: AppColors.textSecondaryColor),
                     textAlign: TextAlign.left,
                   ),
-                  SizedBox(height: 12),
+                  const SizedBox(height: 12),
                   CustomTextField(
                     controller: nameController,
                     hintText: "Name",
@@ -118,7 +120,7 @@ class SignUp extends StatelessWidget {
                           backgroundColor: AppColors.accentColor,
                           snackPosition: SnackPosition.BOTTOM,
                           borderRadius: 10,
-                          margin: EdgeInsets.all(16),
+                          margin: const EdgeInsets.all(16),
                         );
                       }
 
@@ -128,19 +130,19 @@ class SignUp extends StatelessWidget {
                           passwordController.text.trim(),
                           nameController.text.trim(),
                         );
-                        Get.to(() => DietFilterScreen());
+                        Get.to(() => const DietFilterScreen());
                       } else {
                         Get.snackbar('Error', 'Passwords do not match',
                             backgroundColor: AppColors.accentColor,
                             snackPosition: SnackPosition.BOTTOM,
                             borderRadius: 10,
-                            margin: EdgeInsets.all(16),
-                            icon: Icon(Icons.error));
+                            margin: const EdgeInsets.all(16),
+                            icon: const Icon(Icons.error));
                       }
                     },
                   ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                  const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                     child: Center(
                       child: Image(
                         image: AssetImage('images/divider.png'),
@@ -159,7 +161,7 @@ class SignUp extends StatelessWidget {
                           'images/google_icon.png',
                           height: 24,
                         ),
-                        SizedBox(width: 8),
+                        const SizedBox(width: 8),
                         Text(
                           "Sign up with Google",
                           style: AppTextStyle.button,
@@ -177,8 +179,7 @@ class SignUp extends StatelessWidget {
                       children: [
                         Text(
                           "Already have an account?",
-                          style: AppTextStyle.bodytext2
-                              .copyWith(color: AppColors.textSecondaryColor),
+                          style: AppTextStyle.bodytext2.copyWith(color: AppColors.textSecondaryColor),
                         ),
                         GestureDetector(
                           onTap: () {
@@ -186,8 +187,7 @@ class SignUp extends StatelessWidget {
                           },
                           child: Text(
                             " Sign in",
-                            style: AppTextStyle.bodytext2
-                                .copyWith(color: AppColors.primaryColor),
+                            style: AppTextStyle.bodytext2.copyWith(color: AppColors.primaryColor),
                           ),
                         ),
                       ],

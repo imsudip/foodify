@@ -38,14 +38,12 @@ class AppConstant {
   List<String> get seafood => _seafood;
   List<String> get sideDish => _sideDish;
   List<String> get soup => _soup;
-  List<Map<String, dynamic>> get ingredientsWithImages =>
-      _ingredientsWithImages;
+  List<Map<String, dynamic>> get ingredientsWithImages => _ingredientsWithImages;
 
   Future<void> init() async {
-    var res = await http.get(Uri.parse(
-        'https://raw.githubusercontent.com/imsudip/foodify/main/data/categoryId.json'));
-    var res1 = await http.get(Uri.parse(
-        'https://raw.githubusercontent.com/imsudip/foodify/main/data/ingredients_with_images_dict.json'));
+    var res = await http.get(Uri.parse('https://raw.githubusercontent.com/imsudip/foodify/main/data/categoryId.json'));
+    var res1 = await http.get(
+        Uri.parse('https://raw.githubusercontent.com/imsudip/foodify/main/data/ingredients_with_images_dict.json'));
     Map<String, dynamic> m = jsonDecode(res.body);
     var m1 = jsonDecode(res1.body);
 
@@ -60,15 +58,12 @@ class AppConstant {
     _healthy = m['healthy'].map<String>((e) => e.toString()).toList();
     _chinese = m['indian_chinese'].map<String>((e) => e.toString()).toList();
     _paneer = m['paneer'].map<String>((e) => e.toString()).toList();
-    _pastaNoodles =
-        m['pasta_noodles'].map<String>((e) => e.toString()).toList();
+    _pastaNoodles = m['pasta_noodles'].map<String>((e) => e.toString()).toList();
     _seafood = m['seafood'].map<String>((e) => e.toString()).toList();
     _sideDish = m['side_dishes'].map<String>((e) => e.toString()).toList();
     _soup = m['soups'].map<String>((e) => e.toString()).toList();
     log("Getting ingredients Data completed", name: "AppConstant");
-    _ingredientsWithImages = (m1 as List<dynamic>)
-        .map<Map<String, dynamic>>((e) => e as Map<String, dynamic>)
-        .toList();
+    _ingredientsWithImages = (m1 as List<dynamic>).map<Map<String, dynamic>>((e) => e as Map<String, dynamic>).toList();
     // log(_ingredientsWithImages[0].toString(), name: "AppConstant");
   }
 
@@ -85,9 +80,12 @@ class AppConstant {
       }
     }
     if (img.isNotEmpty) {
-      return 'https://cloudinary-cdn.whisk.com/image/upload/g_auto,c_fill,f_auto,q_auto:eco,fl_progressive:semi,h_512,w_512' +
-          img;
+      return 'https://cloudinary-cdn.whisk.com/image/upload/g_auto,c_fill,f_auto,q_auto:eco,fl_progressive:semi,h_512,w_512$img';
     }
     return 'https://raw.githubusercontent.com/imsudip/foodify/main/data/shopping-bag.png';
+  }
+
+  String getFullImage(String image) {
+    return 'https://cloudinary-cdn.whisk.com/image/upload/g_auto,c_fill,f_auto,q_auto:eco,fl_progressive:semi,h_512,w_512$image';
   }
 }

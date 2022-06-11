@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:foodify/ui/app_colors.dart';
+
+import 'app_colors.dart';
 import 'text_styles.dart';
 
 class MyTheme {

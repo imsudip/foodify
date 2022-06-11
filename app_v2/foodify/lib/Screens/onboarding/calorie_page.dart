@@ -1,13 +1,14 @@
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
-import 'package:foodify/Controllers/auth_controller.dart';
-import 'package:foodify/Screens/onboarding/calorie_result.dart';
-import 'package:foodify/Widgets/button.dart';
-import 'package:foodify/Widgets/custom_list_tile.dart';
-import 'package:foodify/Widgets/text_box.dart';
-import 'package:foodify/ui/app_colors.dart';
-import 'package:foodify/ui/text_styles.dart';
 import 'package:get/get.dart';
+
+import '../../Controllers/auth_controller.dart';
+import '../../Widgets/button.dart';
+import '../../Widgets/custom_list_tile.dart';
+import '../../Widgets/text_box.dart';
+import '../../ui/app_colors.dart';
+import '../../ui/text_styles.dart';
+import 'calorie_result.dart';
 
 class CaloriePage extends StatefulWidget {
   const CaloriePage({Key? key}) : super(key: key);
@@ -21,13 +22,7 @@ class _CaloriePageState extends State<CaloriePage> {
   TextEditingController ageController = TextEditingController();
   TextEditingController heightController = TextEditingController();
   TextEditingController weightController = TextEditingController();
-  List<String> activityLevels = [
-    'Sedentary',
-    'Lightly Active',
-    'Moderately Active',
-    'Very Active',
-    'Extremely Active'
-  ];
+  List<String> activityLevels = ['Sedentary', 'Lightly Active', 'Moderately Active', 'Very Active', 'Extremely Active'];
   @override
   void initState() {
     super.initState();
@@ -78,16 +73,13 @@ class _CaloriePageState extends State<CaloriePage> {
                       ' Male ',
                       style: AppTextStyle.bodytext1.copyWith(
                           fontWeight: FontWeight.w600,
-                          color: gender == 'Male'
-                              ? AppColors.primaryWhiteColor
-                              : AppColors.textPrimaryColor),
+                          color: gender == 'Male' ? AppColors.primaryWhiteColor : AppColors.textPrimaryColor),
                     ),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(16),
                     ),
                     visualDensity: VisualDensity.comfortable,
-                    labelPadding:
-                        EdgeInsets.symmetric(horizontal: Get.width * 0.13, vertical: 8),
+                    labelPadding: EdgeInsets.symmetric(horizontal: Get.width * 0.13, vertical: 8),
                     backgroundColor: AppColors.primaryWhiteColor,
                     selectedColor: AppColors.primaryColor,
                     selected: gender == 'Male',
@@ -102,16 +94,13 @@ class _CaloriePageState extends State<CaloriePage> {
                       'Female',
                       style: AppTextStyle.bodytext1.copyWith(
                           fontWeight: FontWeight.w600,
-                          color: gender == 'Female'
-                              ? AppColors.primaryWhiteColor
-                              : AppColors.textPrimaryColor),
+                          color: gender == 'Female' ? AppColors.primaryWhiteColor : AppColors.textPrimaryColor),
                     ),
                     visualDensity: VisualDensity.comfortable,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(16),
                     ),
-                    labelPadding:
-                        EdgeInsets.symmetric(horizontal: Get.width * 0.13, vertical: 8),
+                    labelPadding: EdgeInsets.symmetric(horizontal: Get.width * 0.13, vertical: 8),
                     backgroundColor: AppColors.primaryWhiteColor,
                     selectedColor: AppColors.primaryColor,
                     selected: gender == 'Female',
@@ -227,7 +216,7 @@ class _CaloriePageState extends State<CaloriePage> {
                       backgroundColor: AppColors.accentColor,
                       snackPosition: SnackPosition.BOTTOM,
                       borderRadius: 10,
-                      margin: EdgeInsets.all(16),
+                      margin: const EdgeInsets.all(16),
                     );
                   } else {
                     var age = int.parse(ageController.text);

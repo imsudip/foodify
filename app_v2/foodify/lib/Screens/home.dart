@@ -1,15 +1,13 @@
 import 'package:bottom_bar_page_transition/bottom_bar_page_transition.dart';
 import 'package:dot_navigation_bar/dot_navigation_bar.dart';
-import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
-import 'package:foodify/Screens/home_page.dart';
-import 'package:foodify/Screens/saved_page.dart';
-import 'package:foodify/ui/app_colors.dart';
-import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
-import '../Controllers/auth_controller.dart';
+import '../ui/app_colors.dart';
 import 'account_page.dart';
+import 'home_page.dart';
+import 'meal_suggestion.dart';
+import 'saved_page.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -52,7 +50,7 @@ class _HomeState extends State<Home> {
       SavedPage(
         key: _pageKeys[index],
       ),
-      HomePage(
+      MealSuggestionTab(
         key: _pageKeys[index],
       ),
       AccountPage(

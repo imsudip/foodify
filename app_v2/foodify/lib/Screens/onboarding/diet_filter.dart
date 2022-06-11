@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:foodify/Controllers/auth_controller.dart';
-import 'package:foodify/Screens/onboarding/calorie_page.dart';
-import 'package:foodify/ui/app_colors.dart';
-import 'package:foodify/ui/text_styles.dart';
-
-import 'package:foodify/widgets/button.dart';
-import 'package:foodify/widgets/card.dart';
-import 'package:foodify/widgets/image_card.dart';
 import 'package:get/get.dart';
+
+import '../../Controllers/auth_controller.dart';
+import '../../ui/app_colors.dart';
+import '../../ui/text_styles.dart';
+import '../../widgets/button.dart';
+import '../../widgets/image_card.dart';
+import 'calorie_page.dart';
 
 class DietFilterScreen extends StatefulWidget {
   const DietFilterScreen({Key? key}) : super(key: key);
@@ -54,8 +53,7 @@ class _DietFilterScreenState extends State<DietFilterScreen> {
                     ),
                     Text(
                       "What is your food preference?",
-                      style: AppTextStyle.bodytext2
-                          .copyWith(color: AppColors.textSecondaryColor),
+                      style: AppTextStyle.bodytext2.copyWith(color: AppColors.textSecondaryColor),
                       textAlign: TextAlign.center,
                     ),
                     const SizedBox(height: 16),
@@ -74,10 +72,11 @@ class _DietFilterScreenState extends State<DietFilterScreen> {
                               isSelected: selectedDiet == veg,
                               onTap: () {
                                 setState(() {
-                                  if (selectedDiet == veg)
+                                  if (selectedDiet == veg) {
                                     selectedDiet = '';
-                                  else
+                                  } else {
                                     selectedDiet = veg;
+                                  }
                                 });
                               }),
                           ImageCard(
@@ -86,10 +85,11 @@ class _DietFilterScreenState extends State<DietFilterScreen> {
                               isSelected: selectedDiet == nonVeg,
                               onTap: () {
                                 setState(() {
-                                  if (selectedDiet == nonVeg)
+                                  if (selectedDiet == nonVeg) {
                                     selectedDiet = '';
-                                  else
+                                  } else {
                                     selectedDiet = nonVeg;
+                                  }
                                 });
                               }),
                         ],
@@ -107,8 +107,7 @@ class _DietFilterScreenState extends State<DietFilterScreen> {
                       height: 52,
                       fontSize: 18,
                       onPressed: () async {
-                        await AuthController.authInstance
-                            .updateUserDocument({'diet': selectedDiet});
+                        await AuthController.authInstance.updateUserDocument({'diet': selectedDiet});
                         Get.to(() => const CaloriePage());
                       },
                     ),

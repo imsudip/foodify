@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:foodify/Constants/app_constant.dart';
@@ -50,11 +52,9 @@ class AuthController extends GetxController {
 
   void register(String email, String password, String name) async {
     try {
-      await auth.createUserWithEmailAndPassword(
-          email: email, password: password);
+      await auth.createUserWithEmailAndPassword(email: email, password: password);
       await createUserDocument(auth.currentUser);
-      if (auth.currentUser?.displayName == null ||
-          auth.currentUser?.displayName == '') {
+      if (auth.currentUser?.displayName == null || auth.currentUser?.displayName == '') {
         print('adding display name');
         await updateUserDocument({'userName': name});
       }
@@ -97,8 +97,7 @@ class AuthController extends GetxController {
       Get.dialog(const PopupLoader());
       final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
       // Obtain the auth details from the request
-      final GoogleSignInAuthentication? googleAuth =
-          await googleUser?.authentication;
+      final GoogleSignInAuthentication? googleAuth = await googleUser?.authentication;
       // Create a new credential
       final credential = GoogleAuthProvider.credential(
         accessToken: googleAuth?.accessToken,
@@ -129,8 +128,7 @@ class AuthController extends GetxController {
   Future<void> createUserDocument(User? user) async {
     try {
       // check if the user exists in the database
-      DocumentSnapshot? userDoc =
-          await _firestore.collection(usersCollection).doc(user?.uid).get();
+      DocumentSnapshot? userDoc = await _firestore.collection(usersCollection).doc(user?.uid).get();
       var d = {
         "userName": user?.displayName,
         "userEmail": user?.email,
@@ -151,10 +149,7 @@ class AuthController extends GetxController {
 
   Future<void> getUserDocument() async {
     try {
-      DocumentSnapshot? userDoc = await _firestore
-          .collection(usersCollection)
-          .doc(auth.currentUser?.uid)
-          .get();
+      DocumentSnapshot? userDoc = await _firestore.collection(usersCollection).doc(auth.currentUser?.uid).get();
       if (userDoc.exists) {
         userData.value = userDoc.data() as Map<String, dynamic>;
         // print(userData.value);
@@ -171,12 +166,10 @@ class AuthController extends GetxController {
 
   Future<void> updateUserDocument(Map<String, dynamic> data) async {
     try {
-      await _firestore
-          .collection(usersCollection)
-          .doc(firebaseUser.value?.uid)
-          .set(data, SetOptions(merge: true));
+      await _firestore.collection(usersCollection).doc(firebaseUser.value?.uid).set(data, SetOptions(merge: true));
       // add the data to the userData
-      userData.value = {...userData.value, ...data};
+      // userData.value = {...userData.value, ...data};
+      await getUserDocument();
     } catch (e) {
       print(e.toString());
     }
@@ -188,12 +181,11 @@ class AuthController extends GetxController {
     } else if (data['calorie'] == null) {
       Get.offAll(() => const CaloriePage());
     } else {
-      Get.offAll(() => Home());
+      Get.offAll(() => const Home());
     }
   }
 
-  List<String> get savedRecipes =>
-      AppConstant.stringListAdapter(userData.value['savedRecipes'] ?? []);
+  List<String> get savedRecipes => AppConstant.stringListAdapter(userData.value['savedRecipes'] ?? []);
   Future<bool> saveRecipe(String id) async {
     List<String> existing = savedRecipes;
     if (existing.contains(id)) {

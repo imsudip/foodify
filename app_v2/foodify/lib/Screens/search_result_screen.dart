@@ -1,24 +1,23 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:foodify/Controllers/auth_controller.dart';
-import 'package:foodify/Controllers/database_service.dart';
-import 'package:foodify/Widgets/load_more_delegate.dart';
-import 'package:foodify/Widgets/recipe_card.dart';
-import 'package:foodify/models/recipe_model.dart';
-import 'package:foodify/ui/app_colors.dart';
-import 'package:foodify/ui/text_styles.dart';
 import 'package:get/get.dart';
 import 'package:loadmore/loadmore.dart';
 import 'package:lottie/lottie.dart';
 
+import '../Controllers/auth_controller.dart';
+import '../Controllers/database_service.dart';
+import '../Widgets/load_more_delegate.dart';
 import '../Widgets/loader.dart';
+import '../Widgets/recipe_card.dart';
+import '../models/recipe_model.dart';
+import '../ui/app_colors.dart';
+import '../ui/text_styles.dart';
 
 class SearchResultScreen extends StatefulWidget {
   final String searchText;
   final bool haveResult;
-  const SearchResultScreen({Key? key, required this.searchText, required this.haveResult})
-      : super(key: key);
+  const SearchResultScreen({Key? key, required this.searchText, required this.haveResult}) : super(key: key);
 
   @override
   State<SearchResultScreen> createState() => _SearchResultScreenState();
@@ -34,9 +33,7 @@ class _SearchResultScreenState extends State<SearchResultScreen> {
 
   List<String> recipeIds = [];
   void _getRecipes() async {
-    await DatabaseService.instance
-        .getSuggestions(widget.searchText, limited: false)
-        .then((value) {
+    await DatabaseService.instance.getSuggestions(widget.searchText, limited: false).then((value) {
       recipeIds = value.map<String>((e) => e['recipe_id']).toList();
     });
     log('results found : ${recipeIds.length}');
@@ -60,8 +57,7 @@ class _SearchResultScreenState extends State<SearchResultScreen> {
             children: [
               Text(
                 'Results for "${widget.searchText}"',
-                style: AppTextStyle.headline3
-                    .copyWith(color: AppColors.textPrimaryColor, height: 1),
+                style: AppTextStyle.headline3.copyWith(color: AppColors.textPrimaryColor, height: 1),
               ),
               if (widget.haveResult)
                 Text(
@@ -108,8 +104,7 @@ class _SearchResultScreenState extends State<SearchResultScreen> {
                     return LoadMore(
                       isFinish: recipeIds.length == recipes.length,
                       onLoadMore: () async {
-                        var nList = await DatabaseService.instance
-                            .paginateRecipes(recipeIds, recipes.length);
+                        var nList = await DatabaseService.instance.paginateRecipes(recipeIds, recipes.length);
                         setState(() {
                           recipes.addAll(nList);
                         });

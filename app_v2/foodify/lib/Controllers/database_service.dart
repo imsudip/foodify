@@ -1,13 +1,17 @@
-import 'dart:developer';
+// ignore_for_file: avoid_print
+
+import 'dart:convert';
+import 'dart:math';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:foodify/Constants/app_constant.dart';
-import 'package:foodify/Controllers/auth_controller.dart';
-import 'package:foodify/models/recipe_model.dart';
-
-import 'package:hive_flutter/hive_flutter.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:http/http.dart' as http;
 import 'package:meilisearch/meilisearch.dart';
+
+import '../Constants/app_constant.dart';
+import '../models/recipe_model.dart';
+import 'auth_controller.dart';
 
 class DatabaseService {
   DatabaseService._();
@@ -24,106 +28,44 @@ class DatabaseService {
 
   // Meili Search
   late MeiliSearchClient client;
-  late MeiliSearchIndex recipeIndex;
+  late MeiliSearchIndex recipeIndex, ingredientIndex;
   void init() {
     recipeCollectionRef = _firestore.collection(recipeCollection);
     popularFoodsCollectionRef = _firestore.collection(popularFoodsCollection);
-    client = MeiliSearchClient('http://ec2-3-89-98-23.compute-1.amazonaws.com',
-        'ZGQ3MzY2ZDBlNmEyNjJiYTViMTRiMDhj');
+    client = MeiliSearchClient('http://ec2-3-89-98-23.compute-1.amazonaws.com', 'ZGQ3MzY2ZDBlNmEyNjJiYTViMTRiMDhj');
     recipeIndex = client.index('recipes');
+    ingredientIndex = client.index('ingredient_images');
   }
 
-  // // popularFoods Collection
-  // Future<List<PopularFoodModel>> getPopularFoods() async {
-  //   QuerySnapshot querySnapshot = await popularFoodsCollectionRef.get();
-  //   var l = querySnapshot.docs
-  //       .map((doc) => PopularFoodModel.fromMap(doc.data() as Map<String, dynamic>))
-  //       .toList();
-  //   l.shuffle();
-  //   return l;
-  // }
-
-  // recipe Collection
   Future<RecipeModel> getRecipe(String recipeId) async {
     DocumentSnapshot documentSnapshot = await recipeCollectionRef.doc(recipeId).get();
     return RecipeModel.fromMap(documentSnapshot.data() as Map<String, dynamic>);
   }
 
-  // Future<List<RecipeModel>> getRecipes({int? page}) {
-  //   List<String> diets, courses, cuisines;
-
-  //   //open hive box to get the filters
-  //   diets = Hive.box('filters').get('diets', defaultValue: []);
-  //   courses = Hive.box('filters').get('courses', defaultValue: []);
-  //   cuisines = Hive.box('filters').get('cuisines', defaultValue: []);
-
-  //   Query query = recipeCollectionRef;
-  //   if (diets.isNotEmpty) {
-  //     query = query.where('Diet', whereIn: diets);
-  //   }
-  //   if (courses.isNotEmpty) {
-  //     query = query.where('course', whereIn: courses);
-  //   }
-  //   if (cuisines.isNotEmpty) {
-  //     query = query.where('cuisine', whereIn: cuisines);
-  //   }
-  //   // if (page != null) {
-  //   //   query = query.limit(pageSize).startAfter([page]);
-  //   // }
-  //   // get the recipes
-  //   return query.limit(pageSize).get().then((snapshot) {
-  //     return snapshot.docs
-  //         .map((doc) => RecipeModel.fromMap(doc.data() as Map<String, dynamic>))
-  //         .toList();
-  //   });
-  // }
-
-  Future<List<Map<String, dynamic>>> getSuggestions(String pattern,
-      {bool limited = true}) async {
+// meilli search ---------------------------------------------------------------
+  Future<List<Map<String, dynamic>>> getSuggestions(String pattern, {bool limited = true}) async {
     List<Map<String, dynamic>> suggestions = [];
     if (pattern.isNotEmpty) {
-      await recipeIndex
-          .search(pattern, limit: limited ? 10 : 500)
-          .then((value) {
+      await recipeIndex.search(pattern, limit: limited ? 10 : 500).then((value) {
         suggestions = value.hits?.toList() ?? [];
       });
     }
     return suggestions;
   }
 
-  // Future<List<RecipeModel>> getRecipesByNameList(String search) async {
-  //   List<String> recipeNames = getSuggestions(search, limit: false);
-  //   List<String> ids = [];
-  //   for (var recipeName in recipeNames) {
-  //     var id = AppsData.instance.getIdFromName(recipeName);
-  //     ids.add(id);
-  //   }
-  //   // seperate the ids into batches of 10 to avoid firebase limit
-  //   List<List<String>> batches = [];
-  //   for (var i = 0; i < ids.length; i += 10) {
-  //     if (i + 10 > ids.length) {
-  //       batches.add(ids.sublist(i));
-  //     } else {
-  //       batches.add(ids.sublist(i, i + 10));
-  //     }
-  //   }
-  //   // max of 5 batches
-  //   if (batches.length > 5) {
-  //     batches = batches.sublist(0, 5);
-  //   }
-  //   // get the recipes
-  //   List<RecipeModel> recipes = [];
-  //   for (var batch in batches) {
-  //     Query query = recipeCollectionRef.where('recipe_id', whereIn: batch);
-  //     var batchRecipes = await query.get();
-  //     recipes.addAll(batchRecipes.docs
-  //         .map((doc) => RecipeModel.fromMap(doc.data() as Map<String, dynamic>))
-  //         .toList());
-  //   }
-  //   return recipes;
-  // }
-  Future<List<RecipeModel>> paginateRecipes(
-      List<String> idList, int lastIndex) async {
+  Future<List<Map<String, dynamic>>> getIngredientsSuggestions(String pattern, {bool limited = true}) async {
+    List<Map<String, dynamic>> suggestions = [];
+    if (pattern.isNotEmpty) {
+      await ingredientIndex.search(pattern, limit: limited ? 5 : 500).then((value) {
+        suggestions = value.hits?.toList() ?? [];
+      });
+    }
+    return suggestions;
+  }
+
+  // ---------------------------------------------------------------------------
+
+  Future<List<RecipeModel>> paginateRecipes(List<String> idList, int lastIndex) async {
     int limit = lastIndex + pageSize;
     if (limit > idList.length) {
       limit = idList.length;
@@ -135,9 +77,7 @@ class DatabaseService {
     if (l.isNotEmpty) {
       Query query = recipeCollectionRef.where('recipe_id', whereIn: l);
       var batchRecipes = await query.get();
-      var finalList = batchRecipes.docs
-          .map((doc) => RecipeModel.fromMap(doc.data() as Map<String, dynamic>))
-          .toList();
+      var finalList = batchRecipes.docs.map((doc) => RecipeModel.fromMap(doc.data() as Map<String, dynamic>)).toList();
       // sort finalList according to the l
       finalList.sort((a, b) {
         int indexA = l.indexOf(a.recipeId);
@@ -169,16 +109,13 @@ class DatabaseService {
     for (var batch in batches) {
       Query query = recipeCollectionRef.where('recipe_id', whereIn: batch);
       var batchRecipes = await query.get();
-      recipes.addAll(batchRecipes.docs
-          .map((doc) => RecipeModel.fromMap(doc.data() as Map<String, dynamic>))
-          .toList());
+      recipes.addAll(batchRecipes.docs.map((doc) => RecipeModel.fromMap(doc.data() as Map<String, dynamic>)).toList());
     }
 
     return recipes;
   }
 
-  Future<List<RecipeModel>> getRecipesByCategory(String category,
-      {int lastIndex = 0}) async {
+  Future<List<RecipeModel>> getRecipesByCategory(String category, {int lastIndex = 0}) async {
     var map = {
       'indian': AppConstant.instance.indian,
       'veg': AppConstant.instance.veg,
@@ -199,5 +136,74 @@ class DatabaseService {
     var categoryList = map[category] ?? [];
     print('categoryList: $lastIndex');
     return paginateRecipes(categoryList, lastIndex);
+  }
+
+  // Meal suggestion
+  Future<List<RecipeModel>> getMealSuggestions(List<String> ingredients, {int limit = 10}) async {
+    List<RecipeModel> recipes = [];
+    try {
+      var url = "https://foodify7908.herokuapp.com/recipe?limit=$limit&ingredients=";
+      var finalUrl = url + ingredients.join(',');
+      var response = await http.get(Uri.parse(finalUrl));
+      print(response.request);
+      var json = jsonDecode(response.body);
+      List<String> idList = [];
+      for (var item in json) {
+        idList.add(item['recipe_id'].toString());
+      }
+      recipes = await getAllRecipes(idList);
+      // sort list
+      recipes.sort((a, b) {
+        int indexA = idList.indexOf(a.recipeId);
+        int indexB = idList.indexOf(b.recipeId);
+        return indexA.compareTo(indexB);
+      });
+
+      return recipes;
+    } on Exception {
+      Get.back();
+      Get.snackbar(
+        'Error',
+        'Something went wrong',
+        snackPosition: SnackPosition.BOTTOM,
+        backgroundColor: Colors.white60,
+        // snackStyle: SnackStyle.GROUNDED,
+      );
+      rethrow;
+    }
+  }
+
+  // get random 30 recipes from firebase
+  Future<List<RecipeModel>> getRandomRecipes() async {
+    var savedIds = AuthController.authInstance.savedRecipes;
+    // select 5 random ids from the saved recipes
+    List<String> randomIds = [];
+    for (var i = 0; i < 5; i++) {
+      var randomIndex = Random().nextInt(savedIds.length);
+      randomIds.add(savedIds[randomIndex]);
+    }
+    // get the recipes
+    List<RecipeModel> recipes = await getAllRecipes(randomIds);
+    // get all the ingredients and make a set
+    Set<String> ingredients = {};
+    for (var recipe in recipes) {
+      ingredients.addAll(recipe.rawIngredients);
+    }
+    // select any 8 random ingredients
+    List<String> randomIngredients = [];
+    for (var i = 0; i < 8; i++) {
+      var randomIndex = Random().nextInt(ingredients.length);
+      randomIngredients.add(ingredients.elementAt(randomIndex));
+    }
+    // check if the user is vegetarian
+    String diet = AuthController.authInstance.userData.value['diet'];
+    // use the suggestions to get the recipes
+    if (diet == 'Vegetarian') {
+      recipes = await getMealSuggestions(randomIngredients, limit: 50);
+      recipes = recipes.where((recipe) => recipe.diet.contains("Vegetarian")).toList();
+    } else {
+      recipes = await getMealSuggestions(randomIngredients, limit: 30);
+    }
+    return recipes;
   }
 }

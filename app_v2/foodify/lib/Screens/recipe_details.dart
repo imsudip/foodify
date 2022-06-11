@@ -1,21 +1,20 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
-import 'package:foodify/Controllers/auth_controller.dart';
-import 'package:foodify/Widgets/button.dart';
-import 'package:foodify/Widgets/ingredientDetails.dart';
-import 'package:foodify/Widgets/nutrition_details.dart';
-import 'package:foodify/Widgets/recipeDetailsWidget.dart';
-import 'package:foodify/Widgets/tab_title.dart';
-import 'package:foodify/ui/app_colors.dart';
-import 'package:fraction/fraction.dart';
-import 'package:foodify/models/recipe_model.dart';
-import 'package:foodify/ui/text_styles.dart';
-import 'package:foodify/widgets/tags.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:like_button/like_button.dart';
 import 'package:octo_image/octo_image.dart';
+import 'package:url_launcher/url_launcher.dart';
+
+import '../Controllers/auth_controller.dart';
+import '../Widgets/button.dart';
+import '../Widgets/ingredientDetails.dart';
+import '../Widgets/nutrition_details.dart';
+import '../Widgets/recipeDetailsWidget.dart';
+import '../Widgets/tab_title.dart';
+import '../models/recipe_model.dart';
+import '../ui/app_colors.dart';
+import '../ui/text_styles.dart';
+import '../widgets/tags.dart';
 
 class RecipeDetailScreen extends StatefulWidget {
   final RecipeModel recipe;
@@ -25,8 +24,7 @@ class RecipeDetailScreen extends StatefulWidget {
   State<RecipeDetailScreen> createState() => _RecipeDetailScreenState();
 }
 
-class _RecipeDetailScreenState extends State<RecipeDetailScreen>
-    with SingleTickerProviderStateMixin {
+class _RecipeDetailScreenState extends State<RecipeDetailScreen> with SingleTickerProviderStateMixin {
   late RecipeModel recipe;
   TabController? tabController;
   ScrollController scrollController = ScrollController();
@@ -85,8 +83,7 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen>
                                 placeholderBuilder: OctoPlaceholder.blurHash(
                                   recipe.blurhash,
                                 ),
-                                errorBuilder:
-                                    OctoError.icon(color: AppColors.primaryColor),
+                                errorBuilder: OctoError.icon(color: AppColors.primaryColor),
                                 fit: BoxFit.cover,
                               ),
                             ),
@@ -99,7 +96,7 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen>
                           child: Row(
                             children: [
                               _backButton(context),
-                              Spacer(),
+                              const Spacer(),
                               _saveButton(context),
                             ],
                           ),
@@ -112,42 +109,28 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen>
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Padding(
-                          padding:
-                              const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               Align(
                                   alignment: Alignment.centerLeft,
-                                  child:
-                                      Text(recipe.title, style: AppTextStyle.headline2)),
+                                  child: Text(recipe.title, style: AppTextStyle.headline2)),
                               const SizedBox(height: 8),
                               Wrap(
                                 spacing: 8,
                                 runSpacing: 7,
                                 alignment: WrapAlignment.center,
                                 children: [
-                                  Tag(
-                                      text: recipe.calories.toString() + ' cal',
-                                      assetIcon: 'tags/calorie'),
-                                  Tag(
-                                      text: recipe.servings.toString(),
-                                      assetIcon: 'tags/Serving'),
-                                  Tag(
-                                      text: recipe.time.toString(),
-                                      assetIcon: 'tags/time'),
+                                  Tag(text: '${recipe.calories} cal', assetIcon: 'tags/calorie'),
+                                  Tag(text: recipe.servings.toString(), assetIcon: 'tags/Serving'),
+                                  Tag(text: recipe.time.toString(), assetIcon: 'tags/time'),
                                   if (recipe.diet.first != '')
-                                    Tag(
-                                        text: recipe.diet.join(' , '),
-                                        assetIcon: 'tags/diet'),
+                                    Tag(text: recipe.diet.join(' , '), assetIcon: 'tags/diet'),
                                   if (recipe.course.first != '')
-                                    Tag(
-                                        text: recipe.course.join(' , '),
-                                        assetIcon: 'tags/course'),
+                                    Tag(text: recipe.course.join(' , '), assetIcon: 'tags/course'),
                                   if (recipe.cuisine.first != '')
-                                    Tag(
-                                        text: recipe.cuisine.join(' , '),
-                                        assetIcon: 'tags/cuisine'),
+                                    Tag(text: recipe.cuisine.join(' , '), assetIcon: 'tags/cuisine'),
                                 ],
                               ),
                               const SizedBox(
@@ -162,30 +145,69 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen>
                               ),
                               const SizedBox(height: 12),
                               recipe.videoId != ""
-                                  ? Button(
+                                  ? Row(
+                                      children: [
+                                        Expanded(
+                                          child: Button(
+                                            height: 50,
+                                            width: double.maxFinite,
+                                            color: AppColors.primaryWhiteColor,
+                                            border: Border.all(color: AppColors.accentColor, width: 1),
+                                            onPressed: () => launchUrlVideo(recipe.videoId),
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.min,
+                                              children: [
+                                                const Icon(
+                                                  Iconsax.video_play,
+                                                  color: AppColors.primaryColor,
+                                                  size: 24,
+                                                ),
+                                                const SizedBox(width: 8),
+                                                Text(
+                                                  'Watch Video',
+                                                  style: AppTextStyle.button,
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                        const SizedBox(width: 8),
+                                        Button(
+                                          height: 50,
+                                          width: 50,
+                                          color: AppColors.primaryWhiteColor,
+                                          border: Border.all(color: AppColors.accentColor, width: 1),
+                                          onPressed: () => launch(recipe.url),
+                                          child: const Icon(
+                                            Iconsax.global,
+                                            color: AppColors.primaryColor,
+                                            size: 24,
+                                          ),
+                                        ),
+                                      ],
+                                    )
+                                  : Button(
+                                      height: 50,
+                                      width: double.maxFinite,
+                                      color: AppColors.primaryWhiteColor,
+                                      border: Border.all(color: AppColors.accentColor, width: 1),
+                                      onPressed: () => launch(recipe.url),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.min,
                                         children: [
-                                          Icon(
-                                            Iconsax.video_play,
+                                          const Icon(
+                                            Iconsax.global,
                                             color: AppColors.primaryColor,
                                             size: 24,
                                           ),
                                           const SizedBox(width: 8),
                                           Text(
-                                            'Watch Video',
+                                            'Visit Website',
                                             style: AppTextStyle.button,
                                           ),
                                         ],
                                       ),
-                                      height: 50,
-                                      width: double.maxFinite,
-                                      color: AppColors.primaryWhiteColor,
-                                      border: Border.all(
-                                          color: AppColors.accentColor, width: 1),
-                                      onPressed: () => launchUrl(recipe.videoId),
-                                    )
-                                  : Container(),
+                                    ),
                             ],
                           ),
                         )
@@ -206,7 +228,7 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen>
                           // isScrollable: true,
                           indicatorColor: Colors.transparent,
                           indicatorSize: TabBarIndicatorSize.tab,
-                          padding: EdgeInsets.symmetric(horizontal: 0),
+                          padding: const EdgeInsets.symmetric(horizontal: 0),
                           indicator: BoxDecoration(
                             color: AppColors.primaryWhiteColor,
                             borderRadius: BorderRadius.circular(10),
@@ -230,7 +252,7 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen>
                 ];
               },
               body: Container(
-                padding: EdgeInsets.symmetric(horizontal: 16),
+                padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: TabBarView(children: [
                   // Icon(Icons.local_dining),
                   // Icon(Icons.local_dining),
@@ -296,9 +318,8 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen>
               child: LikeButton(
             size: 28,
             likeCountPadding: EdgeInsets.zero,
-            bubblesColor: const BubblesColor(
-                dotPrimaryColor: AppColors.primaryColor,
-                dotSecondaryColor: AppColors.accentColor),
+            bubblesColor:
+                const BubblesColor(dotPrimaryColor: AppColors.primaryColor, dotSecondaryColor: AppColors.accentColor),
             circleColor: const CircleColor(
               start: AppColors.primaryColor,
               end: AppColors.accentColor,
@@ -306,9 +327,7 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen>
             likeBuilder: (bool isLiked) {
               return Icon(
                 isLiked ? Iconsax.heart5 : Iconsax.heart,
-                color: isLiked
-                    ? AppColors.primaryColor
-                    : AppColors.textPrimaryColor.withOpacity(0.3),
+                color: isLiked ? AppColors.primaryColor : AppColors.textPrimaryColor.withOpacity(0.3),
                 size: 28,
               );
             },
@@ -326,9 +345,10 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen>
 }
 
 class CustomTabBar extends PreferredSize {
-  CustomTabBar({
+  // ignore: use_key_in_widget_constructors
+  const CustomTabBar({
     required Widget child,
-  }) : super(child: child, preferredSize: Size.fromHeight(74));
+  }) : super(child: child, preferredSize: const Size.fromHeight(74));
 
   @override
   Size get preferredSize => const Size.fromHeight(74);
@@ -336,8 +356,8 @@ class CustomTabBar extends PreferredSize {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(4),
-      margin: EdgeInsets.only(left: 12, right: 12, top: 4, bottom: 4),
+      padding: const EdgeInsets.all(4),
+      margin: const EdgeInsets.only(left: 12, right: 12, top: 4, bottom: 4),
       decoration: BoxDecoration(
         color: AppColors.accentColor,
         borderRadius: BorderRadius.circular(10),

@@ -2,7 +2,6 @@
 //
 //     final recipeModel = recipeModelFromMap(jsonString);
 
-import 'package:meta/meta.dart';
 import 'dart:convert';
 
 class RecipeModel {

@@ -1,11 +1,12 @@
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
-import 'package:foodify/Controllers/auth_controller.dart';
-import 'package:foodify/Screens/home.dart';
-import 'package:foodify/Widgets/button.dart';
-import 'package:foodify/ui/app_colors.dart';
-import 'package:foodify/ui/text_styles.dart';
 import 'package:get/get.dart';
+
+import '../../Controllers/auth_controller.dart';
+import '../../Widgets/button.dart';
+import '../../ui/app_colors.dart';
+import '../../ui/text_styles.dart';
+import '../home.dart';
 
 class CalorieResult extends StatefulWidget {
   final String gender;
@@ -30,15 +31,9 @@ class _CalorieResultState extends State<CalorieResult> {
   void initState() {
     double bmr;
     if (widget.gender == "Male") {
-      bmr = 66.47 +
-          (13.75 * widget.weight) +
-          (5.003 * widget.height) -
-          (6.755 * widget.age);
+      bmr = 66.47 + (13.75 * widget.weight) + (5.003 * widget.height) - (6.755 * widget.age);
     } else {
-      bmr = 655.1 +
-          (9.563 * widget.weight) +
-          (1.850 * widget.height) -
-          (4.676 * widget.age);
+      bmr = 655.1 + (9.563 * widget.weight) + (1.850 * widget.height) - (4.676 * widget.age);
     }
     double amr = bmr * activityLevelsValues[widget.activityLevel];
     value = amr;
@@ -74,7 +69,7 @@ class _CalorieResultState extends State<CalorieResult> {
                           top: 2,
                           left: -16,
                           child: IconButton(
-                            icon: Icon(EvaIcons.arrowBack),
+                            icon: const Icon(EvaIcons.arrowBack),
                             color: AppColors.textPrimaryColor,
                             onPressed: () {
                               Get.back();
@@ -86,8 +81,7 @@ class _CalorieResultState extends State<CalorieResult> {
                   ),
                   Text(
                     "Your Daily Calorie Intake is",
-                    style: AppTextStyle.bodytext2
-                        .copyWith(color: AppColors.textSecondaryColor),
+                    style: AppTextStyle.bodytext2.copyWith(color: AppColors.textSecondaryColor),
                     textAlign: TextAlign.left,
                   ),
                   Text(
@@ -108,7 +102,7 @@ class _CalorieResultState extends State<CalorieResult> {
                         'activityLevel': widget.activityLevel,
                         'calorie': value.round(),
                       });
-                      Get.offAll(() => Home());
+                      Get.offAll(() => const Home());
                     },
                   ),
                   const SizedBox(height: 12),

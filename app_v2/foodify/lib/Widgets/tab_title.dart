@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:foodify/ui/text_styles.dart';
+import '../ui/text_styles.dart';
 
 class TabTitle extends StatelessWidget {
   final String? image;

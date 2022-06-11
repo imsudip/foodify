@@ -1,21 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:foodify/Constants/app_constant.dart';
-import 'package:foodify/Controllers/database_service.dart';
-import 'package:foodify/Widgets/load_more_delegate.dart';
-import 'package:foodify/Widgets/loader.dart';
-import 'package:foodify/Widgets/recipe_card.dart';
-import 'package:foodify/models/recipe_model.dart';
-import 'package:foodify/ui/app_colors.dart';
 import 'package:get/get.dart';
 import 'package:loadmore/loadmore.dart';
-import 'package:lottie/lottie.dart';
 
 import '../Controllers/auth_controller.dart';
+import '../Controllers/database_service.dart';
+import '../Widgets/load_more_delegate.dart';
+import '../Widgets/loader.dart';
+import '../Widgets/recipe_card.dart';
+import '../models/recipe_model.dart';
+import '../ui/app_colors.dart';
 
 class CategoryPage extends StatefulWidget {
   final String category, categoryText;
-  const CategoryPage({Key? key, required this.category, required this.categoryText})
-      : super(key: key);
+  const CategoryPage({Key? key, required this.category, required this.categoryText}) : super(key: key);
 
   @override
   State<CategoryPage> createState() => _CategoryPageState();
@@ -42,7 +39,7 @@ class _CategoryPageState extends State<CategoryPage> {
           backgroundColor: AppColors.backgroundColor,
           elevation: 0,
           title: Text(
-            '${widget.categoryText}',
+            widget.categoryText,
             style: const TextStyle(color: AppColors.textPrimaryColor),
           ),
           automaticallyImplyLeading: true,
@@ -72,9 +69,8 @@ class _CategoryPageState extends State<CategoryPage> {
                   return LoadMore(
                     isFinish: isCompleted,
                     onLoadMore: () async {
-                      var nList = await DatabaseService.instance.getRecipesByCategory(
-                          widget.category,
-                          lastIndex: recipes.length);
+                      var nList = await DatabaseService.instance
+                          .getRecipesByCategory(widget.category, lastIndex: recipes.length);
                       setState(() {
                         recipes.addAll(nList);
                       });
@@ -85,6 +81,7 @@ class _CategoryPageState extends State<CategoryPage> {
                       }
                       return Future.value(true);
                     },
+                    delegate: ListLoading(),
                     child: ListView.builder(
                       itemCount: recipes.length,
                       itemBuilder: (context, index) {
@@ -94,7 +91,6 @@ class _CategoryPageState extends State<CategoryPage> {
                         );
                       },
                     ),
-                    delegate: ListLoading(),
                   );
                 },
               ));

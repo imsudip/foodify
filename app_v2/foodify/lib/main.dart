@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:foodify/Constants/app_constant.dart';
-import 'package:foodify/Controllers/database_service.dart';
-import 'package:foodify/Screens/splash_screen.dart';
-import 'package:foodify/ui/my_theme.dart';
-
 import 'package:get/get.dart';
 
+import 'Constants/app_constant.dart';
 import 'Constants/firebase_constants.dart';
 import 'Controllers/auth_controller.dart';
+import 'Controllers/database_service.dart';
+import 'Screens/splash_screen.dart';
+import 'ui/my_theme.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:foodify/Widgets/loader.dart';
-import 'package:foodify/ui/app_colors.dart';
+
+import '../Widgets/loader.dart';
+import '../ui/app_colors.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({Key? key}) : super(key: key);

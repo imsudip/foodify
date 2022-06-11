@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:foodify/Widgets/button.dart';
-import 'package:foodify/models/recipe_model.dart';
-import 'package:foodify/ui/app_colors.dart';
-import 'package:foodify/ui/text_styles.dart';
-import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
+
+import '../models/recipe_model.dart';
+import '../ui/text_styles.dart';
 
 class RecipeInstructionWidget extends StatelessWidget {
   const RecipeInstructionWidget({
@@ -29,8 +27,7 @@ class RecipeInstructionWidget extends StatelessWidget {
               if (recipeItem.contains('@@T@@')) {
                 return Padding(
                   padding: const EdgeInsets.only(bottom: 10, top: 4),
-                  child: Text(recipeItem.replaceAll('@@T@@', ""),
-                      style: AppTextStyle.subHeading),
+                  child: Text(recipeItem.replaceAll('@@T@@', ""), style: AppTextStyle.subHeading),
                 );
               } else {
                 return Padding(
@@ -59,9 +56,8 @@ class RecipeInstructionWidget extends StatelessWidget {
   }
 }
 
-void launchUrl(videoId) async {
+void launchUrlVideo(videoId) async {
   {
-    if (!await launch("https://www.youtube.com/watch?v=$videoId"))
-      throw 'Could not launch ';
+    if (!await launch("https://www.youtube.com/watch?v=$videoId")) throw 'Could not launch ';
   }
 }

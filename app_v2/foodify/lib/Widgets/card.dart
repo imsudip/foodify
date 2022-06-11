@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:foodify/ui/app_colors.dart';
+import '../ui/app_colors.dart';
 
 class CustomCard extends StatelessWidget {
   final Widget child;
   final double? height;
   final double? width;
   final EdgeInsetsGeometry? padding, margin;
-  const CustomCard(
-      {Key? key, required this.child, this.height, this.width, this.padding, this.margin})
+  const CustomCard({Key? key, required this.child, this.height, this.width, this.padding, this.margin})
       : super(key: key);
 
   @override

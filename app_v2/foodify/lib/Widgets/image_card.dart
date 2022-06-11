@@ -1,27 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:foodify/ui/app_colors.dart';
+
+import '../ui/app_colors.dart';
 
 class ImageCard extends StatelessWidget {
   final String imagePath;
   final String text;
   final bool isSelected;
   final void Function()? onTap;
-  const ImageCard(
-      {Key? key,
-      required this.imagePath,
-      required this.text,
-      required this.isSelected,
-      this.onTap})
+  const ImageCard({Key? key, required this.imagePath, required this.text, required this.isSelected, this.onTap})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
-      child: Container(
-        height: 130,
+      child: SizedBox(
+        height: 100,
         width: 120,
-        margin: const EdgeInsets.symmetric(horizontal: 8),
+        // margin: const EdgeInsets.symmetric(horizontal: 8),
         child: Stack(children: [
           Positioned.fill(
               child: AnimatedContainer(
@@ -65,8 +61,7 @@ class ImageCard extends StatelessWidget {
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w600,
-                color:
-                    isSelected ? AppColors.primaryWhiteColor : AppColors.textPrimaryColor,
+                color: isSelected ? AppColors.primaryWhiteColor : AppColors.textPrimaryColor,
               ),
             ),
           ),

@@ -1,16 +1,19 @@
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
-import 'package:foodify/Controllers/auth_controller.dart';
-import 'package:foodify/Screens/onboarding/sign_up.dart';
-import 'package:foodify/Widgets/button.dart';
-import 'package:foodify/Widgets/text_box.dart';
-import 'package:foodify/ui/app_colors.dart';
-import 'package:foodify/ui/text_styles.dart';
 import 'package:get/get.dart';
+
+import '../../Controllers/auth_controller.dart';
+import '../../Widgets/button.dart';
+import '../../Widgets/text_box.dart';
+import '../../ui/app_colors.dart';
+import '../../ui/text_styles.dart';
+import 'sign_up.dart';
 
 class Login extends StatelessWidget {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+
+  Login({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +44,7 @@ class Login extends StatelessWidget {
                           top: 2,
                           left: -16,
                           child: IconButton(
-                            icon: Icon(EvaIcons.arrowBack),
+                            icon: const Icon(EvaIcons.arrowBack),
                             color: AppColors.textPrimaryColor,
                             onPressed: () {
                               Get.back();
@@ -57,8 +60,7 @@ class Login extends StatelessWidget {
                   ),
                   Text(
                     "Welcome back! You have been missed.",
-                    style: AppTextStyle.bodytext2
-                        .copyWith(color: AppColors.textSecondaryColor),
+                    style: AppTextStyle.bodytext2.copyWith(color: AppColors.textSecondaryColor),
                     textAlign: TextAlign.left,
                   ),
                   const SizedBox(height: 12),
@@ -82,8 +84,7 @@ class Login extends StatelessWidget {
                     color: AppColors.primaryColor,
                     text: 'Login',
                     onPressed: () {
-                      if (emailController.text.isNotEmpty &&
-                          passwordController.text.isNotEmpty) {
+                      if (emailController.text.isNotEmpty && passwordController.text.isNotEmpty) {
                         AuthController.authInstance.login(
                           emailController.text.trim(),
                           passwordController.text.trim(),
@@ -95,7 +96,7 @@ class Login extends StatelessWidget {
                           snackPosition: SnackPosition.BOTTOM,
                           backgroundColor: AppColors.accentColor,
                           borderRadius: 10,
-                          margin: EdgeInsets.all(16),
+                          margin: const EdgeInsets.all(16),
                         );
                       }
                     },
@@ -120,7 +121,7 @@ class Login extends StatelessWidget {
                           'images/google_icon.png',
                           height: 24,
                         ),
-                        SizedBox(width: 8),
+                        const SizedBox(width: 8),
                         Text(
                           "Sign in with Google",
                           style: AppTextStyle.button,
@@ -138,8 +139,7 @@ class Login extends StatelessWidget {
                       children: [
                         Text(
                           "Don't have an account?",
-                          style: AppTextStyle.bodytext2
-                              .copyWith(color: AppColors.textSecondaryColor),
+                          style: AppTextStyle.bodytext2.copyWith(color: AppColors.textSecondaryColor),
                         ),
                         GestureDetector(
                           onTap: () {
@@ -147,8 +147,7 @@ class Login extends StatelessWidget {
                           },
                           child: Text(
                             " Sign up",
-                            style: AppTextStyle.bodytext2
-                                .copyWith(color: AppColors.primaryColor),
+                            style: AppTextStyle.bodytext2.copyWith(color: AppColors.primaryColor),
                           ),
                         ),
                       ],

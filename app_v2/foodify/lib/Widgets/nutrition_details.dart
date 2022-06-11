@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:foodify/Widgets/card.dart';
-import 'package:foodify/models/recipe_model.dart';
-import 'package:foodify/ui/app_colors.dart';
-import 'package:foodify/ui/text_styles.dart';
+
+import '../models/recipe_model.dart';
+import '../ui/app_colors.dart';
+import '../ui/text_styles.dart';
+import 'card.dart';
 
 class NutritionDetails extends StatelessWidget {
   const NutritionDetails({
@@ -13,8 +14,8 @@ class NutritionDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomCard(
-        margin: EdgeInsets.symmetric(horizontal: 8, vertical: 20),
-        padding: EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+        margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 20),
+        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
         child: Column(
           children: [
             Text(
@@ -56,10 +57,8 @@ class NutritionDetails extends StatelessWidget {
         ),
         Text(
           unit,
-          style: AppTextStyle.bodytext2.copyWith(
-              color: AppColors.textSecondaryColor,
-              fontWeight: FontWeight.bold,
-              fontSize: 10),
+          style: AppTextStyle.bodytext2
+              .copyWith(color: AppColors.textSecondaryColor, fontWeight: FontWeight.bold, fontSize: 10),
         ),
       ],
     );

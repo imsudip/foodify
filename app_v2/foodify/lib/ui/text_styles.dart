@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:foodify/ui/app_colors.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import 'app_colors.dart';
 
 class AppTextStyle {
   static String? get fontFamily => GoogleFonts.poppins().fontFamily;
@@ -42,8 +43,8 @@ class AppTextStyle {
         color: Colors.black,
       );
   // Caption
-  static TextStyle get caption => GoogleFonts.poppins(
-      fontSize: 12.0, fontWeight: FontWeight.w400, color: AppColors.textSecondaryColor);
+  static TextStyle get caption =>
+      GoogleFonts.poppins(fontSize: 12.0, fontWeight: FontWeight.w400, color: AppColors.textSecondaryColor);
   static TextStyle get regular16 => GoogleFonts.poppins(
         fontSize: 16.0,
         fontWeight: FontWeight.w600,

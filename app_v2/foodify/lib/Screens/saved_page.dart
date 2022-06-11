@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:foodify/Controllers/auth_controller.dart';
-import 'package:foodify/Controllers/database_service.dart';
-import 'package:foodify/Widgets/load_more_delegate.dart';
-import 'package:foodify/Widgets/loader.dart';
-import 'package:foodify/Widgets/recipe_card.dart';
-import 'package:foodify/models/recipe_model.dart';
-import 'package:foodify/ui/app_colors.dart';
-import 'package:foodify/ui/text_styles.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:loadmore/loadmore.dart';
 import 'package:lottie/lottie.dart';
 
+import '../Controllers/auth_controller.dart';
+import '../Controllers/database_service.dart';
+import '../Widgets/load_more_delegate.dart';
+import '../Widgets/loader.dart';
+import '../Widgets/recipe_card.dart';
+import '../models/recipe_model.dart';
+import '../ui/app_colors.dart';
+import '../ui/text_styles.dart';
+
 class SavedPage extends StatefulWidget {
-  SavedPage({Key? key}) : super(key: key);
+  const SavedPage({Key? key}) : super(key: key);
 
   @override
   State<SavedPage> createState() => _SavedPageState();
@@ -34,9 +35,7 @@ class _SavedPageState extends State<SavedPage> {
       if (recipeIds != authController.savedRecipes) {
         if (mounted) {
           // find if any element is removed from the recipeIds
-          var removedItems = recipeIds
-              .where((element) => !authController.savedRecipes.contains(element))
-              .toList();
+          var removedItems = recipeIds.where((element) => !authController.savedRecipes.contains(element)).toList();
           for (var element in removedItems) {
             recipes.removeWhere((recipe) => recipe.recipeId == element);
           }
@@ -117,14 +116,14 @@ class _SavedPageState extends State<SavedPage> {
                   return LoadMore(
                     isFinish: recipes.length == recipeIds.length,
                     onLoadMore: () async {
-                      var nList = await DatabaseService.instance
-                          .paginateRecipes(recipeIds, recipes.length);
+                      var nList = await DatabaseService.instance.paginateRecipes(recipeIds, recipes.length);
                       setState(() {
                         recipes.addAll(nList);
                       });
 
                       return Future.value(true);
                     },
+                    delegate: ListLoading(),
                     child: ListView.builder(
                       itemCount: recipes.length,
                       itemBuilder: (context, index) {
@@ -134,7 +133,6 @@ class _SavedPageState extends State<SavedPage> {
                         );
                       },
                     ),
-                    delegate: ListLoading(),
                   );
                 }),
     );

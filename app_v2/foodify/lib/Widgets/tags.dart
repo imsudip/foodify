@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:foodify/ui/app_colors.dart';
+import '../ui/app_colors.dart';
 
 class Tag extends StatelessWidget {
   final String text;
@@ -15,7 +15,7 @@ class Tag extends StatelessWidget {
           color: AppColors.accentColor.withOpacity(0.7),
           // color: const Color(0xffF3EED9).withOpacity(0.7),
           borderRadius: BorderRadius.circular(9),
-          boxShadow: [
+          boxShadow: const [
             // BoxShadow(
             //   color: Color.fromARGB(255, 136, 136, 136).withOpacity(0.1),
             //   blurRadius: 6,
@@ -34,10 +34,7 @@ class Tag extends StatelessWidget {
           const SizedBox(width: 6),
           Text(
             text,
-            style: const TextStyle(
-                fontSize: 12,
-                fontWeight: FontWeight.w600,
-                color: AppColors.textPrimaryColor),
+            style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w600, color: AppColors.textPrimaryColor),
           ),
         ],
       ),

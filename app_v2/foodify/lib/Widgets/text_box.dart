@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:foodify/ui/app_colors.dart';
-import 'package:foodify/ui/text_styles.dart';
+
+import '../ui/app_colors.dart';
+import '../ui/text_styles.dart';
 
 class CustomTextField extends StatefulWidget {
   final TextEditingController controller;
@@ -9,11 +9,7 @@ class CustomTextField extends StatefulWidget {
   final bool obscureText;
   final IconData? icon;
   const CustomTextField(
-      {Key? key,
-      required this.controller,
-      required this.hintText,
-      required this.obscureText,
-      this.icon})
+      {Key? key, required this.controller, required this.hintText, required this.obscureText, this.icon})
       : super(key: key);
 
   @override
@@ -37,13 +33,12 @@ class _CustomTextFieldState extends State<CustomTextField> {
           controller: widget.controller,
           obscureText: widget.obscureText,
           placeholder: widget.hintText,
-          padding: EdgeInsets.symmetric(horizontal: 10),
+          padding: const EdgeInsets.symmetric(horizontal: 10),
           style: AppTextStyle.defaultFontStyle,
           prefix: widget.icon != null
               ? Padding(
                   padding: const EdgeInsets.only(left: 10),
-                  child: Icon(widget.icon,
-                      color: isfocused ? AppColors.primaryColor : AppColors.accentColor),
+                  child: Icon(widget.icon, color: isfocused ? AppColors.primaryColor : AppColors.accentColor),
                 )
               : null,
           decoration: BoxDecoration(
