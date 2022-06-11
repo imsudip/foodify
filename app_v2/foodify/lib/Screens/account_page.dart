@@ -14,12 +14,20 @@ import '../ui/app_colors.dart';
 import '../ui/text_styles.dart';
 import 'onboarding/diet_filter.dart';
 
-class AccountPage extends StatelessWidget {
-  AccountPage({Key? key}) : super(key: key);
+class AccountPage extends StatefulWidget {
+  const AccountPage({Key? key}) : super(key: key);
+
+  @override
+  State<AccountPage> createState() => _AccountPageState();
+}
+
+class _AccountPageState extends State<AccountPage> {
   final AuthController authController = Get.find();
+
   final divider = const Divider(
     color: AppColors.textSecondaryColor,
   );
+
   final List<String> activityLevels = [
     'Sedentary',
     'Lightly Active',
@@ -27,7 +35,9 @@ class AccountPage extends StatelessWidget {
     'Very Active',
     'Extremely Active'
   ];
+
   final ImagePicker imagePicker = ImagePicker();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

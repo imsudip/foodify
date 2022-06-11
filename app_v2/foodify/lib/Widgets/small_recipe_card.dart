@@ -69,7 +69,7 @@ class SmallRecipeCard extends StatelessWidget {
             ),
             const Positioned(
               bottom: 0,
-              right: -10,
+              right: -0,
               child: Icon(
                 Iconsax.arrow_circle_right5,
                 color: AppColors.primaryColor,

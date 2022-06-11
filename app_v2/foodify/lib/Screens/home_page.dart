@@ -36,9 +36,11 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
     DatabaseService.instance.getRandomRecipes().then((value) {
-      setState(() {
-        _recomended = value;
-      });
+      if (mounted) {
+        setState(() {
+          _recomended = value;
+        });
+      }
     });
   }
 
@@ -63,7 +65,7 @@ class _HomePageState extends State<HomePage> {
             ),
             const SizedBox(height: 16),
             CustomCard(
-                height: 160,
+                // height: 120,
                 padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
                 margin: const EdgeInsets.symmetric(horizontal: 16),
                 child: Column(

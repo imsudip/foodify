@@ -10,7 +10,6 @@ import 'ui/my_theme.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
   firebaseInitialization.then((value) {
     // we are going to inject the auth controller over here!
     AppConstant.instance.init();
@@ -27,7 +26,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: 'Foodify',
       theme: MyTheme.ligthTheme,
       home: const SplashScreen(),
     );

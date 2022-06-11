@@ -43,7 +43,7 @@ class AuthController extends GetxController {
   _setUserData(Map<String, dynamic>? user) async {
     // compare the user data with the current user data
     print('user is being updated');
-    // print(user);
+    print(user);
     // if (user != null && user != userData.value) {
     //   // update the user data
     //   userData.value = user;

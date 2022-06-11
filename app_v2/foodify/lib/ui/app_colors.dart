@@ -7,6 +7,7 @@ class AppColors {
   static const Color textPrimaryColor = Color(0xFF2B2B2B);
   static const Color textSecondaryColor = Color(0xFF6A6969);
   static const Color primaryWhiteColor = Color(0xFFFFFFFF);
+  static const Color errorColor = Color.fromARGB(255, 255, 150, 150);
 
   static MaterialColor createMaterialColor(Color color) {
     List strengths = <double>[.05];

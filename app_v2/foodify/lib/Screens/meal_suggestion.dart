@@ -102,7 +102,16 @@ class _MealSuggestionTabState extends State<MealSuggestionTab> {
                 text: 'Suggest Meals',
                 height: 52,
                 onPressed: () async {
-                  if (_selectedingredients.isEmpty) return;
+                  if (_selectedingredients.isEmpty) {
+                    Get.snackbar(
+                      'Error',
+                      'Please select minimum 2 ingredients',
+                      backgroundColor: AppColors.primaryWhiteColor,
+                      colorText: AppColors.textPrimaryColor,
+                      snackPosition: SnackPosition.BOTTOM,
+                    );
+                    return;
+                  }
                   Get.dialog(const BigPopupLoader());
                   List<RecipeModel> recipes = await DatabaseService.instance
                       .getMealSuggestions(List<String>.from(_selectedingredients.map((e) => e['ingredient']).toList()));

@@ -169,7 +169,8 @@ class DatabaseService {
         backgroundColor: Colors.white60,
         // snackStyle: SnackStyle.GROUNDED,
       );
-      rethrow;
+      // rethrow;
+      return [];
     }
   }
 
@@ -178,9 +179,18 @@ class DatabaseService {
     var savedIds = AuthController.authInstance.savedRecipes;
     // select 5 random ids from the saved recipes
     List<String> randomIds = [];
-    for (var i = 0; i < 5; i++) {
-      var randomIndex = Random().nextInt(savedIds.length);
-      randomIds.add(savedIds[randomIndex]);
+    if (savedIds.isNotEmpty) {
+      for (var i = 0; i < 5; i++) {
+        var randomIndex = Random().nextInt(savedIds.length);
+        randomIds.add(savedIds[randomIndex]);
+      }
+    } else {
+      await recipeCollectionRef.get().then((value) {
+        for (var i = 0; i < 5; i++) {
+          var randomIndex = Random().nextInt(value.docs.length);
+          randomIds.add(value.docs[randomIndex].id);
+        }
+      });
     }
     // get the recipes
     List<RecipeModel> recipes = await getAllRecipes(randomIds);

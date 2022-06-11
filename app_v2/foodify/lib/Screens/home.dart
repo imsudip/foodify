@@ -16,22 +16,57 @@ class Home extends StatefulWidget {
   State<Home> createState() => _HomeState();
 }
 
-class _HomeState extends State<Home> {
+class _HomeState extends State<Home> with TickerProviderStateMixin {
   late int _currentPage = 0;
-  static final List<GlobalKey> _pageKeys = [
-    GlobalKey(),
-    GlobalKey(),
-    GlobalKey(),
-    GlobalKey(),
-    GlobalKey(),
+  // final List<GlobalKey> _pageKeys = [
+  //   GlobalKey(debugLabel: 'Home'),
+  //   GlobalKey(debugLabel: 'Saved'),
+  //   GlobalKey(debugLabel: 'Meal Suggestion'),
+  //   GlobalKey(debugLabel: 'Account'),
+  // ];
+  final List<Widget> _pages = const [
+    HomePage(
+      key: PageStorageKey<String>('Home'),
+    ),
+    SavedPage(
+      key: PageStorageKey<String>('Saved'),
+    ),
+    MealSuggestionTab(
+      key: PageStorageKey<String>('Meal Suggestion'),
+    ),
+    AccountPage(
+      key: PageStorageKey<String>('Account'),
+    ),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       extendBody: true,
-      body: BottomBarPageTransition(
-        builder: (_, index) => _getBody(index),
+      body:
+          // IndexedStack(
+          //   index: _currentPage,
+          //   children: const <Widget>[
+          //     HomePage(
+          //       key: PageStorageKey<String>('Home'),
+          //     ),
+          //     SavedPage(
+          //       key: PageStorageKey<String>('Saved'),
+          //     ),
+          //     MealSuggestionTab(
+          //       key: PageStorageKey<String>('Meal Suggestion'),
+          //     ),
+          //     AccountPage(
+          //       key: PageStorageKey<String>('Account'),
+          //     ),
+          //   ],
+          // ),
+          BottomBarPageTransition(
+        builder: (context, index) {
+          return Container(
+            child: _pages[index],
+          );
+        },
         currentIndex: _currentPage,
         totalLength: 3,
         transitionType: TransitionType.circular,
@@ -42,22 +77,9 @@ class _HomeState extends State<Home> {
     );
   }
 
-  Widget _getBody(int index) {
-    return [
-      HomePage(
-        key: _pageKeys[index],
-      ),
-      SavedPage(
-        key: _pageKeys[index],
-      ),
-      MealSuggestionTab(
-        key: _pageKeys[index],
-      ),
-      AccountPage(
-        key: _pageKeys[index],
-      ),
-    ][index];
-  }
+  // Widget _getBody(int index) {
+  //   return _pages[index];
+  // }
 
   Widget _getBottomBar() {
     return DotNavigationBar(
