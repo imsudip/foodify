@@ -23,17 +23,6 @@ class SignUp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   backgroundColor: AppColors.backgroundColor,
-      //   elevation: 0,
-      //   leading: IconButton(
-      //     icon: Icon(EvaIcons.arrowBack),
-      //     color: AppColors.textPrimaryColor,
-      //     onPressed: () {
-      //       Get.back();
-      //     },
-      //   ),
-      // ),
       backgroundColor: AppColors.backgroundColor,
       body: SafeArea(
         child: Padding(
@@ -130,7 +119,7 @@ class SignUp extends StatelessWidget {
                           passwordController.text.trim(),
                           nameController.text.trim(),
                         );
-                        Get.to(() => const DietFilterScreen());
+                        // Get.to(() => const DietFilterScreen());
                       } else {
                         Get.snackbar('Error', 'Passwords do not match',
                             backgroundColor: AppColors.accentColor,

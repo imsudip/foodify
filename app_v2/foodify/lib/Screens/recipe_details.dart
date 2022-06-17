@@ -1,13 +1,21 @@
+import 'dart:io';
+
+import 'package:eva_icons_flutter/eva_icons_flutter.dart';
+import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:http/http.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:like_button/like_button.dart';
 import 'package:octo_image/octo_image.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../Controllers/auth_controller.dart';
 import '../Widgets/button.dart';
 import '../Widgets/ingredientDetails.dart';
+import '../Widgets/loader.dart';
 import '../Widgets/nutrition_details.dart';
 import '../Widgets/recipeDetailsWidget.dart';
 import '../Widgets/tab_title.dart';
@@ -101,6 +109,7 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen> with SingleTick
                             ],
                           ),
                         ),
+                        Positioned(right: 16, top: 75, child: _shareButton(context))
                       ],
                     ),
                   ),
@@ -289,6 +298,60 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen> with SingleTick
           child: Icon(
             Icons.arrow_back,
             //color: kredColor,
+          ),
+        ),
+      ),
+    );
+  }
+
+  GestureDetector _shareButton(BuildContext context) {
+    return GestureDetector(
+      onTap: (() async {
+        Get.dialog(const PopupLoader());
+        // generate dynamic link
+        final dynamicLinkParams = DynamicLinkParameters(
+          link: Uri.https(
+            'foodify.page.link',
+            recipe.recipeId,
+          ),
+          uriPrefix: "https://foodify.page.link",
+          androidParameters: const AndroidParameters(packageName: "com.softperks.foodify"),
+        );
+        var link = await FirebaseDynamicLinks.instance.buildShortLink(dynamicLinkParams);
+        print(link.shortUrl);
+        // download image
+        var documentDirectory = await getApplicationDocumentsDirectory();
+        var imagePath = '${documentDirectory.path}/image.png';
+        var response = await get(Uri.parse(recipe.image));
+        var file = File(imagePath);
+        await file.writeAsBytes(response.bodyBytes);
+        // share image
+
+        Get.back();
+        Share.shareFiles([
+          file.path,
+        ],
+            text:
+                'Check out this recipe for \n${recipe.title} \nClick the link to view recipe in FOODIFY app\n ${link.shortUrl}');
+      }),
+      child: Container(
+        height: 50,
+        width: 50,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: const BorderRadius.all(Radius.circular(16)),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.16),
+              blurRadius: 17,
+              offset: const Offset(0, 8),
+            ),
+          ],
+        ),
+        child: Center(
+          child: Icon(
+            EvaIcons.shareOutline,
+            color: AppColors.textPrimaryColor.withOpacity(0.3),
           ),
         ),
       ),

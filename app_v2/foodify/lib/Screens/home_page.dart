@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
+import 'package:foodify/Controllers/homepage_controller.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:iconsax/iconsax.dart';
@@ -31,17 +32,10 @@ class _HomePageState extends State<HomePage> {
   final TextEditingController _typeAheadController = TextEditingController();
   final CupertinoSuggestionsBoxController _suggestionsBoxController = CupertinoSuggestionsBoxController();
 
-  List<RecipeModel> _recomended = [];
+  final _homePageController = Get.put(HomePageController());
   @override
   void initState() {
     super.initState();
-    DatabaseService.instance.getRandomRecipes().then((value) {
-      if (mounted) {
-        setState(() {
-          _recomended = value;
-        });
-      }
-    });
   }
 
   bool expanded = false;
@@ -181,11 +175,51 @@ class _HomePageState extends State<HomePage> {
                   ],
                 )),
             const SizedBox(height: 20),
-            Builder(builder: (
-              context,
-            ) {
-              if (_recomended.isEmpty) {
-                return Container();
+            Obx(() {
+              if (_homePageController.recomended.isEmpty) {
+                return Column(
+                  children: [
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 16),
+                        child: Row(
+                          children: const [
+                            Icon(
+                              Iconsax.magicpen5,
+                              color: AppColors.primaryColor,
+                              size: 28,
+                            ),
+                            SizedBox(width: 8),
+                            Text(
+                              'Recommended for you',
+                              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 18),
+                    SizedBox(
+                        height: 190,
+                        child: CustomCard(
+                          margin: const EdgeInsets.symmetric(horizontal: 20),
+                          child: Center(
+                              child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              LoadingWidget(
+                                height: 130,
+                              ),
+                              Text(
+                                'Loading delicious recipes...',
+                                style: AppTextStyle.caption,
+                              ),
+                            ],
+                          )),
+                        )),
+                  ],
+                );
               }
 
               return Column(
@@ -217,10 +251,10 @@ class _HomePageState extends State<HomePage> {
                       scrollDirection: Axis.horizontal,
                       itemBuilder: (context, index) {
                         return SmallRecipeCard(
-                          recipe: _recomended[index],
+                          recipe: _homePageController.recomended[index],
                         );
                       },
-                      itemCount: _recomended.length,
+                      itemCount: _homePageController.recomended.length,
                     ),
                   ),
                 ],

@@ -2,6 +2,7 @@ import 'package:bottom_bar_page_transition/bottom_bar_page_transition.dart';
 import 'package:dot_navigation_bar/dot_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:morpheus/widgets/morpheus_tab_view.dart';
 
 import '../ui/app_colors.dart';
 import 'account_page.dart';
@@ -24,7 +25,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
   //   GlobalKey(debugLabel: 'Meal Suggestion'),
   //   GlobalKey(debugLabel: 'Account'),
   // ];
-  final List<Widget> _pages = const [
+  static const List<Widget> _pages = [
     HomePage(
       key: PageStorageKey<String>('Home'),
     ),
@@ -44,6 +45,9 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
     return Scaffold(
       extendBody: true,
       body:
+          // MorpheusTabView(
+          //   child: _pages[_currentPage],
+          // ),
           // IndexedStack(
           //   index: _currentPage,
           //   children: const <Widget>[

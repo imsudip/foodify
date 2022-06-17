@@ -219,16 +219,25 @@ class _CaloriePageState extends State<CaloriePage> {
                       margin: const EdgeInsets.all(16),
                     );
                   } else {
-                    var age = int.parse(ageController.text);
-                    var height = int.parse(heightController.text);
-                    var weight = int.parse(weightController.text);
+                    var age = num.tryParse(ageController.text) ?? -1;
+                    var height = num.tryParse(heightController.text) ?? -1;
+                    var weight = num.tryParse(weightController.text) ?? -1;
                     var activityLevel = activityLevels.indexOf(selectedActivityLevel);
-
+                    if (age < 0 || height < 0 || weight < 0) {
+                      return Get.snackbar(
+                        'Error',
+                        'Please fill all the fields correctly',
+                        backgroundColor: AppColors.accentColor,
+                        snackPosition: SnackPosition.BOTTOM,
+                        borderRadius: 10,
+                        margin: const EdgeInsets.all(16),
+                      );
+                    }
                     Get.to(() => CalorieResult(
                           gender: gender,
-                          age: age,
-                          height: height,
-                          weight: weight,
+                          age: age.toInt(),
+                          height: height.toInt(),
+                          weight: weight.toInt(),
                           activityLevel: activityLevel,
                         ));
                   }

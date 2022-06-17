@@ -186,8 +186,9 @@ class _AccountPageState extends State<AccountPage> {
     Get.bottomSheet(
       Container(
         padding: const EdgeInsets.all(10),
-        height: 132,
+        // height: 132,
         child: Column(
+          mainAxisSize: MainAxisSize.min,
           children: [
             TextButton(
                 onPressed: () => pickImage(fromGallery: true), child: Text("Gallery", style: AppTextStyle.subHeading)),

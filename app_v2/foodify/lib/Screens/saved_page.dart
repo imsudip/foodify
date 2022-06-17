@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:foodify/Controllers/savedpaged_controller.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:loadmore/loadmore.dart';
@@ -21,39 +22,16 @@ class SavedPage extends StatefulWidget {
 }
 
 class _SavedPageState extends State<SavedPage> {
-  AuthController authController = Get.find();
-
-  List<RecipeModel> recipes = [];
-  List<String> recipeIds = [];
-
+  final _savepageController = Get.put(SavedPageController());
   @override
   void initState() {
     super.initState();
     print("initState");
-
-    authController.userData.listen((user) {
-      if (recipeIds != authController.savedRecipes) {
-        if (mounted) {
-          // find if any element is removed from the recipeIds
-          var removedItems = recipeIds.where((element) => !authController.savedRecipes.contains(element)).toList();
-          for (var element in removedItems) {
-            recipes.removeWhere((recipe) => recipe.recipeId == element);
-          }
-          recipeIds = authController.savedRecipes;
-          if (recipes.isEmpty) {
-            _getSavedRecipes();
-          }
-          setState(() {});
-        }
-      }
-    });
-    _getSavedRecipes();
   }
 
   @override
   void dispose() {
     print("dispose");
-
     super.dispose();
   }
 
@@ -78,73 +56,78 @@ class _SavedPageState extends State<SavedPage> {
         backgroundColor: AppColors.backgroundColor,
       ),
       backgroundColor: AppColors.backgroundColor,
-      body: recipeIds.isEmpty
-          ? Center(
-              child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                LottieBuilder.asset(
-                  'images/loaders/not_found.json',
-                  height: 150,
-                ),
-                Text(
-                  "No Saved Recipes",
-                  style: AppTextStyle.headline2,
-                ),
-                Text(
-                  "You haven't saved any recipes yet",
-                  style: AppTextStyle.caption,
-                ),
-                const SizedBox(height: 120),
-              ],
-            ))
-          : recipes.isEmpty
+      body: Obx(
+        () {
+          return _savepageController.recipeIds.isEmpty
               ? Center(
                   child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    LoadingWidget(
-                      height: 200,
+                    LottieBuilder.asset(
+                      'images/loaders/not_found.json',
+                      height: 150,
                     ),
-                    const Text('Loading. . . '),
+                    Text(
+                      "No Saved Recipes",
+                      style: AppTextStyle.headline2,
+                    ),
+                    Text(
+                      "You haven't saved any recipes yet",
+                      style: AppTextStyle.caption,
+                    ),
+                    const SizedBox(height: 120),
                   ],
                 ))
-              : GetX<AuthController>(
-                  // init: ,
-                  builder: (_) {
-                  List<String> favList = _.savedRecipes;
-                  return LoadMore(
-                    isFinish: recipes.length == recipeIds.length,
-                    onLoadMore: () async {
-                      var nList = await DatabaseService.instance.paginateRecipes(recipeIds, recipes.length);
-                      setState(() {
-                        recipes.addAll(nList);
-                      });
+              : _savepageController.savedRecipes.isEmpty
+                  ? Center(
+                      child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        LoadingWidget(
+                          height: 200,
+                        ),
+                        const Text('Loading. . . '),
+                      ],
+                    ))
+                  : GetX<AuthController>(
+                      // init: ,
+                      builder: (_) {
+                      List<String> favList = _.savedRecipes;
+                      return LoadMore(
+                        isFinish: _savepageController.savedRecipes.length == _savepageController.recipeIds.length,
+                        onLoadMore: () async {
+                          var nList = await DatabaseService.instance
+                              .paginateRecipes(_savepageController.recipeIds, _savepageController.savedRecipes.length);
+                          setState(() {
+                            _savepageController.savedRecipes.addAll(nList);
+                          });
 
-                      return Future.value(true);
-                    },
-                    delegate: ListLoading(),
-                    child: ListView.builder(
-                      itemCount: recipes.length,
-                      itemBuilder: (context, index) {
-                        return RecipeCard(
-                          recipe: recipes[index],
-                          isFavorite: favList.contains(recipes[index].recipeId),
-                        );
-                      },
-                    ),
-                  );
-                }),
+                          return Future.value(true);
+                        },
+                        delegate: ListLoading(),
+                        child: ListView.builder(
+                          itemCount: _savepageController.savedRecipes.length,
+                          itemBuilder: (context, index) {
+                            return RecipeCard(
+                              recipe: _savepageController.savedRecipes[index],
+                              isFavorite: favList.contains(_savepageController.savedRecipes[index].recipeId),
+                            );
+                          },
+                        ),
+                      );
+                    });
+        },
+      ),
     );
   }
 
-  void _getSavedRecipes() async {
-    recipeIds = AuthController.authInstance.savedRecipes;
-    // await Future.delayed(Duration(milliseconds: 1000));
-    DatabaseService.instance.paginateRecipes(recipeIds, recipes.length).then((value) {
-      setState(() {
-        recipes.addAll(value);
-      });
-    });
-  }
+  // void _getSavedRecipes() async {
+  //   recipeIds = AuthController.authInstance.savedRecipes;
+  //   // await Future.delayed(Duration(milliseconds: 1000));
+  //   DatabaseService.instance.paginateRecipes(recipeIds, recipes.length).then((value) {
+  //     setState(() {
+  //       recipes.addAll(value);
+  //     });
+  //   });
+  // }
 }
