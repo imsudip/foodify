@@ -58,6 +58,7 @@ class RecipeInstructionWidget extends StatelessWidget {
 
 void launchUrlVideo(videoId) async {
   {
+    // ignore: deprecated_member_use
     if (!await launch("https://www.youtube.com/watch?v=$videoId")) throw 'Could not launch ';
   }
 }

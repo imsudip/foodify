@@ -1,7 +1,10 @@
+// ignore_for_file: deprecated_member_use
+
 import 'dart:io';
 
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart';
@@ -17,7 +20,7 @@ import '../Widgets/button.dart';
 import '../Widgets/ingredientDetails.dart';
 import '../Widgets/loader.dart';
 import '../Widgets/nutrition_details.dart';
-import '../Widgets/recipeDetailsWidget.dart';
+import '../Widgets/recipe_details_widget.dart';
 import '../Widgets/tab_title.dart';
 import '../models/recipe_model.dart';
 import '../ui/app_colors.dart';
@@ -318,7 +321,9 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen> with SingleTick
           androidParameters: const AndroidParameters(packageName: "com.softperks.foodify"),
         );
         var link = await FirebaseDynamicLinks.instance.buildShortLink(dynamicLinkParams);
-        print(link.shortUrl);
+        if (kDebugMode) {
+          print(link.shortUrl);
+        }
         // download image
         var documentDirectory = await getApplicationDocumentsDirectory();
         var imagePath = '${documentDirectory.path}/image.png';

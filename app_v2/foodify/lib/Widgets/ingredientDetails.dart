@@ -67,10 +67,11 @@ class IngredientsDetails extends StatelessWidget {
               return ListTile(
                 // tileColor: Colors.red,
                 onTap: () {
-                  var url = "https://www.flipkart.com/search?q=${itemArray[2]}&as=on&as-show=on&marketplace=GROCERY";
+                  // var url = "https://www.flipkart.com/search?q=${itemArray[2]}&as=on&as-show=on&marketplace=GROCERY";
                   var url2 =
                       Uri.parse("https://www.amazon.in/s?k=${itemArray[2]}&ref=nb_sb_noss_2&i=nowstore").toString();
                   log(url2);
+                  // ignore: deprecated_member_use
                   launch(url2);
                 },
                 contentPadding: EdgeInsets.zero,

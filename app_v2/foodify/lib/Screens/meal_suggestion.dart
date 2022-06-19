@@ -29,6 +29,7 @@ class _MealSuggestionTabState extends State<MealSuggestionTab> {
   final TextEditingController _typeAheadController = TextEditingController();
 
   final CupertinoSuggestionsBoxController _suggestionsBoxController = CupertinoSuggestionsBoxController();
+  // ignore: prefer_final_fields
   List<Map<String, dynamic>> _selectedingredients = [];
   @override
   Widget build(BuildContext context) {

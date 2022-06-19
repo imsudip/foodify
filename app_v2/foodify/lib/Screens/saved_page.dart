@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:foodify/Controllers/savedpaged_controller.dart';
 import 'package:get/get.dart';
@@ -10,7 +11,6 @@ import '../Controllers/database_service.dart';
 import '../Widgets/load_more_delegate.dart';
 import '../Widgets/loader.dart';
 import '../Widgets/recipe_card.dart';
-import '../models/recipe_model.dart';
 import '../ui/app_colors.dart';
 import '../ui/text_styles.dart';
 
@@ -26,12 +26,16 @@ class _SavedPageState extends State<SavedPage> {
   @override
   void initState() {
     super.initState();
-    print("initState");
+    if (kDebugMode) {
+      print("initState");
+    }
   }
 
   @override
   void dispose() {
-    print("dispose");
+    if (kDebugMode) {
+      print("dispose");
+    }
     super.dispose();
   }
 

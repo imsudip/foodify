@@ -2,7 +2,6 @@ import 'package:bottom_bar_page_transition/bottom_bar_page_transition.dart';
 import 'package:dot_navigation_bar/dot_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:morpheus/widgets/morpheus_tab_view.dart';
 
 import '../ui/app_colors.dart';
 import 'account_page.dart';

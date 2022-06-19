@@ -7,51 +7,6 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:387191489827:android:640ba30d28cd32676b7896",
-        "android_client_info": {
-          "package_name": "com.example.foodify"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "387191489827-o792hrgtk0j9a3h850pume20eg1rksu9.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.foodify",
-            "certificate_hash": "c0891721e35c1271742ea0eb7f39bbc2904a4228"
-          }
-        },
-        {
-          "client_id": "387191489827-otrj3hit773uvus1137cla622sba2jbf.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.foodify",
-            "certificate_hash": "93369a69bd213408cca672f515b5561bc12e8893"
-          }
-        },
-        {
-          "client_id": "387191489827-pcq3lvh9284m877vd6jgekdjqfq5tuba.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyC49nnYPBcJe8m0jCRuSz5AWuyQgOSnVDA"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "387191489827-pcq3lvh9284m877vd6jgekdjqfq5tuba.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
         "mobilesdk_app_id": "1:387191489827:android:dabd33b8a23cd9fc6b7896",
         "android_client_info": {
           "package_name": "com.softperks.foodify"
@@ -64,6 +19,14 @@
           "android_info": {
             "package_name": "com.softperks.foodify",
             "certificate_hash": "c0891721e35c1271742ea0eb7f39bbc2904a4228"
+          }
+        },
+        {
+          "client_id": "387191489827-lrp657pea0nu2o0maeaigu86jv6k3toc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.softperks.foodify",
+            "certificate_hash": "4c7b32bf917165437b6f8cd7db4b5d3c05cbb639"
           }
         },
         {

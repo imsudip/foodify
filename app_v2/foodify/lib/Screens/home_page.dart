@@ -13,7 +13,6 @@ import '../Widgets/card.dart';
 import '../Widgets/image_card.dart';
 import '../Widgets/loader.dart';
 import '../Widgets/small_recipe_card.dart';
-import '../models/recipe_model.dart';
 import '../ui/app_colors.dart';
 import '../ui/text_styles.dart';
 import '../widgets/button.dart';

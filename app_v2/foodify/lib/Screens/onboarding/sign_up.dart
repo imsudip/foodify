@@ -9,7 +9,6 @@ import 'package:foodify/ui/text_styles.dart';
 import 'package:get/get.dart';
 
 import '../../Controllers/auth_controller.dart';
-import 'diet_filter.dart';
 import 'login.dart';
 
 class SignUp extends StatelessWidget {
