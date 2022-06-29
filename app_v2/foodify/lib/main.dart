@@ -11,16 +11,13 @@ import 'ui/my_theme.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
   firebaseInitialization.then((value) async {
     // we are going to inject the auth controller over here!
     final PendingDynamicLinkData? initialLink = await FirebaseDynamicLinks.instance.getInitialLink();
     AppConstant.instance.init();
     DatabaseService.instance.init();
-
     Get.put(AuthController(initialLink));
   });
-
   runApp(const MyApp());
 }
 
