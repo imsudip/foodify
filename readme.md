@@ -1,3 +1,5 @@
+![Foodify](https://raw.githubusercontent.com/imsudip/foodify/main/resources/xtra/foodify_banner_small.jpg)
+
 # Foodify
 
 ![ratings](https://PlayBadges.pavi2410.me/badge/ratings?id=com.softperks.foodify&pretty&style=for-the-badge) ![downloads](https://PlayBadges.pavi2410.me/badge/downloads?id=com.softperks.foodify&pretty&style=for-the-badge)
