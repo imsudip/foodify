@@ -1,0 +1,752 @@
+[
+    {
+        "id": "american-chopsuey",
+        "title": "American Chop Suey",
+        "raw_ingredients": "black pepper powder chopped spring onions chopped spring onions for garnish corn flour cornflour finely chopped garlic finely chopped ginger green chillies hakka noodles juice of 1 lime julienned carrot oil oil as required for deep frying red chilli sauce salt as required salt or add as required shredded cabbage sliced bell peppers sliced onions soy sauce sugar tomato ketchup water"
+    },
+    {
+        "id": "crispy-falafel-recipe",
+        "title": "Crispy Falafel",
+        "raw_ingredients": "all purpose flour baking powder chickpeas coriander cumin powder garlic green chillies mint leaves oil for frying onions salt sesame seeds"
+    },
+    {
+        "id": "boondi-raita",
+        "title": "Boondi Raita",
+        "raw_ingredients": "boondi chilli powder coriander leaves curd green chilli roasted jeera powder rock salt sugar"
+    },
+    {
+        "id": "whole-wheat-pita-bread",
+        "title": "Whole Wheat Pita Bread",
+        "raw_ingredients": "active dry yeast olive oil salt sugar warm water whole wheat flour"
+    },
+    {
+        "id": "bombay-sandwich-toast",
+        "title": "Toasted Bombay Sandwich",
+        "raw_ingredients": "butter chopped coriander leaves chopped curry leaves coriander coriander powder cucumber garlic ginger garlic paste green capsicum green chillies green peas ketchup lemon juice mint leaves mustard seeds oil onions potato red chilli powder roasted chana dal salt sandwich masala sev tomatoes turmeric powder water white bread"
+    },
+    {
+        "id": "spicy-nacho-cheese-sauce-recipe",
+        "title": "Spicy Nacho Cheese Sauce in just 5 Minutes!",
+        "raw_ingredients": "all purpose flour butter cheddar english mustard garlic oil paprika salt whole milk"
+    },
+    {
+        "id": "szechuan-chicken-recipe",
+        "title": "Spicy Szechuan Chicken",
+        "raw_ingredients": "chicken chilli powder chopped garlic chopped ginger chopped spring onions for garnishing cornflour ginger garlic paste green capsicum squares light soy sauce medium onion oil oil for frying pepper red capsicum squares rice flour salt sugar szechuan sauce water whole dried red chillies"
+    },
+    {
+        "id": "mocha-lava-cake",
+        "title": "Molten Mocha Lava Cake",
+        "raw_ingredients": "all-purpose flour butter caster sugar cocoa powder dark chocolate egg yolks eggs instant coffee powder milk chocolate salt"
+    },
+    {
+        "id": "no-bake-strawberry-cheesecake-recipe",
+        "title": "No Bake Strawberry Cheesecake Jars",
+        "raw_ingredients": "caster sugar cream cheese digestive biscuits fresh strawberry heavy whipping cream melted butter strawberries"
+    },
+    {
+        "id": "jesses-rasam-recipe",
+        "title": "Jesse\u2019s Tomato Rasam",
+        "raw_ingredients": "byadgi dry red chillies coriander leaves with stems cumin seeds curry leaves fresh coriander garlic garlic cloves mustard seeds oil onion rasam powder salt small round dry red chillies tamarind tomatoes turmeric powder water whole black pepper"
+    },
+    {
+        "id": "sarson-ka-saag",
+        "title": "Punjabi Style Sarson ka Saag",
+        "raw_ingredients": "bunches mustard leaves chilli powder chopped ginger chopped onions chopped tomatoes cumin seeds curds finely chopped garlic ghee grated jaggery green chilli paste green chillies green garlic scapes makki atta mustard oil packed cup bathua leaves packed cup radish leaves packed cup spinach leaves salt small radish white butter for serving"
+    },
+    {
+        "id": "paneer-lababdar",
+        "title": "Paneer Lababdar Recipe",
+        "raw_ingredients": "almonds cardamom pod cashew nuts chilli powder chopped coriander leaves cinnamon cloves coriander powder cream dried kashmiri red chilli garam masala garlic ghee kasuri methi oil onion paneer piece ginger tomatoes turmeric powder"
+    },
+    {
+        "id": "saag-paneer-recipe",
+        "title": "Authentic Saag Paneer",
+        "raw_ingredients": "chopped garlic chopped ginger chopped onion chopped tomato coriander powder daikon radish with leaves green chilli paste green garlic scapes hing jeera mustard leaves mustard oil paneer red chilli powder salt spinach white butter"
+    },
+    {
+        "id": "veg-biryani",
+        "title": "Restaurant Style Veg Biryani",
+        "raw_ingredients": "bay leaf chilli powder cinnamon cloves coriander powder curd or greek yoghurt freshly chopped coriander freshly chopped mint leaves garam masala ghee ginger garlic paste green cardamoms green chillies long grained basmati rice milk mixed vegetables oil onion salt strands saffron tomatoes vegetable oil water"
+    },
+    {
+        "id": "air-fryer-sweet-potato-fries",
+        "title": "Air Fryer Sweet Potato Fries",
+        "raw_ingredients": "garlic powder olive oil paprika salt sweet potato"
+    },
+    {
+        "id": "easy-spinach-soup",
+        "title": "Easy Spinach Soup (Palak Soup)",
+        "raw_ingredients": "bay leaf cream garlic cloves milk olive oil pepper salt sliced onions spinach (palak) water"
+    },
+    {
+        "id": "easy-chinese-chilli-chicken-dry",
+        "title": "Easy Chinese Chilli Chicken Dry",
+        "raw_ingredients": "all purpose flour black pepper powder chicken thighs / chicken breasts chilli powder chilli sauce cornflour dark soy sauce egg finely chopped garlic finely chopped ginger finely chopped spring onions (green part only) ginger garlic paste green capsicum green chillies kashmiri chilli powder oil for frying onions synthetic vinegar tomato ketchup vegetable oil water"
+    },
+    {
+        "id": "easy-misal-pav-recipe",
+        "title": "Misal Pav Recipe",
+        "raw_ingredients": "byadgi chillies chopped coriander leaves chopped curry leaves chopped onion chopped tomato coriander powder cumin seeds garlic hing jaggery kashmiri red chillies misal masala mixed sprouts mustard seeds oil salt turmeric powder water wedges lemon"
+    },
+    {
+        "id": "air-fryer-brussel-sprouts",
+        "title": "Air Fryer Brussel Sprouts - Sweet and Spicy",
+        "raw_ingredients": "brussel sprouts garlic powder honey oil paprika salt"
+    },
+    {
+        "id": "instant-pot-chicken-potato-corn-chowder-recipe",
+        "title": "Instant Pot Chicken Potato Corn Chowder with Bacon (Pressure Cooker Recipe)",
+        "raw_ingredients": "all purpose flour bacon strips chicken breast chicken broth corn kernels cream dried thyme extra cooked bacon and chives for topping garlic cloves jalapenos onion potatoes salt and pepper to taste"
+    },
+    {
+        "id": "non-alcoholic-eggnog",
+        "title": "Non Alcoholic Eggnog",
+        "raw_ingredients": "eggs freshly grated nutmeg heavy cream sugar vanilla extract whole milk"
+    },
+    {
+        "id": "instant-pot-garlic-mashed-potatoes-recipe",
+        "title": "Instant Pot Garlic Mashed Potatoes (Pressure Cooker Recipe)",
+        "raw_ingredients": "butter cream cheese garlic cloves hot milk more butter and chopped chives for topping potatoes salt sour cream water"
+    },
+    {
+        "id": "saag-chicken",
+        "title": "Saag Chicken",
+        "raw_ingredients": "bayleaf black cardamon chicken chilli powder chopped ginger cinnamon stick cloves coriander leaves coriander powder finely chopped onion finely chopped tomatoes fresh cream garam masala ginger garlic paste green cardamom green chillies jeera kasuri methi mustard oil roasted kasuri methi salt spinach water whisked curd or greek yogurt"
+    },
+    {
+        "id": "jaggery-mawa-cake",
+        "title": "Jaggery Mawa Cake",
+        "raw_ingredients": "all purpose flour baking powder baking soda butter curd or plain yogurt ground cardamom jaggery powder khoya salt semolina sliced almonds vanilla extract whole milk"
+    },
+    {
+        "id": "comforting-mexican-style-tortilla-bean-soup-recipe",
+        "title": "Comforting Vegetarian Mexican Soup with Beans",
+        "raw_ingredients": "chopped green capsicum chopped jalapenos chopped onions chopped tomatoes cooked kidney beans corn cornstarch minced garlic oil salt taco seasoning water"
+    },
+    {
+        "id": "honey-chilli-potatoes-recipe",
+        "title": "Crispy Honey Chilli Potatoes",
+        "raw_ingredients": "all purpose flour black pepper chilli powder corn flour garlic garlic paste honey oil oil for deep frying pepper potatoes red chilli flakes red chilli paste salt soy sauce spring onion tomato ketchup vinegar water white sesame seeds"
+    },
+    {
+        "id": "cheese-balls-recipe",
+        "title": "Homemade Cheese Balls",
+        "raw_ingredients": "all purpose flour amul cheese black pepper breadcrumbs for coating chopped green capsicum chopped red capsicum corn kernels cornstarch fresh garlic paste freshly ground black pepper grated boiled potatoes green chillies italian seasoning mozzarella oil peri peri seasoning salt water"
+    },
+    {
+        "id": "easy-restaurant-style-butter-chicken-masala-murgh-makhani",
+        "title": "Easy Restaurant Style Butter Chicken Masala (Murgh Makhani)",
+        "raw_ingredients": "butter cashew nuts chicken thighs cinnamon cloves coriander powder fresh cream garam masala powder garlic cloves ginger garlic paste green cardamom pods hung curd kashmiri chilli powder kashmiri red chillies kasuri methi ketchup oil onion red chilli powder salt tomatoes turmeric"
+    },
+    {
+        "id": "best-slow-cooker-mashed-potatoes-4-add-in-flavours",
+        "title": "Best Slow Cooker Mashed Potatoes + 4 Add In Ideas",
+        "raw_ingredients": "butter cream freshly ground pepper full fat milk garlic cloves onion powder potatoes salt water"
+    },
+    {
+        "id": "crispy-fried-noodles-recipe",
+        "title": "How to make Crispy Fried Noodles at home",
+        "raw_ingredients": "canola oil for frying cornflour hakka noodles or lo mein noodles salt"
+    },
+    {
+        "id": "chicken-kali-mirch",
+        "title": "Chicken Kali Mirch",
+        "raw_ingredients": "black pepper cashew nuts chicken cinnamon cloves cream garam masala garlic cloves ginger green cardamoms green chillies kasuri methi lemon juice oil onions salt yogurt"
+    },
+    {
+        "id": "garlic-cheese-kulcha",
+        "title": "Chilli Garlic Cheese Stuffed Kulcha",
+        "raw_ingredients": "all purpose flour baking soda butter chaat masala chopped coriander leaves chopped garlic chopped green chillies curd grated mozzarella cheese oil salt sugar"
+    },
+    {
+        "id": "makhani-paneer-biryani",
+        "title": "Paneer Makhani Biryani",
+        "raw_ingredients": "basmati rice bay leaf bay leaves butter cardamoms cashew nuts chopped coriander leaves chopped mint leaves cinnamon stick cloves dried kasuri methi fried onions garam masala ghee ginger garlic paste kashmiri red chilies ketchup khus khus white poppy seeds oil onion paneer cubes or cottage cheese peppercorns red chilli powder salt tomatoes turmeric water"
+    },
+    {
+        "id": "goan-prawn-curry-recipe",
+        "title": "Goan Prawn Curry with Coconut (Ambot Tik)",
+        "raw_ingredients": "coconut milk coconut oil cumin seeds curry leaves dried kashmiri red chillies finely chopped onions finely chopped tomatoes finely minced ginger freshly grated coconut garlic cloves jumbo prawns or shrimp salt small knob of tamarind turmeric powder whole coriander seeds whole peppercorns"
+    },
+    {
+        "id": "salt-and-pepper-chicken",
+        "title": "Salt and Pepper Chicken",
+        "raw_ingredients": "black pepper capsicum (green bell pepper) chicken thigh corn flour egg finely chopped celery finely chopped garlic finely chopped ginger oil onion rice flour salt soy sauce spring onion greens vinegar"
+    },
+    {
+        "id": "dragon-chicken",
+        "title": "Restaurant Style Dragon Chicken",
+        "raw_ingredients": "all purpose flour cashew nuts chicken thigh corn flour egg white finely chopped garlic green capsicum kashmiri red chilli powder ketchup oil onion pepper red chilli paste rice flour salt soy sauce vinegar water"
+    },
+    {
+        "id": "dhaba-style-chicken-curry-recipe",
+        "title": "Dhaba Style Chicken Curry",
+        "raw_ingredients": "bay leaves butter cardamoms chicken cinnamon stick cloves coriander coriander powder cumin seeds garam masala powder garlic ghee or oil ginger ginger garlic paste green chilies juice of lime mustard oil onions peppercorns red chili powder salt tomatoes turmeric powder"
+    },
+    {
+        "id": "veg-manchurian",
+        "title": "Veg Manchurian Recipe",
+        "raw_ingredients": "all purpose flour chopped coriander chopped spring onion corn flour finely chopped cabbage finely chopped celery finely chopped garlic finely chopped ginger finely chopped green beans finely chopped onion finely chopped spring onion ginger garlic paste grated carrot green chilli paste green chillies oil salt soy sauce vegetable stock or water vinegar water"
+    },
+    {
+        "id": "mumbai-ladi-pav",
+        "title": "Ladi Pav",
+        "raw_ingredients": "active dry yeast all purpose flour butter milk milk powder oil salt sugar"
+    },
+    {
+        "id": "pav-bhaji",
+        "title": "Pav Bhaji - Mumbai Style",
+        "raw_ingredients": "beetroot butter carrots coriander leaves coriander powder cumin seeds garlic paste green capsicum green chilli paste green peas kashmiri red chilli powder kasuri methi lemon onion pav bhaji masala potato salt tomatoes turmeric powder vegetable oil water"
+    },
+    {
+        "id": "instant-oats-dosa",
+        "title": "Oats Dosa - Healthy Breakfast Recipe",
+        "raw_ingredients": "chopped coriander leaves chopped onion cumin seeds ginger green chillies homemade curd or yogurt oats oil/ghee rice flour salt semolina sprigs curry leaves water"
+    },
+    {
+        "id": "lasooni-corn-palak",
+        "title": "Lasooni Corn Palak | Makai Palak",
+        "raw_ingredients": "bay leaf cardamom pods chopped palak cloves coriander powder corn cream dried red chillies fresh coriander garam masala powder garlic garlic cloves ghee green chillies jeera jeera powder kasuri methi onion red chilli powder salt tomato"
+    },
+    {
+        "id": "how-to-make-indo-chinese-schezwan-sauce-recipe",
+        "title": "How To Make Schezwan Sauce (Step by Step Video)",
+        "raw_ingredients": "byadgi chillies garlic ginger kashmiri red chilies ketchup salt shallots soy sauce sugar vegetable oil vinegar water"
+    },
+    {
+        "id": "easy-baingan-bharta-recipe",
+        "title": "Easy Baingan Bharta (Smoky eggplant stir-fry)",
+        "raw_ingredients": "boiled green peas chopped coriander coriander powder eggplant garlic cloves ginger green chilli medium onion nigella seeds oil red chilli powder roasted baingan pulp salt to taste tomatoes turmeric powder"
+    },
+    {
+        "id": "karahi-chicken",
+        "title": "Karahi Chicken",
+        "raw_ingredients": "bayleaf black peppercorns butter capsicum chicken chilli powder chopped coriander chopped garlic cinnamon coriander powder coriander seeds cumin seeds curd dry red chillies fennel seeds garam masala ghee ginger ginger garlic paste jeera jeera powder karahi masala kasuri methi mustard oil onion peppercorns red chilli salt sambar onion tomatoes turmeric turmeric powder whole red chillies"
+    },
+    {
+        "id": "crispy-fried-spinach",
+        "title": "Crackling Spinach",
+        "raw_ingredients": "castor sugar finely chopped garlic finely chopped ginger oil red chilli flakes salt spinach - leaves only toasted sesame seeds"
+    },
+    {
+        "id": "crispy-thread-paneer",
+        "title": "Crispy Thread Paneer",
+        "raw_ingredients": "corn flour dry noodles ginger garlic paste kashmiri red chilli powder lemon juice oil paneer salt soy sauce tomato ketchup water"
+    },
+    {
+        "id": "mutton-yakhni-pulao",
+        "title": "Mutton Yakhni Pulao",
+        "raw_ingredients": "basmati rice bayleaf black cardamom black peppercorns cinnamon cinnamon stick cloves coriander seeds cumin seeds curd fennel powder garlic ghee ginger ginger garlic paste green cardamom green chillies jeera powder mace mutton of hing onion onions peppercorns saffron strands salt saunf star anise water"
+    },
+    {
+        "id": "veg-cutlets",
+        "title": "Railway Style Veg Cutlets",
+        "raw_ingredients": "beetroot black pepper powder carrots chaat masala coriander leaves corn flour cumin powder cumin seeds garlic ginger green beans green chilli green chillies green peas maida mint leaves oil for frying poha or flattened rice potatoes raw mango red chilli powder roasted vermicelli salt sugar water"
+    },
+    {
+        "id": "mirchi-bajji",
+        "title": "Mirchi Bajji - 2 Ways",
+        "raw_ingredients": "+ 2 tablespoons water a pinch hing boiled and mashed potato carom seeds chaat masala cumin seeds finely chopped coriander leaves finely chopped green chilli finely chopped onion gram flour grated ginger hing long green chillies oil red chilli powder rice flour salt turmeric powder"
+    },
+    {
+        "id": "dhaba-dal-tadka-tempered-lentil-curry-recipe",
+        "title": "Dhaba Dal Tadka",
+        "raw_ingredients": "chopped coriander chopped garlic chopped ginger chopped onions chopped tomato coal coriander powder cumin seeds curry leaves ghee green chillies hing oil red chilli powder salt tur dal turmeric turmeric powder water whole red chillies"
+    },
+    {
+        "id": "best-indian-punjabi-samosa-recipe",
+        "title": "The Best Indian Punjabi Samosa",
+        "raw_ingredients": "a pinch of methi seeds coriander powder coriander seeds curry leaves garam masala powder garlic paste ghee ginger paste green chillies maida oil potatoes raw mango powder red chilli powder salt salt to taste saunf turmeric powder water"
+    },
+    {
+        "id": "momos-recipe",
+        "title": "Momos Recipe - Veg and Chicken",
+        "raw_ingredients": "all purpose flour chicken mince cornflour finely chopped cabbage finely chopped carrot finely chopped celery finely chopped garlic finely chopped ginger finely chopped onion finely chopped spring onion oil oyster sauce pepper salt soy sauce sugar water"
+    },
+    {
+        "id": "spicy-kingfish-curry-with-coconut-and-tamarind-recipe",
+        "title": "Spicy Fish Curry with Coconut and Tamarind",
+        "raw_ingredients": "coconut oil coriander seeds curry leaves freshly grated coconut garlic kashmiri red chilies mustard seeds onions red chilli powder salt seer fish tamarind tomato turmeric powder water whole peppercorns"
+    },
+    {
+        "id": "mughlai-chicken-recipe",
+        "title": "Mughlai Chicken Recipe",
+        "raw_ingredients": "bayleaf cardamom pods cashewnuts chicken chilli powder cinnamon stick cloves coriander powder cream garam masala garlic cloves ghee ginger green chillies onions salt to taste turmeric powder"
+    },
+    {
+        "id": "healthy-creamy-mushroom-soup-pressure-cooker-recipe",
+        "title": "Healthy Cream of Mushroom Soup",
+        "raw_ingredients": "bay leaf garlic large potato milk mushrooms olive oil olive oil for topping peppercorns salt to taste water"
+    },
+    {
+        "id": "15-minute-mushroom-spaghetti-aglio-olio-recipe",
+        "title": "15 minutes Mushroom Spaghetti Aglio Olio",
+        "raw_ingredients": "button mushrooms chilli flakes chopped parsley garlic olive oil oyster mushrooms parmesan salt spaghetti"
+    },
+    {
+        "id": "restaurant-style-paneer-butter-masala-recipe",
+        "title": "Restaurant Style Paneer Butter Masala",
+        "raw_ingredients": "bay leaves butter cardamoms cashew nuts cinnamon stick cloves dried kasuri methi fresh cream garam masala ginger garlic paste kashmiri red chilies ketchup khus khus oil onion paneer cubes peppercorns red chilli powder salt tomatoes turmeric"
+    },
+    {
+        "id": "easy-chicken-chow-mein",
+        "title": "Easy Chicken Chow Mein",
+        "raw_ingredients": "chicken thighs cornflour julienned carrot minced garlic noodles pepper red chilli sauce salt sliced beans soy sauce spring onion thinly shredded cabbage thinly sliced onion tomato ketchup vegetable oil vinegar water water for boiling"
+    },
+    {
+        "id": "tomato-chutney-2-ways",
+        "title": "Tomato Chutney - 2 ways",
+        "raw_ingredients": "chana dal chilli powder chopped coriander chopped garlic chopped tomato coriander powder dried red chillies garlic cloves ginger green chilli finely chopped jaggery medium tomatoes mustard seeds oil onions salt small onion sprig curry leaves sprigs curry leaves turmeric"
+    },
+    {
+        "id": "rajma-recipe",
+        "title": "Rajma Recipe (Easy Rajma Masala)",
+        "raw_ingredients": "bay leaf cardamom pods chilli powder chopped coriander chopped garlic cloves coriander powder cumin garam masala ghee ginger garlic paste julienned ginger kasuri methi oil onions rajma salt tomatoes turmeric powder water"
+    },
+    {
+        "id": "chocolate-magic-shell",
+        "title": "Chocolate Magic Shell topping for ice cream",
+        "raw_ingredients": "chocolate coconut oil"
+    },
+    {
+        "id": "mangalorean-ripe-mango-curry-recipe",
+        "title": "Mangalorean Ripe Mango Curry",
+        "raw_ingredients": "a sprig of curry leaves chillies coriander seeds cumin seeds fenugreek seeds garlic ginger piece jaggery mangoes mustard seeds oil onions peppercorns salt tamarind turmeric powder water"
+    },
+    {
+        "id": "easy-palak-paneer-recipe",
+        "title": "Easy Palak Paneer Recipe",
+        "raw_ingredients": "bayleaf cardamom pods chopped palak cloves coriander powder cream fresh coriander garam masala powder garlic cloves ghee green chilli jeera jeera powder kasuri methi large tomato onion paneer red chilli powder salt whole dried red chillies"
+    },
+    {
+        "id": "healthy-broccoli-soup",
+        "title": "Healthy Broccoli Soup",
+        "raw_ingredients": "broccoli broccoli florets chopped garlic diced carrots grated cheddar cheese milk oil onion potatoes salt water"
+    },
+    {
+        "id": "millet-mysore-masala-dosa",
+        "title": "Millet Mysore Masala Dosa",
+        "raw_ingredients": "chana dal chopped onions cumin seeds curry leaves fenugreek seeds finely chopped ginger garlic ghee green chilli hing kashmiri red chillies kodo millets mustard oil onion poha or flattened rice potatoes roasted chana dal roughly chopped ginger tamarind pulp turmeric powder urad dal water"
+    },
+    {
+        "id": "chilli-paneer",
+        "title": "Street Style Chilli Paneer",
+        "raw_ingredients": "a splash of water capsicum chopped garlic chopped ginger chopped spring onions cornflour green chillies kashmiri chilli powder ketchup oil for frying onions paneer red chilli sauce salt soy sauce vinegar water"
+    },
+    {
+        "id": "kulfi-recipe",
+        "title": "Kulfi 3 Ways",
+        "raw_ingredients": "almonds cardamom powder condensed milk full fat milk heavy cream khova mango puree milk powder saffron strands"
+    },
+    {
+        "id": "dhaba-style-moong-dal",
+        "title": "Dhaba Style Moong Dal",
+        "raw_ingredients": "chilli powder chopped coriander chopped ginger chopped onion coriander powder garam masala garlic cloves ghee green chillies jeera oil/ghee salt split moong dal sprig curry leaves tomatoes turmeric powder water whole dried red chillies"
+    },
+    {
+        "id": "masala-vada",
+        "title": "Crispy Masala Vada",
+        "raw_ingredients": "chana dal cinnamon cumin seeds curry leaves fennel seeds ginger garlic paste green chilli oil onion packed mint salt turmeric whole dry red chillies"
+    },
+    {
+        "id": "eggless-lemon-cake",
+        "title": "Eggless Lemon Cake",
+        "raw_ingredients": "all purpose flour baking powder baking soda butter canola oil curd icing sugar lemon juice lemon zest salt sugar vanilla essence"
+    },
+    {
+        "id": "chicken-pulao-easy",
+        "title": "Easy Chicken Pulao",
+        "raw_ingredients": "bay leaf cardamom chicken cinnamon stick cloves coriander coriander powder curd curry leaves fresh grated coconut garlic ghee + 1 teaspoon ghee ginger ginger garlic paste green chillies jeera sambar rice mint leaves oil onion salt tomato puree tomatoes turmeric powder water whole black peppercorn"
+    },
+    {
+        "id": "air-fryer-chicken-nuggets",
+        "title": "Air Fryer Chicken Nuggets",
+        "raw_ingredients": "chicken breasts grated parmesan italian seasoning lime juice mayonnaise melted butter panko breadcrumbs paprika salt"
+    },
+    {
+        "id": "curd-rice",
+        "title": "Curd Rice - Summer Special",
+        "raw_ingredients": "chopped coriander leaves curd finely chopped ginger finely chopped onion green chilli hing milk mustard seeds pomegranate arils salt short grained rice sprig curry leaves urad dal vegetable oil water"
+    },
+    {
+        "id": "easy-chicken-curry",
+        "title": "Easy Chicken Curry for Beginners",
+        "raw_ingredients": "bay leaf cardamom pods chicken coriander coriander powder curd/yogurt garlic cloves ginger green chillies jeera kashmiri chilli powder meat masala oil onions salt tomatoes turmeric powder water"
+    },
+    {
+        "id": "easy-make-ahead-cinnamon-bread-pudding-recipe",
+        "title": "Easy Make-Ahead Cinnamon Bread Pudding",
+        "raw_ingredients": "brown sugar cinnamon powder dark rum egg eggs melted butter milk nutmeg powder nuts salt stale white bread sugar vanilla extract"
+    },
+    {
+        "id": "mushroom-masala",
+        "title": "Restaurant Style Mushroom Masala",
+        "raw_ingredients": "chilli powder chopped onion chopped tomato coriander leaves coriander powder cumin powder cumin seeds curry leaves garam masala ginger garlic paste green chillies green peas kasuri methi mushroom mustard seeds salt turmeric powder vegetable oil water"
+    },
+    {
+        "id": "prawn-rava-fry",
+        "title": "Prawn Rava Fry - Mangalorean Style",
+        "raw_ingredients": "coconut oil cumin powder kashmiri red chilli powder prawns rice flour salt semolina turmeric powder vinegar"
+    },
+    {
+        "id": "mango-sorbet",
+        "title": "Mango Sorbet without an ice cream maker",
+        "raw_ingredients": "mangoes mint leaves sugar water"
+    },
+    {
+        "id": "spicy-achari-paneer-rs-1500-amazon-giveaway-recipe",
+        "title": "Spicy Achari Paneer",
+        "raw_ingredients": "chilli powder chillies ginger garlic green capsicum green chilli hing jeera kalonji methi mustard oil mustard seeds onions paneer salt to taste saunf tomato tomato puree turmeric"
+    },
+    {
+        "id": "chaas-recipes",
+        "title": "Masala Chaas (Indian Spiced Buttermilk)",
+        "raw_ingredients": "black salt coriander leaves curd curry leaves ginger green chilli mustard seeds vegetable oil water"
+    },
+    {
+        "id": "mutton-biryani",
+        "title": "Mutton Biryani",
+        "raw_ingredients": "basmati rice bay leaf cardamom pods chilli powder cinnamon cloves coriander leaves cumin seeds curd fried onions garam masala ghee ginger garlic paste hot milk milk mint leaves mutton oil onions saffron salt tomatoes turmeric powder warm ghee water"
+    },
+    {
+        "id": "instant-pot-pasta",
+        "title": "Instant Pot Pasta in Red Sauce",
+        "raw_ingredients": "canned tomato (peeled) chopped basil dry maccheroni pasta finely chopped garlic grated parmesan cheese italian pasta seasoning olive oil onions pepper red chilli flakes salt sugar vegetable broth"
+    },
+    {
+        "id": "instant-rabdi",
+        "title": "Instant Rabdi",
+        "raw_ingredients": "cardamom condensed milk ghee homemade paneer milk rose essence strands saffron sugar"
+    },
+    {
+        "id": "chilled-thandai",
+        "title": "Chilled Thandai made from scratch",
+        "raw_ingredients": "almonds black peppercorns cardamom pods cashews fennel seeds melon seeds poppy seeds raisins rose water saffron sugar whole milk"
+    },
+    {
+        "id": "kung-pao-chicken",
+        "title": "Saucy Kung Pao Chicken",
+        "raw_ingredients": "all purpose flour bell pepper chicken breast or thighs chicken stock or water cornflour dried red chillies finely chopped celery finely chopped garlic ginger hot water oil red chilli powder red chilli sauce roasted peanuts salt sesame oil sichuan peppercorn sliced mushroom soy sauce spring onions sugar tomato ketchup vinegar water water or chicken stock"
+    },
+    {
+        "id": "south-indian-chutney-recipes",
+        "title": "Coconut Chutney",
+        "raw_ingredients": "chana dal curry leaves dry red chilli grated coconut green chilli mustard seeds roasted bengal gram salt tamarind urad dal vegetable oil water"
+    },
+    {
+        "id": "idli-dosa-batter",
+        "title": "Perfect Idli Dosa Batter",
+        "raw_ingredients": "chana dal cooked rice ghee or oil ice cold water idli rice methi seeds poha salt sugar toor dal urad dal"
+    },
+    {
+        "id": "tonkotsu-style-veg-ramen",
+        "title": "Tonkotsu Style Vegetarian Ramen",
+        "raw_ingredients": "bok choy chives cooked noodles dried shiitake mushrooms garlic ginger julienned carrot red chilli flakes salt sesame seeds soy sauce spring onions thinly sliced mushrooms toasted sesame oil tomato paste vegetable oil water"
+    },
+    {
+        "id": "instant-pot-chicken-in-mushroom-sauce",
+        "title": "Instant Pot Chicken in Mushroom Sauce",
+        "raw_ingredients": "butter button mushrooms chicken breasts chicken stock chives chopped garlic corn flour dried thyme finely grated parmesan cheese fresh cream olive oil pepper salt"
+    },
+    {
+        "id": "dal-makhani-recipe",
+        "title": "Dal Makhani - The Ultimate Recipe! for Stovetop, Pressure Cooker and Instant Pot",
+        "raw_ingredients": "bay leaf black whole urad dal butter cardamom pods charcoal cinnamon stick cloves garam masala ghee ginger garlic paste green chillies heavy cream kasuri methi more cream for topping oil onion rajma red chilli powder salt tomatoes water"
+    },
+    {
+        "id": "instant-pot-chicken-thukpa",
+        "title": "Instant Pot Chicken Thukpa",
+        "raw_ingredients": "bok choy cabbage carrot celery chicken thighs coriander seeds garlic ginger mushrooms noodles oil onion pepper salt soy sauce spring onion star anise sugar vegetable oil vinegar water whole black peppercorn whole dried red chillies"
+    },
+    {
+        "id": "homemade-churros",
+        "title": "Perfect Homemade Churros",
+        "raw_ingredients": "butter caster sugar cinnamon powder dark chocolate eggs flour fresh cream granulated sugar milk oil salt vanilla extract water"
+    },
+    {
+        "id": "chocolate-pudding-cake-eggless",
+        "title": "Eggless Chocolate Pudding Cake",
+        "raw_ingredients": "all purpose flour baking powder boiling water brown sugar butter cocoa powder dark chocolate milk vanilla extract walnuts"
+    },
+    {
+        "id": "how-to-make-panna-cotta",
+        "title": "Classic Vanilla Panna Cotta",
+        "raw_ingredients": "cold milk cream freshly squeezed lemon juice gelatin raspberry sugar vanilla bean"
+    },
+    {
+        "id": "vegetable-hakka-noodles",
+        "title": "Restaurant Style Vegetarian Hakka Noodles",
+        "raw_ingredients": "beans cabbage capsicum carrot celery garlic ginger green chillies noodles oil onion pepper red chilli sauce salt soy sauce spring onion toasted sesame oil tomato ketchup vinegar water"
+    },
+    {
+        "id": "asian-veg-stir-fry",
+        "title": "Asian Veg Stir Fry",
+        "raw_ingredients": "bok choy broccoli florets chopped celery chopped garlic chopped ginger chopped spring onions cornflour cubed bell pepper cubed zucchini mushrooms oil oyster sauce salt sesame oil sliced onion sugar thickly sliced carrot water white pepper"
+    },
+    {
+        "id": "three-homemade-salad-dressings-recipe",
+        "title": "Herb Vinaigrette",
+        "raw_ingredients": "garlic herbs olive oil salt vinegar walnuts water"
+    },
+    {
+        "id": "paneer-kathi-rolls",
+        "title": "Chinese Style Paneer Kathi Roll",
+        "raw_ingredients": "capsicum chilli sauce garlic ginger green chilli ketchup malabar parathas oil onion paneer salt soy sauce vinegar"
+    },
+    {
+        "id": "vegetarian-sweet-corn-soup",
+        "title": "Vegetarian Sweet Corn Soup",
+        "raw_ingredients": "beans carrot celery cornflour garlic ginger light soy sauce olive oil pepper salt spring onion sugar sweet corn kernels vinegar water"
+    },
+    {
+        "id": "masala-shakshuka",
+        "title": "Spicy Masala Shakshuka",
+        "raw_ingredients": "ajwain bell pepper chilli powder chopped coriander chopped onions coriander powder cream eggs ginger garlic paste green chilli mushroom oil salt tomato turmeric powder water"
+    },
+    {
+        "id": "instant-pot-lasagna",
+        "title": "Instant Pot Lasagna (vegetarian)",
+        "raw_ingredients": "basil leaves bell pepper carrot chopped mushroom dried oregano garlic grated mozzarella grated parmesan cheese no cook lasagna sheets olive oil onion pasta sauce ricotta salt spinach zucchini"
+    },
+    {
+        "id": "vanilla-cinnamon-old-fashioned",
+        "title": "Vanilla Cinnamon Old Fashioned",
+        "raw_ingredients": "angostura bitters bourbon whiskey cinnamon ice orange simple syrup vanilla extract"
+    },
+    {
+        "id": "dominos-style-garlic-breadsticks",
+        "title": "Domino's Style Garlic Breadsticks - Two Ways",
+        "raw_ingredients": "active dry yeast all purpose flour butter cream cheese dried basil dried oregano dried rosemary finely minced garlic garlic granules ground black pepper lukewarm milk mozzarella cheese oil red chilli flakes salt sugar sweet corn kernels"
+    },
+    {
+        "id": "strawberry-pepper-gin-and-tonic",
+        "title": "Strawberry Pepper Gin and Tonic",
+        "raw_ingredients": "black peppercorns gin ice lemon juice simple syrup strawberries tonic water"
+    },
+    {
+        "id": "vegetable-au-gratin",
+        "title": "Creamy Baked Vegetable Au Gratin",
+        "raw_ingredients": "beans butter carrots cauliflower florets cream flour garlic grated parmesan cheese grated processed cheese green peas onion panko bread crumbs pepper potatoes rosemary salt whole milk"
+    },
+    {
+        "id": "roasted-pineapple-moscow-mule",
+        "title": "Roasted Pineapple Moscow Mule",
+        "raw_ingredients": "ginger beer ice lemon juice pineapple wedges simple syrup vodka"
+    },
+    {
+        "id": "herb-garlic-roast-chicken",
+        "title": "Whole Roast Chicken",
+        "raw_ingredients": "chicken stock flour garlic lemon lemon juice olive oil onion paprika pepper rosemary sage salt salted butter sweet potato thyme whole chicken"
+    },
+    {
+        "id": "easy-tandoori-whole-baked-cauliflower-recipe",
+        "title": "Easy Tandoori Whole Baked Cauliflower",
+        "raw_ingredients": "cauliflower chaat masala chili powder coriander garam masala ginger garlic hung curds kashmiri chili powder lime juice oil onions potatoes salt to taste turmeric"
+    },
+    {
+        "id": "creamy-garlic-mashed-potatoes",
+        "title": "Extra Creamy Garlic Mashed Potato",
+        "raw_ingredients": "butter cream garlic milk potatoes salt water"
+    },
+    {
+        "id": "danish-brown-butter-cookies",
+        "title": "Danish Brown Butter Cookies",
+        "raw_ingredients": "baking powder egg flour milk salt salted butter sugar vanilla extract"
+    },
+    {
+        "id": "bacon-mushroom-chicken-roulade",
+        "title": "Chicken Roulade",
+        "raw_ingredients": "all purpose flour bacon chicken breast without tenders boneless chicken stock cream garlic mozzarella cheese mushroom pepper salt spinach thyme"
+    },
+    {
+        "id": "scottish-dundee-cake",
+        "title": "Scottish Dundee Cake",
+        "raw_ingredients": "all purpose flour almond flour baking powder butter chopped dried fruits and nuts eggs icing sugar milk powder orange juice orange marmalade sliced almonds sugar whiskey"
+    },
+    {
+        "id": "instant-pot-yogurt",
+        "title": "How to make Yogurt in the Instant Pot",
+        "raw_ingredients": "milk packaged yogurt or dahi"
+    },
+    {
+        "id": "homemade-chicken-manchow-soup-recipe",
+        "title": "Homemade Chicken Manchow Soup",
+        "raw_ingredients": "cabbage carrots chicken breast chopped garlic chopped ginger chopped green chilli corn flour crunchy fried noodles dark soy sauce finely chopped coriander finely chopped onions green beans green part of spring onions oil pepper powder salt sliced mushrooms vinegar white part of spring onions"
+    },
+    {
+        "id": "classic-cassata-upgraded",
+        "title": "Classic Cassata Upgraded with a Cheesecake Layer",
+        "raw_ingredients": "all purpose flour almonds baking powder baking soda cashew cream cheese icing sugar lemon juice mango ice cream oil pistachios strawberry ice cream sugar vanilla extract water whipped cream yogurt or curd"
+    },
+    {
+        "id": "proofing-bread-instant-pot",
+        "title": "Proofing Bread in the Instant Pot",
+        "raw_ingredients": "active dry yeast all purpose flour butter lukewarm milk oil salt sugar"
+    },
+    {
+        "id": "tandoori-paneer-tikka-oven-recipe",
+        "title": "Tandoori Paneer Tikka in the Oven",
+        "raw_ingredients": "besan capsicum chaat masala powder chopped coriander or cilantro coriander powder garam masala powder ginger garlic paste hung curd kashmiri red chilli powder kasuri methi mustard oil onion paneer salt to taste tomato"
+    },
+    {
+        "id": "perfect-pooris",
+        "title": "How to make the Perfect Pooris",
+        "raw_ingredients": "oil salt sooji water + extra if required whole wheat flour"
+    },
+    {
+        "id": "south-indian-style-egg-curry-recipe",
+        "title": "South Indian Style Egg Curry",
+        "raw_ingredients": "cardamom chili powder red cinnamon coconut oil coriander powder curry leaves garlic cloves ginger green chillies hard boiled eggs mustard seeds onions peppercorns salt to taste tamarind water thick coconut milk thin coconut milk tomatoes turmeric powder"
+    },
+    {
+        "id": "pressure-cooker-chana-masala-recipe",
+        "title": "Pressure Cooker Chana Masala (Instant Pot and Stovetop recipes)",
+        "raw_ingredients": "bayleaves cardamom pods chopped coriander for topping cumin seeds dry chickpeas garam masala garlic ginger green chillies kasuri methi oil onion potatoes red chilli powder salt tomatoes turmeric powder"
+    },
+    {
+        "id": "healthy-peas-potato-paneer-tikki-recipe-2",
+        "title": "Healthy Aloo Paneer Tikki",
+        "raw_ingredients": "chaat masala powder chili powder coriander cumin powder ghee ginger green chilies instant cooking oats onion paneer potatoes salt steamed green peas"
+    },
+    {
+        "id": "sabudana-vada-stuffed",
+        "title": "Sabudana Vada Bombs stuffed with Paneer",
+        "raw_ingredients": "boiled potatoes chilli powder chopped coriander curry leaves green chillies jeera jeera powder juice of 1 lime oil for frying paneer roasted peanuts sabudana or tapioca pearls salt sugar water"
+    },
+    {
+        "id": "egyptian-beetroot-dip-recipe",
+        "title": "Egyptian Beetroot Dip",
+        "raw_ingredients": "beetroots garlic cloves greek yoghurt ground cinnamon ground coriander powder ground cumin ground pepper lemon juice olive oil paprika salt toasted pine nuts"
+    },
+    {
+        "id": "how-to-make-30-minute-red-tomato-sauce-for-pasta-and-pizza-recipe",
+        "title": "Easy Pasta Sauce",
+        "raw_ingredients": "finely chopped garlic italian seasoning mix olive oil onion salt sugar tomato puree or passata tomatoes"
+    },
+    {
+        "id": "onion-pakodas",
+        "title": "Onion Pakora",
+        "raw_ingredients": "ajwain baking soda besan or gram flour chilli powder or paprika ginger garlic paste hing or asafoetida oil onions rice flour salt"
+    },
+    {
+        "id": "chilli-garlic-noodles",
+        "title": "Spicy Chilli Garlic Noodles",
+        "raw_ingredients": "carrot chilli garlic paste dry noodles dry red chillies garlic ginger green beans green capsicum green chillies oil onion salt soy sauce spring onion (green part only) spring onion (white part only) sugar vinegar white pepper"
+    },
+    {
+        "id": "eggless-chocolate-chip-cookies",
+        "title": "Eggless Chocolate Chip Cookies",
+        "raw_ingredients": "all purpose flour baking soda brown sugar butter chocolate chips or chunks coffee decoction milk salt vanilla extract white sugar"
+    },
+    {
+        "id": "mushroom-pepper-fry-recipe",
+        "title": "South Indian Mushroom Pepper Fry",
+        "raw_ingredients": "chilli powder chopped garlic chopped ginger coconut oil coriander powder cumin powder curry leaves dried red chillies garam masala ground black pepper medium onion mushrooms mustard seeds salt tomato paste"
+    },
+    {
+        "id": "burmese-khow-suey-recipe",
+        "title": "Vegan Khow Suey",
+        "raw_ingredients": "bell pepper besan birds eye chillies carrot coconut oil cooked noodles coriander cubed tofu curry leaves fresh turmeric garlic ginger green beans green chillies groundnuts (peeled) lemongrass mushroom noodles oil salt shallots soy sauce thick coconut milk vegetable broth/water whole coriander seeds whole peppercorns"
+    },
+    {
+        "id": "eggless-vanilla-cake-recipe",
+        "title": "Eggless Vanilla Cake",
+        "raw_ingredients": "all purpose flour baking powder baking soda greek yogurt oil sugar vanilla extract"
+    },
+    {
+        "id": "thai-pineapple-fried-rice-recipe",
+        "title": "Thai Pineapple Fried Rice",
+        "raw_ingredients": "birds eye chillies carrot chilli powder chopped pineapple cooked rice coriander powder corn finely chopped bell peppers finely chopped celery finely chopped green onions finely chopped onion garlic ginger oil peas salt soy sauce spring onions turmeric white pepper powder"
+    },
+    {
+        "id": "paneer-pakora-recipe",
+        "title": "Paneer Pakora Recipe 2 Ways",
+        "raw_ingredients": "baking soda besan gram flour chaat masala chilli powder chilli powder or paprika coriander chutney coriander powder ginger garlic paste hing asafoetida kasuri methi oil for deep frying paneer rice flour salt water"
+    },
+    {
+        "id": "5-amazing-chai-recipes",
+        "title": "How to make Masala Chai",
+        "raw_ingredients": "cinnamon cloves green cardamoms milk peppercorn sugar tea leaves water"
+    },
+    {
+        "id": "stovetop-coconut-caramel-custard-recipe",
+        "title": "Vegan Coconut Caramel Custard",
+        "raw_ingredients": "coconut milk cornflour sugar vanilla extract"
+    },
+    {
+        "id": "pasta-in-jalapeno-pesto-recipe",
+        "title": "Spicy Baked Pasta in Jalapeno Pesto",
+        "raw_ingredients": "basil leaves bell peppers bread crumbs cashews cherry tomatoes garlic jalapenos milk olive oil parmesan parmesan cheese pasta salt"
+    },
+    {
+        "id": "easy-pani-puri-recipe",
+        "title": "Easy Pani Puri",
+        "raw_ingredients": "adjust lime juice and black salt to taste atta black salt boiled and peeled potatoes boiled kala chana or kabuli chana chopped raw mango/ 1 lime sized seedless tamarind fine sooji fresh coriander leaves fresh pudina leaves green chillies or serrano peppers hot but not boiling water jeera peppercorns pudina leaves red chilli powder roasted jeera powder soaked boondi sugar sweet tamarind chutney"
+    },
+    {
+        "id": "burnt-garlic-mushroom-fried-rice-recipe",
+        "title": "Burnt Garlic Mushroom Fried Rice",
+        "raw_ingredients": "cooked white rice finely chopped celery finely chopped ginger finely chopped onions garlic cloves green chillies green onions light soy sauce oil rice vinegar salt shiitake mushrooms sliced button mushrooms toasted sesame oil white pepper"
+    },
+    {
+        "id": "eggless-chocolate-mousse-recipe",
+        "title": "Eggless Chocolate Mousse",
+        "raw_ingredients": "butter dark chocolate heavy whipping cream instant coffee powder vanilla extract"
+    },
+    {
+        "id": "curry-chicken-salad-sandwich-recipe",
+        "title": "Curry Chicken Salad Sandwich",
+        "raw_ingredients": "chicken breasts chopped celery chopped coriander chopped green onions curry powder garlic greek yogurt honey olive oil paprika salt water"
+    },
+    {
+        "id": "chicken-shawarma-recipe",
+        "title": "Chicken Shawarma made easily at home",
+        "raw_ingredients": "black pepper chicken thighs chilli powder cinnamon coriander coriander powder cumin garlic mayo or toum garlic paste ginger paste honey hummus lemon lemon wedges olive oil oregano pickled beetroot and onions pitas salt sliced tomatoes and cucumbers turmeric"
+    },
+    {
+        "id": "thai-sweet-chili-sauce-recipe",
+        "title": "Thai Sweet Chili Sauce",
+        "raw_ingredients": "cayenne pepper or kashmiri red chilli powder chilli paste corn flour garlic salt soy sauce sugar vinegar water"
+    },
+    {
+        "id": "how-to-make-hummus-recipe",
+        "title": "How to make Hummus at home",
+        "raw_ingredients": "chickpeas cumin garlic ice cold water lime juice olive oil paprika salt tahini"
+    },
+    {
+        "id": "mutton-stew-ishtu-recipe",
+        "title": "Kerala Mutton Stew (Ishtu) With Coconut",
+        "raw_ingredients": "cardamom pods carrot cinnamon stick cloves coconut oil curry leaves ginger ginger paste green beans green chillies ground black pepper mutton or lamb onion potatoes salt thick coconut milk thin coconut milk turmeric water"
+    },
+    {
+        "id": "lemon-blueberry-cake-bars-recipe",
+        "title": "Lemon Blueberry Cake Bars",
+        "raw_ingredients": "all purpose flour / maida baking powder baking soda blueberries castor sugar egg lemon salt sugar unsalted butter vanilla extract yogurt"
+    },
+    {
+        "id": "white-wine-sangria-recipe",
+        "title": "Strawberry Orange White Wine Sangria",
+        "raw_ingredients": "basil chardonnay lime orange sparkling water / soda strawberries tequila / vodka / brandy"
+    },
+    {
+        "id": "mini-mango-cheesecakes-recipe",
+        "title": "Mini Mango Cheesecakes (Eggless and No Bake)",
+        "raw_ingredients": "butter cream cream cheese digestive biscuits gelatin / agar agar icing sugar mango water"
+    },
+    {
+        "id": "instant-pot-thai-chicken-curry-recipe",
+        "title": "Instant Pot Thai Chicken Curry",
+        "raw_ingredients": "bell peppers broccoli florets chicken chicken stock coconut milk fish sauce garlic ginger juice of lime kaffir lime leaves oil palm sugar / jaggery / coconut sugar / sugar red onion salt thai basil / holy basil thai curry paste zucchini"
+    },
+    {
+        "id": "drums-of-heaven-recipe",
+        "title": "Drums of Heaven - Spicy and Saucy!",
+        "raw_ingredients": "all purpose flour chicken lollipop chicken lollipops coriander cornflour cornstarch / cornflour egg garlic garlic paste ginger ginger paste green chillies light soy sauce oil onions red chilli powder rice flour salt schezwan sauce soy sauce spring onions sugar tomato ketchup vinegar"
+    },
+    {
+        "id": "eggless-mango-cake-recipe",
+        "title": "Eggless Mango Cake - soft and moist!",
+        "raw_ingredients": "all purpose flour baking powder baking soda coconut coconut milk coconut oil cornstarch granulated sugar mango salt vinegar whipped cream"
+    }
+]

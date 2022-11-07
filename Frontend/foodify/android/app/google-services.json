@@ -1,0 +1,63 @@
+{
+  "project_info": {
+    "project_number": "387191489827",
+    "project_id": "foody-2b50c",
+    "storage_bucket": "foody-2b50c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:387191489827:android:dabd33b8a23cd9fc6b7896",
+        "android_client_info": {
+          "package_name": "com.softperks.foodify"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "387191489827-bqqadaa3cnqob7bt9tc7em3vsn79pb8m.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.softperks.foodify",
+            "certificate_hash": "c0891721e35c1271742ea0eb7f39bbc2904a4228"
+          }
+        },
+        {
+          "client_id": "387191489827-lrp657pea0nu2o0maeaigu86jv6k3toc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.softperks.foodify",
+            "certificate_hash": "4c7b32bf917165437b6f8cd7db4b5d3c05cbb639"
+          }
+        },
+        {
+          "client_id": "387191489827-mv57cqs18j2b86889f79ug2c27saa6lt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.softperks.foodify",
+            "certificate_hash": "014c9a949324a159e8d390d57e9b8ca0ce1b9eed"
+          }
+        },
+        {
+          "client_id": "387191489827-pcq3lvh9284m877vd6jgekdjqfq5tuba.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC49nnYPBcJe8m0jCRuSz5AWuyQgOSnVDA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "387191489827-pcq3lvh9284m877vd6jgekdjqfq5tuba.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
