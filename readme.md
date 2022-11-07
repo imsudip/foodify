@@ -22,13 +22,14 @@ The idea of structuring a major portion of the popular and rare recipes in one p
 
 ## Tech Stack
 
-### Frontend
+### [Frontend](https://github.com/imsudip/foodify/tree/main/Frontend/foodify)
 
 - Flutter (Dart)
 - Firebase (Authentication, Firestore)
-  > For more details on the App check [Frontend](https://github.com/imsudip/foodify/tree/main/Frontend/foodify) folder
 
-### Backend
+For more details on the App check [Frontend](https://github.com/imsudip/foodify/tree/main/Frontend/foodify) folder
+
+### [Backend](https://github.com/imsudip/foodify/tree/main/Backend)
 
 - Python ( For developing the recommendation system and the web scraper)
   - Flask
@@ -38,7 +39,8 @@ The idea of structuring a major portion of the popular and rare recipes in one p
   - pandas
 - MillieSearch (For search engine)
 - Firebase (Authentication, Firestore)
-  > For more details on the Backend check [Backend](https://github.com/imsudip/foodify/tree/main/Backend) folder
+
+For more details on the Backend check [Backend](https://github.com/imsudip/foodify/tree/main/Backend) folder
 
 ## Features
 
