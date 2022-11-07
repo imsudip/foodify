@@ -6,7 +6,7 @@ The frontend Application is built using [Flutter](https://flutter.dev/) and [Dar
 
 You can check out the app on
 
-<a href='https://play.google.com/store/apps/details?id=com.softperks.foodify&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'  ><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png' width=40%/></a>
+<a href='https://play.google.com/store/apps/details?id=com.softperks.foodify&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'  ><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png' width=20%/></a>
 
 ## App Processes
 
