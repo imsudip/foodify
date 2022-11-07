@@ -8,10 +8,10 @@ Foodify is Recipe browsing and recipe recomendation app for mobile devices.This 
 
 <div style="display:flex;flex-direction:row;justify-content:center;align-items:center;">
 <a href="https://github.com/imsudip" target="_blank" style =" display: block;  max-width:300px; margin-right:10px;">
-<img src="https://raw.githubusercontent.com/imsudip/foodify/main/resources/xtra/sudip.svg" width=100% />
+<img src="https://raw.githubusercontent.com/imsudip/foodify/main/resources/xtra/sudip.svg" width=45% />
 </a>
 <a href="https://github.com/PrativaChakraborty" target="_blank" style =" display: block;  max-width:300px; margin-left:10px;">
-<img src="https://raw.githubusercontent.com/imsudip/foodify/main/resources/xtra/prativa.svg" width=100% />
+<img src="https://raw.githubusercontent.com/imsudip/foodify/main/resources/xtra/prativa.svg" width=45% />
 </a>
 
 </div>
